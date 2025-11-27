@@ -9,37 +9,30 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+**Education**
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+- Ph.D in Wireless Communication Lab (WCL), Soongsil University, Seoul, Korea, 2023-Now.
+- M.S in Wireless Communication Lab (WCL), Soongsil University, Seoul, Korea, 2021-2023.
+- B.S. in Hanoi University of Science and Technology (HUST), Hanoi, Vietnam, 2015-2020.
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+**Work Experience**
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+**Spring 2018-2020: Research Assistant**
+
+- Research cell-free massive MIMO (CFMM) system at SPARC Lab in HUST, Hanoi, Vietnam.
+
+**Spring 2021-Now: Researcher**
+
+- Research modern wireless communication technologies, including 5G, 6G, cell-free massive MIMO systems, full-duplex communication, physical-layer security (PLS), NOMA, UAV, and applications of machine learning and deep learning in wireless communication systems.
+
+**Skills**
+
+- **Wireless Systems:** Expert knowledge of 5G and 6G network architectures, protocols, and advanced challenges.
+- **MIMO & Multi-Access:** Specialization in Cell-Free Massive MIMO (CFMM), Full-Duplex (FD), and NOMA.
+- **Security & Applications**: Research focused on Physical-Layer Security (PLS) and integration of UAVs.
+- **AI/ML for Wireless:** Applied experience utilizing Machine Learning (ML) and Deep Learning (DL) for system optimization.
+- **Tools**: Proficient in Python (ML/DL frameworks) and MATLAB (modeling, simulation, and analysis).
+- **Research Skills**: Experienced in algorithm development, rigorous simulation-based analysis, and technical paper writing.
 
 Publications
 ======
@@ -59,6 +52,3 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
