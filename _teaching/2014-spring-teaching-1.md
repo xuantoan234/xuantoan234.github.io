@@ -1,11 +1,11 @@
 ---
-title: "Teaching experience 1"
+title: "Teaching experience"
 collection: teaching
 type: "Undergraduate course"
-permalink: /teaching/2025-spring-teaching-1
-venue: "University 1, Department"
+permalink: /teaching/2025
+venue: "Comming Soon"
 date: 2025-01-01
-location: "City, Country"
+location: "Comming Soon"
 ---
 
 ---
