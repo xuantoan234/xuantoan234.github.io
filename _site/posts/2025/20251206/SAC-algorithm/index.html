@@ -1,0 +1,673 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>SAC Algorithm - Xuan-Toan Dang Profile</title>
+
+
+
+<meta name="description" content="The Soft Actor–Critic (SAC) algorithm is one of the most influential advancements in modern reinforcement learning (RL), especially in continuous control tasks. Although its origins lie in machine learning, the algorithm is deeply rooted in mathematics—from stochastic calculus to optimization theory and information entropy. This blog will walk you through the mathematical foundations and inner mechanics of SAC in a structured, intuitive way.">
+
+
+
+
+
+  <meta property="article:published_time" content="2025-12-06T00:00:00+00:00">
+
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2025/20251206/SAC-algorithm/">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Xuan-Toan Dang",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<!-- Open Graph protocol data (https://ogp.me/), used by social media -->
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Xuan-Toan Dang Profile"> 
+<meta property="og:title" content="SAC Algorithm">
+
+  <meta property="og:type" content="article">
+
+
+  <meta property="og:description" name="description" content="The Soft Actor–Critic (SAC) algorithm is one of the most influential advancements in modern reinforcement learning (RL), especially in continuous control tasks. Although its origins lie in machine learning, the algorithm is deeply rooted in mathematics—from stochastic calculus to optimization theory and information entropy. This blog will walk you through the mathematical foundations and inner mechanics of SAC in a structured, intuitive way.">
+
+
+  <meta property="og:url" content="http://localhost:4000/posts/2025/20251206/SAC-algorithm/">
+
+
+
+
+
+<!-- end Open Graph protocol -->
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Xuan-Toan Dang Profile Feed">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+    
+
+<!-- start custom head snippets -->
+
+<!-- Support for Academicons -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png"/>
+<link rel="icon" type="image/svg+xml" href="http://localhost:4000/images/favicon.svg"/>
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-192x192.png" sizes="192x192"/>
+<link rel="manifest" href="http://localhost:4000/images/manifest.json"/>
+<link rel="icon" href="/images/favicon.ico"/>
+<meta name="theme-color" content="#ffffff"/>
+<!-- MathJax for LaTeX rendering -->
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
+
+<!-- JavaScript -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{
+    delimiters: [
+      { left: '$$',  right: '$$',  display: true  },
+      { left: '$',   right: '$',   display: false },
+      { left: '\\[', right: '\\]', display: true  },
+      { left: '\\(', right: '\\)', display: false }
+  ]});">
+</script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><span class="navicon"></span></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="http://localhost:4000/">Xuan-Toan Dang Profile</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/teaching/">Teaching</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+          <li id="theme-toggle" class="masthead__menu-item persist tail">
+            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+          </li>
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/profile.jpeg" class="author__avatar" alt="Xuan-Toan Dang"  fetchpriority="high" />
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Xuan-Toan Dang</h3>
+    <p class="author__pronouns">Phd Student</p>
+    <p class="author__bio">I received my Bachelor of Engineering degree in wireless communication engineering from the Hanoi University of Science and Technology, Hanoi City, Vietnam in 2020. In 2023, I received the M.E. degree in electronic engineering from Soongsil University, Seoul, Korea. I am currently pursuing my Ph.D. degree at Soongsil University. My research interests include wireless communications with optimization techniques, machine learning, deep learning for wireless communications, and signal processing for communications.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      <!-- Font Awesome icons / Biographic information  -->
+      
+        <li class="author__desktop"><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i>South Korea</li>
+      
+      
+        <li class="author__desktop"><i class="fas fa-fw fa-building-columns icon-pad-right" aria-hidden="true"></i>Soongsil University</li>
+      
+      
+      
+        <li><a href="mailto:dangxuantoan@soongsil.ac.kr"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>Email</a></li>
+      
+
+      <!-- Font Awesome and Academicons icons / Academic websites -->
+      
+            
+      
+        <li><a href="https://scholar.google.com/citations?user=AlEmGBYAAAAJ&hl=en"><i class="ai ai-google-scholar ai-fw icon-pad-right"></i>Google Scholar</a></li>
+      
+      
+      
+      
+                              
+      
+      
+      
+
+      <!-- Font Awesome icons / Repositories and software development -->
+      
+            
+            
+      
+            
+            
+
+      <!-- Font Awesome icons / Social media -->
+              
+      
+      
+        <li><a href="https://www.facebook.com/marvelous234"><i class="fab fa-fw fa-facebook-f icon-pad-right" aria-hidden="true"></i>Facebook</a></li>
+      
+            
+      
+                  
+                  
+      
+            
+            
+            
+      
+            
+                  
+            
+      
+            
+            
+      
+              
+      
+                      
+      
+      
+            
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="SAC Algorithm">
+    <meta itemprop="description" content="The Soft Actor–Critic (SAC) algorithm is one of the most influential advancements in modern reinforcement learning (RL), especially in continuous control tasks. Although its origins lie in machine learning, the algorithm is deeply rooted in mathematics—from stochastic calculus to optimization theory and information entropy. This blog will walk you through the mathematical foundations and inner mechanics of SAC in a structured, intuitive way.">
+    <meta itemprop="datePublished" content="December 06, 2025">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">SAC Algorithm
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> 
+
+
+  
+	  3 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2025-12-06T00:00:00+00:00">December 06, 2025</time></p>
+            
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>The <strong>Soft Actor–Critic (SAC)</strong> algorithm is one of the most influential advancements in modern reinforcement learning (RL), especially in continuous control tasks. Although its origins lie in machine learning, the algorithm is deeply rooted in <em>mathematics</em>—from stochastic calculus to optimization theory and information entropy. This blog will walk you through the mathematical foundations and inner mechanics of SAC in a structured, intuitive way.</p>
+
+<hr />
+
+<h2 id="-what-is-sac">🔍 What Is SAC?</h2>
+
+<p>SAC is an <strong>off-policy, model-free, actor–critic RL algorithm</strong> that optimizes a stochastic policy in an environment with continuous actions. Its distinguishing feature is <strong>entropy regularization</strong>, which encourages exploration and yields more stable learning.</p>
+
+<p>SAC blends three major elements:</p>
+
+<ol>
+  <li><strong>Maximum Entropy Reinforcement Learning</strong></li>
+  <li><strong>Actor–Critic Framework</strong></li>
+  <li><strong>Soft Q-Learning</strong></li>
+</ol>
+
+<hr />
+
+<h1 id="soft-actorcritic-sac-algorithm--detailed-mathematical-blog">Soft Actor–Critic (SAC) Algorithm — Detailed Mathematical Blog</h1>
+
+<h2 id="-mathematical-foundations">📐 Mathematical Foundations</h2>
+
+<h3 id="1-maximum-entropy-objective">1. Maximum Entropy Objective</h3>
+
+<p>Standard RL maximizes the expected sum of rewards:</p>
+
+\[J(\pi) = \sum_{t=0}^{\infty} \mathbb{E}_{\pi}\left[ r(s_t, a_t) \right]\]
+
+<p>SAC uses the <strong>maximum entropy objective</strong>, enhancing exploration and improving robustness:</p>
+
+\[J_{\text{max-ent}}(\pi) = 
+\sum_{t=0}^{\infty} 
+\mathbb{E}_{\pi} 
+\left[
+    r(s_t, a_t) 
+    + 
+    \alpha \mathcal{H}(\pi(\cdot \mid s_t))
+\right]\]
+
+<p>where:</p>
+
+<ul>
+  <li>
+\[\mathcal{H}(\pi(\cdot \mid s_t)) = -\mathbb{E}[ \log \pi(a_t \mid s_t) ]\]
+  </li>
+  <li>\(\alpha\) is the temperature parameter controlling the entropy–reward trade-off</li>
+</ul>
+
+<p>This objective encourages <strong>exploratory yet reward-driven</strong> policies.</p>
+
+<hr />
+
+<h2 id="-the-components-of-sac">🧠 The Components of SAC</h2>
+
+<p>SAC maintains <strong>three neural networks</strong>:</p>
+
+<ol>
+  <li>
+    <p><strong>Two Q-functions</strong><br />
+\(Q_{\theta_1}(s,a),\; Q_{\theta_2}(s,a)\)</p>
+  </li>
+  <li>
+    <p><strong>A stochastic actor (policy)</strong><br />
+\(\pi_\phi(a \mid s)\)</p>
+  </li>
+</ol>
+
+<p>Using two Q-networks reduces overestimation bias.</p>
+
+<hr />
+
+<h2 id="-1-the-soft-q-function-loss">🔢 1. The Soft Q-Function Loss</h2>
+
+<p>The target for Q-learning includes the entropy term:</p>
+
+\[y = 
+r(s_t, a_t) 
++ \gamma 
+\mathbb{E}_{a_{t+1} \sim \pi}
+\left[
+    \min_{i=1,2} Q_{\theta_i}(s_{t+1}, a_{t+1})
+    - 
+    \alpha \log \pi(a_{t+1} \mid s_{t+1})
+\right]\]
+
+<p>The loss for each Q-function is:</p>
+
+\[J_Q(\theta_i) 
+= 
+\mathbb{E}
+\left[
+    (Q_{\theta_i}(s_t,a_t) - y)^2
+\right]\]
+
+<hr />
+
+<h2 id="-2-the-policy-actor-loss">🔢 2. The Policy (Actor) Loss</h2>
+
+<p>The actor improves by minimizing:</p>
+
+\[J_\pi(\phi)
+=
+\mathbb{E}_{s_t \sim \mathcal{D}}
+\Bigg[
+    \mathbb{E}_{a_t \sim \pi_\phi}
+    \left[
+        \alpha \log \pi_\phi(a_t \mid s_t)
+        -
+        \min_{i=1,2}
+        Q_{\theta_i}(s_t, a_t)
+    \right]
+    \Bigg]\]
+
+<p>This trades off:</p>
+
+<ul>
+  <li>better Q-values</li>
+  <li>higher entropy (diverse actions)</li>
+</ul>
+
+<hr />
+
+<h2 id="-entropy-temperature-adjustment-optional">🔥 Entropy Temperature Adjustment (Optional)</h2>
+
+<p>SAC can automatically adjust \(\alpha\) by minimizing:</p>
+
+\[J(\alpha)
+=
+\mathbb{E}_{a_t \sim \pi}
+\left[
+    -\alpha
+    \left(
+        \log \pi(a_t \mid s_t)
+        + 
+        \mathcal{H}_{\text{target}}
+    \right)
+\right]\]
+
+<p>This ensures the entropy stays close to a chosen target.</p>
+
+<hr />
+
+<h2 id="️-algorithm-outline">🏗️ Algorithm Outline</h2>
+
+<ol>
+  <li>Initialize Q-networks, policy network, and target Q-networks</li>
+  <li>
+    <p>For each interaction step:</p>
+
+    <ul>
+      <li>Sample action from the stochastic policy</li>
+      <li>Store transition in replay buffer</li>
+    </ul>
+  </li>
+  <li>
+    <p>For each gradient step:</p>
+
+    <ul>
+      <li>Update Q-networks using soft Bellman backup</li>
+      <li>Update policy via entropy-regularized objective</li>
+      <li>Update temperature ( \alpha ) if enabled</li>
+      <li>Soft-update target networks</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="-why-sac-works-so-well">📊 Why SAC Works So Well</h2>
+
+<h3 id="-stability">✔ Stability</h3>
+
+<p>Entropy regularization smooths updates and prevents premature convergence.</p>
+
+<h3 id="-robust-exploration">✔ Robust Exploration</h3>
+
+<p>Stochasticity gives better performance in sparse or noisy reward tasks.</p>
+
+<h3 id="-sample-efficiency">✔ Sample Efficiency</h3>
+
+<p>As an off-policy method, SAC reuses past experience effectively.</p>
+
+<h3 id="-continuous-action-suitability">✔ Continuous Action Suitability</h3>
+
+<p>Perfect for robotics, control engineering, and physics-based environments.</p>
+
+<hr />
+
+<h2 id="-sac-vs-other-rl-algorithms">🧮 SAC vs. Other RL Algorithms</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Algorithm</th>
+      <th>On/Off-Policy</th>
+      <th>Deterministic?</th>
+      <th>Key Strength</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DDPG</td>
+      <td>Off-policy</td>
+      <td>Deterministic</td>
+      <td>Fast but less stable</td>
+    </tr>
+    <tr>
+      <td>TD3</td>
+      <td>Off-policy</td>
+      <td>Deterministic</td>
+      <td>Reduced overestimation</td>
+    </tr>
+    <tr>
+      <td>PPO</td>
+      <td>On-policy</td>
+      <td>Stochastic</td>
+      <td>Stable but less sample-efficient</td>
+    </tr>
+    <tr>
+      <td><strong>SAC</strong></td>
+      <td><strong>Off-policy</strong></td>
+      <td><strong>Stochastic</strong></td>
+      <td><strong>Exploration + stability + efficiency</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="-summary">🧾 Summary</h2>
+
+<p>The SAC algorithm is mathematically elegant and computationally effective. Its use of entropy regularization represents a shift toward more robust and exploratory learning strategies. With strong theoretical foundations and empirical results, SAC remains a state-of-the-art algorithm for continuous-control problems.</p>
+
+<hr />
+
+
+
+        
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#category1" class="page__taxonomy-item" rel="tag">category1</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#category2" class="page__taxonomy-item" rel="tag">category2</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#cool-posts" class="page__taxonomy-item" rel="tag">cool posts</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://bsky.app/intent/compose?text=http://localhost:4000/posts/2025/20251206/SAC-algorithm/" class="btn btn--bluesky" title="Share on Bluesky"><i class="fab fa-bluesky" aria-hidden="true"></i><span> Bluesky</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2025/20251206/SAC-algorithm/" class="btn btn--facebook" title="Share on Facebook"><i class="fab fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2025/20251206/SAC-algorithm/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+
+  <a href="https://www.addtoany.com/add_to/mastodon?linkurl=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F2025%2F20251206%2FSAC-algorithm%2F" class="btn btn--mastodon" title="Share on Mastodon"><i class="fab fa-mastodon" aria-hidden="true"></i><span> Mastodon</span></a>
+
+  <a href="https://x.com/intent/post?text=http://localhost:4000/posts/2025/20251206/SAC-algorithm/" class="btn btn--x" title="Share on X"><i class="fab fa-x-twitter" aria-hidden="true"></i><span> X (formerly Twitter)</span></a>
+</section>
+
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- <a href="/sitemap/">Sitemap</a> -->
+
+<!-- Support for MatJax -->
+<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+<!-- Support for Plotly -->
+<script defer src='https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.1/plotly.min.js'></script>
+
+<!-- Support for Mermaid -->
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad:true, theme:'default'});
+    await mermaid.run({querySelector:'code.language-mermaid'});
+</script>
+
+<!-- end custom footer snippets -->
+
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">
+  &copy; 2025 Xuan-Toan Dang, Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
+  Site last updated 2025-12-05
+</div>
+
+      </footer>
+    </div>
+
+    <script type="module" src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

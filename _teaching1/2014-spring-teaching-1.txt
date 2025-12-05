@@ -1,0 +1,162 @@
+---
+title: "Teaching experience 1"
+collection: teaching
+type: "Undergraduate course"
+permalink: /teaching/2025-spring-teaching-1
+venue: "University 1, Department"
+date: 2025-01-01
+location: "City, Country"
+---
+
+---
+
+title: "Teaching experience 1"
+collection: teaching
+type: "Undergraduate course"
+permalink: /teaching/2014-spring-teaching-1
+venue: "University 1, Department"
+date: 2014-01-01
+location: "City, Country"
+-------------------------
+
+This is a description of a teaching experience. You can use markdown like any other post.
+
+# Soft Actor-Critic (SAC): Mathematical Foundations
+
+The **Soft Actor-Critic (SAC)** algorithm is an off-policy, model-free reinforcement learning method designed to maximize long-term return while also maximizing policy entropy. This encourages exploration and improves robustness.
+
+---
+
+# 1. Soft Q-Function
+
+SAC defines the **soft state value**:
+
+\\[
+V^\pi(s)=\mathbb{E}_{a\sim \pi}\left[ Q^\pi(s,a) - \alpha \log \pi(a|s) \right]
+\\]
+
+where
+
+* \\(Q^\pi(s,a)\\) = expected discounted return,
+* ( \alpha ) = temperature controlling exploration (entropy weight),
+* ( -\log \pi(a|s) ) = entropy term (higher entropy encourages exploration).
+
+The **soft Bellman backup** for the Q-function:
+
+\\[
+Q^\pi(s_t,a_t)=\mathbb{E}*{s*{t+1}}\left[ r(s_t,a_t)+\gamma V^\pi(s_{t+1}) \right]
+\\]
+
+This is what the critic networks try to approximate.
+
+---
+
+# 2. Double Q-Learning
+
+To reduce Q-value overestimation, SAC uses **two critics** (Q_{\theta_1}, Q_{\theta_2}).
+
+The target value is computed as:
+
+\\[
+y = r + \gamma \left( \min_{i=1,2} Q_{\theta_i'}(s', a') - \alpha \log \pi_\phi (a'|s') \right)
+\\]
+
+Critic loss:
+
+\\[
+J_Q(\theta_i) = \mathbb{E}*{(s,a,r,s')}\left[
+\left( Q*{\theta_i}(s,a) - y \right)^2
+\right]
+\\]
+
+---
+
+# 3. Policy (Actor) Optimization
+
+The policy aims to select actions with high Q-value while also maximizing the entropy.
+
+The objective:
+
+\\[
+J_\pi(\phi)=
+\mathbb{E}*{s\sim D, a\sim \pi*\phi}
+\left[
+\alpha \log \pi_\phi(a|s) - Q_{\theta}(s,a)
+\right]
+\\]
+
+We **minimize** this objective w.r.t. actor parameters (\phi).
+Equivalently, the policy tries to *maximize*:
+
+[
+\mathbb{E}[ Q(s,a) ] + \alpha H(\pi(\cdot|s))
+]
+
+### Reparameterization Trick
+
+For continuous actions:
+
+\\[
+a = f_\phi(\epsilon, s) = \mu_\phi(s) + \sigma_\phi(s)\odot\epsilon, \quad \epsilon\sim\mathcal{N}(0, I)
+\\]
+
+This allows differentiating through sampling.
+
+To satisfy action bounds (e.g., ((-1,1))):
+
+\\[
+a_\text{real} = \tanh(a)
+\\]
+
+The log-probability adjustment:
+
+\\[
+\log \pi(a_\text{real}|s) =
+\log \mathcal{N}(a|\mu,\sigma)
+
+* \sum_i \log(1 - \tanh(a_i)^2 + \epsilon)
+  \\]
+
+---
+
+# 4. Temperature Parameter α
+
+α determines how much exploration is encouraged.
+
+SAC can learn α automatically by minimizing:
+
+[
+J(\alpha)=\mathbb{E}*{a\sim\pi*\phi}\left[
+
+* \alpha (\log\pi_\phi(a|s) + \mathcal{H}_0)
+  \right]
+  ]
+
+where (\mathcal{H}_0) = target entropy.
+
+Large α → more exploration.
+Small α → more exploitation.
+
+---
+
+# 5. Target Networks
+
+Critics use target networks to stabilize training:
+
+[
+\theta_i' \leftarrow \tau \theta_i + (1-\tau)\theta_i'
+]
+
+---
+
+# 6. Algorithm Summary
+
+1. Sample batch from replay buffer.
+2. Update Q-networks via soft Bellman backup.
+3. Update policy using reparameterization trick.
+4. Update temperature α (optional).
+5. Soft update target critics.
+
+SAC is stable, sample-efficient, and works well in continuous action spaces.
+
+---
