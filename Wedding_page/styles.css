@@ -274,7 +274,7 @@ body {
 
 .scroll-down {
     position: absolute;
-    bottom: 40px;
+    bottom: -100px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -911,6 +911,11 @@ body {
     .lightbox-next {
         right: 10px;
     }
+
+    .scroll-down {
+        bottom: 20px;
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -929,5 +934,10 @@ body {
 
     .time-number {
         font-size: 2rem;
+    }
+
+    .scroll-down {
+        bottom: 20px;
+        font-size: 0.75rem;
     }
 }
