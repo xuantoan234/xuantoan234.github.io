@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Gallery - Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    
+    <!-- HEIC to JPEG converter -->
+    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+</head>
+<body>
+    <header class="admin-header">
+        <div class="container">
+            <h1>Wedding Gallery Admin</h1>
+            <a href="index.html" class="btn-secondary">View Gallery</a>
+        </div>
+    </header>
+
+    <main class="container admin-container">
+        <section class="upload-section">
+            <h2>Upload Photos</h2>
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept="image/*,.heic,.heif" multiple hidden>
+                <div class="upload-content">
+                    <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p class="upload-text">Click to upload or drag and drop</p>
+                    <p class="upload-subtext">PNG, JPG, JPEG, HEIC up to 10MB</p>
+                </div>
+            </div>
+            <button class="btn-primary" id="uploadBtn" style="display: none;">Upload Selected Photos</button>
+        </section>
+
+        <section class="preview-section" id="previewSection" style="display: none;">
+            <h3>Selected Photos</h3>
+            <div class="preview-grid" id="previewGrid"></div>
+        </section>
+
+        <section class="manage-section">
+            <h2>Manage Photos</h2>
+            <div class="gallery admin-gallery" id="adminGallery">
+                <!-- Existing photos will be loaded here -->
+            </div>
+            <div class="empty-state" id="adminEmptyState">
+                <p>No photos uploaded yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Wedding Gallery Admin Panel</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>
