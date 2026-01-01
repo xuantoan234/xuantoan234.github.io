@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Hoài ❤️ Toàn - Wedding Invitation 22/02/2026</title>
+  <meta name="description" content="Thiệp cưới của Thu Hoài & Xuân Toàn - 22/02/2026" />
+  <meta name="theme-color" content="#c9a96e">
+  <meta property="og:title" content="Thu Hoài ❤️ Xuân Toàn - Wedding Invitation">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./assets/img/story1.jpg">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@300;400;500;600;700&family=Cormorant:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./assets/story-styles.css" />
+</head>
+
+<body>
+  <!-- Music Button -->
+  <button class="music-btn" id="musicBtn" type="button" aria-label="Bật/Tắt nhạc">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M9 18V5l12-2v13"></path>
+      <circle cx="6" cy="18" r="3"></circle>
+      <circle cx="18" cy="16" r="3"></circle>
+    </svg>
+  </button>
+  <audio id="bgm" preload="none" loop>
+    <source src="./assets/bgm.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Stories Container -->
+  <div class="stories-container" id="storiesContainer">
+    
+    <!-- Story 1: Welcome -->
+    <section class="story story--1 active" data-story="1">
+      <div class="story__bg" style="background-image:url('./assets/img/story1.jpg')"></div>
+      <div class="story__overlay"></div>
+      <div class="story__content">
+        <div class="story__text story__text--top">
+          <p class="poem">I love three things in this world.<br>Sun, moon and you.</p>
+          <p class="poem">Sun for morning moon for night,<br>and you forever.</p>
+        </div>
+        
+        <h1 class="story__title">Welcome to our wedding</h1>
+        
+        <div class="story__names">
+          <div class="handwriting">Thu Hoài ❤️ Xuân Toàn</div>
+          <div class="handwriting" style="font-size: 32px; margin-top: 10px;">22.02.2026</div>
+        </div>
+      </div>
+      
+      <!-- Comments Overlay -->
+      <div class="comments-overlay">
+        <div class="comment comment--hong">
+          <span class="comment__name">Hồng Nhung:</span>
+          <span class="comment__emoji">💝</span>
+          <span class="comment__text">Mong rằng tình yêu của hai bạn mãi đẹp như ngày hôm nay!</span>
+        </div>
+        <div class="comment comment--nam">
+          <span class="comment__name">Nam:</span>
+          <span class="comment__emoji">💗</span>
+          <span class="comment__text">Mãi mãi hạnh phúc bên nhau!</span>
+        </div>
+        <div class="comment comment--thuy">
+          <span class="comment__name">Thùy:</span>
+          <span class="comment__emoji">💝</span>
+          <span class="comment__text">Mong tình yêu của hai bạn mãi vĩnh cửu!</span>
+        </div>
+        <div class="comment comment--ngoc">
+          <span class="comment__name">Ngọc:</span>
+          <span class="comment__emoji">⭐</span>
+          <span class="comment__text">Chúc mừng hạnh phúc lứa đôi!</span>
+        </div>
+        <div class="comment comment--maianh">
+          <span class="comment__name">Mai Anh:</span>
+          <span class="comment__emoji">💝</span>
+          <span class="comment__text">Mong tình yêu của hai bạn mãi vĩnh cửu!</span>
+        </div>
+      </div>
+      
+      <!-- Bottom Navigation -->
+      <div class="story__bottom">
+        <div class="story__actions">
+          <a href="https://www.facebook.com/profile.php?id=61585602135049" target="_blank" rel="noopener noreferrer" class="action-btn" style="text-decoration: none; color: inherit;">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </a>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 2: Our Love Story -->
+    <section class="story story--2" data-story="2">
+      <div class="story__bg" style="background-image:url('./assets/img/story2.jpg')"></div>
+      <div class="story__overlay story__overlay--light"></div>
+      <div class="story__content">
+        <div class="story__header">
+          <h2 class="story__heading">OUR LOVE STORY</h2>
+          <p class="story__subheading">Fall in love</p>
+        </div>
+        
+        <div class="story__photo">
+          <img src="./assets/img/couple1.jpg" alt="Couple photo" />
+          <div class="handwriting handwriting--red">Sweet</div>
+        </div>
+        
+        <div class="wedding-invitation">
+          <div class="invitation-badge">
+            <svg class="laurel laurel--left" viewBox="0 0 50 50">
+              <path d="M10 25 Q15 20, 20 25 Q25 30, 30 25" stroke="#999" fill="none"/>
+            </svg>
+            <span class="invitation-text">WEDDING<br>INVITATION</span>
+            <svg class="laurel laurel--right" viewBox="0 0 50 50">
+              <path d="M20 25 Q25 20, 30 25 Q35 30, 40 25" stroke="#999" fill="none"/>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="story__poem">
+          <p><strong>Cô Dâu:</strong> Nguyễn Thị Thu Hoài</p>
+          <p style="font-size: 14px; margin-left: 15px;">Con gái ông bà Nguyễn Văn Hải & Bùi Thị Huế</p>
+          <p style="margin-top: 15px;"><strong>Chú Rể:</strong> Đặng Xuân Toàn</p>
+          <p style="font-size: 14px; margin-left: 15px;">Con trai ông bà Đặng Văn Tuấn & Trần Thị Hồng</p>
+          <p style="margin-top: 20px;">Trước đây cứ nghĩ đám cưới chỉ là một thông báo chính thức.</p>
+          <p>Giờ mới hiểu đó là một dịp hiếm hoi để mọi người tụ họp.</p>
+          <p>Là những chuyến đi xa chỉ để có mặt bên nhau.</p>
+          <p>Là những bờ vai để điểm tựa nhau như người thương yêu.</p>
+          <p>Cảm ơn gia đình, bạn bè đã luôn đồng hành.</p>
+          <p>Lâu rồi không gặp, thật sự rất nhớ mọi người!</p>
+          <p class="story__date">22.02.2026</p>
+          <p class="story__final">Chúng mình hẹn gặp nhau trong ngày cưới nhé!</p>
+        </div>
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <button class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </button>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 3: More Photos -->
+    <section class="story story--3" data-story="3">
+      <div class="story__bg" style="background-image:url('./assets/img/story3.jpg')"></div>
+      <div class="story__overlay story__overlay--light"></div>
+      <div class="story__content">
+        <div class="story__header-side">
+          <h2 class="story__heading-vertical">OUR<br>LOVE STORY</h2>
+          <p class="story__date-side">05.20</p>
+        </div>
+        
+        <div class="story__photo-main">
+          <img src="./assets/img/couple2.jpg" alt="Walking together" />
+        </div>
+        
+        <div class="story__photo-small">
+          <img src="./assets/img/couple3.jpg" alt="Close up" />
+        </div>
+        
+        <div class="story__text-overlay">
+          <p class="handwriting handwriting--large handwriting--red">FALL<br>IN LOVE</p>
+          <div class="double-happiness">囍</div>
+        </div>
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <button class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </button>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 4: Intimate Photo -->
+    <section class="story story--4" data-story="4">
+      <div class="story__bg" style="background-image:url('./assets/img/story4.jpg')"></div>
+      <div class="story__overlay"></div>
+      <div class="story__content">
+        <div class="story__header-simple">
+          <h2>YOU ARE MY DEAREST LOVE</h2>
+        </div>
+        
+        <div class="story__photo-full">
+          <img src="./assets/img/hug.jpg" alt="Embrace" />
+          <div class="handwriting handwriting--red handwriting--bottom">
+            Love and freedom<br>
+            <span class="handwriting--medium">you And gentleness</span>
+          </div>
+        </div>
+      
+        
+        <div class="made-with-love">Made with Toan&Hoai</div>
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <button class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </button>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 5: Calendar & Countdown -->
+    <section class="story story--5" data-story="5">
+      <div class="story__bg" style="background-image:url('./assets/img/story5.jpg')"></div>
+      <div class="story__overlay"></div>
+      <div class="story__content">
+        <div class="calendar-container">
+          <div class="calendar">
+            <div class="calendar__grid">
+              <div class="calendar__cell"></div>
+              <div class="calendar__cell calendar__cell--header">1</div>
+              <div class="calendar__cell calendar__cell--header">2</div>
+              <div class="calendar__cell calendar__cell--header">3</div>
+              <div class="calendar__cell calendar__cell--header">4</div>
+              <div class="calendar__cell calendar__cell--header">5</div>
+              <div class="calendar__cell calendar__cell--header">6</div>
+              <div class="calendar__cell calendar__cell--header">7</div>
+              <div class="calendar__cell calendar__cell--header">8</div>
+              <div class="calendar__cell calendar__cell--header">9</div>
+              <div class="calendar__cell calendar__cell--header">10</div>
+              <div class="calendar__cell calendar__cell--header">11</div>
+              <div class="calendar__cell calendar__cell--header">12</div>
+              <div class="calendar__cell calendar__cell--header">13</div>
+              <div class="calendar__cell calendar__cell--header">14</div>
+              <div class="calendar__cell calendar__cell--header">15</div>
+              <div class="calendar__cell calendar__cell--header">16</div>
+              <div class="calendar__cell calendar__cell--header">17</div>
+              <div class="calendar__cell calendar__cell--header">18</div>
+              <div class="calendar__cell calendar__cell--header">19</div>
+              <div class="calendar__cell calendar__cell--header">20</div>
+              <div class="calendar__cell calendar__cell--wedding">21</div>
+              <div class="calendar__cell calendar__cell--header">22</div>
+              <div class="calendar__cell calendar__cell--header">23</div>
+              <div class="calendar__cell calendar__cell--header">24</div>
+              <div class="calendar__cell calendar__cell--header">25</div>
+              <div class="calendar__cell calendar__cell--header">26</div>
+              <div class="calendar__cell calendar__cell--header">27</div>
+              <div class="calendar__cell calendar__cell--header">28</div>
+              <div class="calendar__cell calendar__cell--header">29</div>
+              <div class="calendar__cell calendar__cell--header">30</div>
+              <div class="calendar__cell calendar__cell--header">31</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="event-info">
+          <p class="event-date">Thứ Bảy, 22.02.2026</p>
+          <p class="event-time">14:00 PM - Nhà Gái | 17:00 PM - Nhà Trai</p>
+        </div>
+        
+        <div class="countdown">
+          <div class="countdown__item">
+            <div class="countdown__number" id="cdDays">0</div>
+            <div class="countdown__label">ngày</div>
+          </div>
+          <div class="countdown__item">
+            <div class="countdown__number" id="cdHours">0</div>
+            <div class="countdown__label">giờ</div>
+          </div>
+          <div class="countdown__item">
+            <div class="countdown__number" id="cdMins">0</div>
+            <div class="countdown__label">phút</div>
+          </div>
+          <div class="countdown__item">
+            <div class="countdown__number" id="cdSecs">0</div>
+            <div class="countdown__label">giây</div>
+          </div>
+        </div>
+        
+        <div class="location-section">
+          <h3 class="location-title">📍 Địa Điểm</h3>
+          
+          <!-- Nhà Gái -->
+          <div class="location-card">
+            <div class="location-header">
+              <span class="location-icon">💝</span>
+              <h4 class="location-name">Nhà Gái</h4>
+            </div>
+            <p class="location-time">⏰ 14:00 - 22/02/2026</p>
+            <p class="location-address">
+              Thôn Nhất Giáp, Xã Liên Minh<br>
+              Phường Nam Định, Tỉnh Ninh Bình
+            </p>
+            <div class="location-map">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3740.9110019458985!2d106.1117197752382!3d20.345294981138544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sen!2skr!4v1767284570684!5m2!1sen!2skr"
+                width="100%"
+                height="180" 
+                style="border:0; border-radius: 12px;" 
+                allowfullscreen="" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Bản đồ Nhà Gái">
+              </iframe>
+            </div>
+            <a href="https://maps.app.goo.gl/X8RnZQiLbgweBjTD8" target="_blank" rel="noopener" class="map-link-btn">
+              📍 Xem Đường Đi
+            </a>
+          </div>
+          
+          <!-- Nhà Trai -->
+          <div class="location-card">
+            <div class="location-header">
+              <span class="location-icon">💙</span>
+              <h4 class="location-name">Nhà Trai</h4>
+            </div>
+            <p class="location-time">⏰ 17:00 - 22/02/2026</p>
+            <p class="location-address">
+              Số nhà 17A, Đường La Văn Cầu, Xã Cổ Lễ<br>
+              Phường Nam Định, Tỉnh Ninh Bình
+            </p>
+            <div class="location-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!4v1767284461841!6m8!1m7!1sLiYbIkJPrbzb_AgK8brEMg!2m2!1d20.32355174514008!2d106.2640359742528!3f196.85!4f-7.769999999999996!5f1.1924812503605784"
+                width="100%" 
+                height="180" 
+                style="border:0; border-radius: 12px;" 
+                allowfullscreen="" 
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Bản đồ Nhà Trai">
+              </iframe>
+            </div>
+            <a href="https://maps.app.goo.gl/qVVWGe9cV36SAKp5A" target="_blank" rel="noopener" class="map-link-btn">
+              📍 Xem Đường Đi
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <button class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </button>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 6: More Photos -->
+    <section class="story story--6" data-story="6">
+      <div class="story__bg" style="background-image:url('./assets/img/story6.jpg')"></div>
+      <div class="story__overlay story__overlay--light"></div>
+      <div class="story__content">
+        <div class="photo-layout">
+          <img src="./assets/img/couple4.jpg" alt="Couple photo" class="photo-layout__main" />
+          <img src="./assets/img/couple5.jpg" alt="Couple photo" class="photo-layout__secondary" />
+        </div>
+        
+        <div class="text-overlay">
+          <p class="quote">As the clouds and mist dissipate</p>
+          <p class="quote">love you and everyone knows it</p>
+        </div>
+        
+        <div class="side-text">
+          <span class="side-text__vertical">FOREVER<br>AND<br>EVER</span>
+        </div>
+        
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <button class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </button>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 7: RSVP -->
+    <section class="story story--7" data-story="7">
+      <div class="story__bg" style="background-image:url('./assets/img/story7.jpg')"></div>
+      <div class="story__overlay story__overlay--strong"></div>
+      <div class="story__content">
+        <div class="rsvp-container">
+          <h2 class="rsvp__title">Xác nhận tham dự</h2>
+          
+          <form class="rsvp-form" id="rsvpForm">
+            <div class="form-group">
+              <label for="guestName">Họ và tên</label>
+              <input type="text" id="guestName" name="name" placeholder="Nhập tên của bạn" required />
+            </div>
+            
+            <div class="form-group">
+              <label>Bạn sẽ tham dự chứ?</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="attendance" value="yes" checked />
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">Có, tôi sẽ tham dự</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="attendance" value="no" />
+                  <span class="radio-custom"></span>
+                  <span class="radio-text">Tôi bận, rất tiếc không thể tham dự</span>
+                </label>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn-submit">Gửi xác nhận</button>
+          </form>
+          
+          <div class="thank-you">
+            <div class="couple-illustration">
+              <svg width="100" height="100" viewBox="0 0 100 100">
+                <circle cx="40" cy="40" r="20" fill="#f4a5a5" opacity="0.3"/>
+                <circle cx="60" cy="40" r="20" fill="#a5c9f4" opacity="0.3"/>
+              </svg>
+            </div>
+            <p class="handwriting handwriting--large">thank you</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <button class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </button>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Story Progress Bars -->
+  <div class="story-progress" id="storyProgress">
+    <div class="progress-bar" data-index="0"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="1"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="2"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="3"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="4"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="5"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="6"><div class="progress-bar__fill"></div></div>
+  </div>
+
+  <!-- Close Button -->
+  <button class="close-btn" id="closeBtn" type="button" aria-label="Đóng">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+
+  <script src="./assets/story-app.js"></script>
+</body>
+</html>

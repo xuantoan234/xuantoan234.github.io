@@ -1,50 +1,72 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toàn ❤️ Hoài - Wedding Invitation</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Thiệp cưới của Thu Hoài & Xuân Toàn - 22/02/2026">
+    <meta name="theme-color" content="#c9a96e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta property="og:title" content="Thu Hoài ❤️ Xuân Toàn - Wedding Invitation">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="Wedding_Photo/bride.jpeg">
+    
+    <title>Toàn ❤️ Hoài - Wedding Invitation 22/02/2026</title>
+
+    <!-- Preconnect to external fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@200;300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" as="image" href="Wedding_Photo/bride.jpeg">
+    <link rel="preload" as="image" href="Wedding_Photo/groom.jpeg">
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://www.bensound.com">
+    <link rel="dns-prefetch" href="https://maps.app.goo.gl">
+    <link rel="dns-prefetch" href="https://www.facebook.com">
 </head>
 
 <body>
+    <!-- Skip to main content -->
+
     <!-- Background Music -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="Wedding_Photo/wedding-music.mp3" type="audio/mpeg">
-        <source src="Wedding_Photo/wedding-music.mp3" type="audio/mpeg">
+    <audio id="bgMusic" loop preload="metadata" title="Wedding Background Music">
+        <source src="Wedding_Photo/Wedding_music.mp3" type="audio/mpeg">
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
     </audio>
     
     <!-- Music Toggle Button -->
-    <button id="musicToggle" class="music-toggle" aria-label="Play music">
-        <svg class="music-icon play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <button id="musicToggle" class="music-toggle" aria-label="Toggle background music" aria-pressed="false">
+        <svg class="music-icon play-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M8 5v14l11-7z"/>
         </svg>
-        <svg class="music-icon pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg class="music-icon pause-icon hidden" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
         </svg>
     </button>
 
     <!-- Hero Banner -->
-    <section class="hero-banner">
-        <div class="hero-overlay"></div>
-        <div class="floating-petals" id="petalsContainer"></div>
+    <section class="hero-banner" role="banner" aria-label="Wedding invitation banner">
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="floating-petals" id="petalsContainer" aria-hidden="true"></div>
         
         <div class="hero-content">
-            <p class="hero-subtitle fade-in">Wedding Invitation</p>
-            <h1 class="hero-title slide-up">
+            <p class="hero-subtitle fade-in" data-aos="fade-up">Wedding Invitation</p>
+            <h1 class="hero-title slide-up" data-aos="fade-up" data-aos-delay="200">
                 <span class="bride-name">Thu Hoài</span>
-                <span class="divider-heart">❤</span>
+                <span class="divider-heart" aria-hidden="true">❤</span>
                 <span class="groom-name">Xuân Toàn</span>
             </h1>
-            <p class="hero-date fade-in-delay">22.02.2026</p>
+            <p class="hero-date fade-in-delay" data-aos="fade-up" data-aos-delay="400">22.02.2026</p>
             
-            <div class="scroll-down">
+            <div class="scroll-down" aria-hidden="true">
                 <span>Cuộn xuống</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" focusable="false">
                     <polyline points="7 13 12 18 17 13"></polyline>
                     <polyline points="7 6 12 11 17 6"></polyline>
                 </svg>
@@ -53,18 +75,19 @@
     </section>
 
     <!-- Couple Section -->
-    <section class="couple-section">
+    <section class="couple-section" id="couple-section" aria-label="Bride and groom">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Cô Dâu & Chú Rể</h2>
-                <div class="title-divider"></div>
+                <h2 class="section-title" data-aos="fade-up">Cô Dâu & Chú Rể</h2>
+                <div class="title-divider" aria-hidden="true"></div>
             </div>
 
             <div class="couple-wrapper">
-                <div class="couple-box bride-box">
+                <!-- Bride -->
+                <div class="couple-box bride-box" data-aos="fade-up" data-aos-delay="100">
                     <div class="couple-avatar">
-                        <div class="avatar-frame"></div>
-                        <img src="Wedding_Photo/bride.jpeg" alt="Thu Hoài">
+                        <div class="avatar-frame" aria-hidden="true"></div>
+                        <img src="Wedding_Photo/bride.jpeg" alt="Thu Hoài - Cô Dâu" loading="lazy" width="280" height="280">
                     </div>
                     <h3 class="couple-name">Nguyễn Thị Thu Hoài</h3>
                     <p class="couple-label">Cô Dâu</p>
@@ -75,16 +98,18 @@
                     </div>
                 </div>
 
-                <div class="couple-separator">
+                <!-- Separator (only on desktop) -->
+                <div class="couple-separator" aria-hidden="true">
                     <div class="separator-line"></div>
                     <div class="separator-icon">❤</div>
                     <div class="separator-line"></div>
                 </div>
 
-                <div class="couple-box groom-box">
+                <!-- Groom -->
+                <div class="couple-box groom-box" data-aos="fade-up" data-aos-delay="200">
                     <div class="couple-avatar">
-                        <div class="avatar-frame"></div>
-                        <img src="Wedding_Photo/groom.jpeg" alt="Xuân Toàn">
+                        <div class="avatar-frame" aria-hidden="true"></div>
+                        <img src="Wedding_Photo/groom.jpeg" alt="Xuân Toàn - Chú Rể" loading="lazy" width="280" height="280">
                     </div>
                     <h3 class="couple-name">Đặng Xuân Toàn</h3>
                     <p class="couple-label">Chú Rể</p>
@@ -99,10 +124,10 @@
     </section>
 
     <!-- Countdown Timer -->
-    <section class="countdown-section">
+    <section class="countdown-section" aria-label="Countdown to wedding">
         <div class="container">
-            <h2 class="countdown-heading">Đếm Ngược Đến Ngày Vui</h2>
-            <div class="countdown-boxes" id="countdown">
+            <h2 class="countdown-heading" data-aos="fade-up">Đếm Ngược Đến Ngày Vui</h2>
+            <div class="countdown-boxes" id="countdown" aria-live="polite" aria-label="Countdown timer">
                 <div class="time-box">
                     <div class="time-number" id="days">00</div>
                     <div class="time-label">Ngày</div>
@@ -123,79 +148,230 @@
         </div>
     </section>
 
-    <!-- Event Details -->
-    <section class="event-section">
+    <!-- Love Story Section -->
+    <section class="love-story-section" aria-label="Love story timeline">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Sự Kiện Cưới</h2>
-                <div class="title-divider"></div>
+                <h2 class="section-title" data-aos="fade-up">Câu Chuyện Tình Yêu</h2>
+                <div class="title-divider" aria-hidden="true"></div>
+                <p class="section-subtitle">Hành trình từ những ngày đầu đến khi quyết định nắm tay nhau</p>
+            </div>
+
+            <div class="love-story-timeline" role="region" aria-label="Timeline of memorable moments">
+                <!-- Timeline Item 1 -->
+                <article class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-date">
+                        <div class="date-circle">
+                            <span class="date-month">Tháng 03</span>
+                            <span class="date-year">2020</span>
+                        </div>
+                    </div>
+                    <div class="timeline-photo">
+                        <figure class="photo-frame">
+                            <img src="Wedding_Photo/story1.jpeg" alt="Lần đầu gặp gỡ - Tháng 03/2020" loading="lazy" width="280" height="280" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f5e6d3%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22%23d4af37%22%3E%E2%99%A5%3C/text%3E%3C/svg%3E'">
+                        </figure>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="letter-envelope">
+                            <div class="envelope-flap" aria-hidden="true"></div>
+                            <div class="letter-paper">
+                                <div class="letter-header" aria-hidden="true">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="letter-title">Lần Đầu Gặp Gỡ</h3>
+                                <p class="letter-text">
+                                    Chúng tôi gặp nhau lần đầu vào một buổi chiều mùa xuân, trong một quán cà phê nhỏ ấm cúng. 
+                                    Ánh mắt đầu tiên đã khiến trái tim chúng tôi rung động. Từ cuộc trò chuyện tình cờ đó, 
+                                    chúng tôi nhận ra rằng số phận đã sắp đặt để hai người gặp nhau.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Timeline Item 2 -->
+                <article class="timeline-item reverse" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-date">
+                        <div class="date-circle">
+                            <span class="date-month">Tháng 08</span>
+                            <span class="date-year">2021</span>
+                        </div>
+                    </div>
+                    <div class="timeline-photo">
+                        <figure class="photo-frame">
+                            <img src="Wedding_Photo/story2.jpeg" alt="Những kỷ niệm đẹp - Tháng 08/2021" loading="lazy" width="280" height="280" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f5e6d3%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22%23d4af37%22%3E%E2%99%A5%3C/text%3E%3C/svg%3E'">
+                        </figure>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="letter-envelope">
+                            <div class="envelope-flap" aria-hidden="true"></div>
+                            <div class="letter-paper">
+                                <div class="letter-header" aria-hidden="true">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M12 6v6l4 2"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="letter-title">Những Kỷ Niệm Đẹp</h3>
+                                <p class="letter-text">
+                                    Sau nhiều tháng tìm hiểu, chúng tôi đã trải qua vô số kỷ niệm đáng nhớ cùng nhau. 
+                                    Từ những buổi dạo phố đêm, những chuyến du lịch ngẫu hứng, đến những lúc ở bên nhau 
+                                    trong im lặng. Mỗi khoảnh khắc đều đặc biệt và làm tình yêu của chúng tôi thêm bền chặt.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Timeline Item 3 -->
+                <article class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-date">
+                        <div class="date-circle">
+                            <span class="date-month">Tháng 12</span>
+                            <span class="date-year">2023</span>
+                        </div>
+                    </div>
+                    <div class="timeline-photo">
+                        <figure class="photo-frame">
+                            <img src="Wedding_Photo/story3.jpeg" alt="Lời cầu hôn - Tháng 12/2023" loading="lazy" width="280" height="280" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f5e6d3%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22%23d4af37%22%3E%E2%99%A5%3C/text%3E%3C/svg%3E'">
+                        </figure>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="letter-envelope">
+                            <div class="envelope-flap" aria-hidden="true"></div>
+                            <div class="letter-paper">
+                                <div class="letter-header" aria-hidden="true">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="letter-title">Lời Cầu Hôn</h3>
+                                <p class="letter-text">
+                                    Trong một buổi tối đầy lãng mạn dưới bầu trời đầy sao, anh đã quỳ gối và hỏi em câu hỏi 
+                                    quan trọng nhất đời anh. Với giọng run run và đôi mắt chứa đầy tình yêu, anh hỏi: 
+                                    "Em có đồng ý làm người bạn đời của anh không?". Và em đã gật đầu với hạnh phúc tràn ngập.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Timeline Item 4 -->
+                <article class="timeline-item reverse" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-date">
+                        <div class="date-circle">
+                            <span class="date-month">Tháng 02</span>
+                            <span class="date-year">2026</span>
+                        </div>
+                    </div>
+                    <div class="timeline-photo">
+                        <figure class="photo-frame">
+                            <img src="Wedding_Photo/story4.jpeg" alt="Ngày trọng đại - Tháng 02/2026" loading="lazy" width="280" height="280" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 400%22%3E%3Crect fill=%22%23f5e6d3%22 width=%22400%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2260%22 fill=%22%23d4af37%22%3E%E2%99%A5%3C/text%3E%3C/svg%3E'">
+                        </figure>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="letter-envelope">
+                            <div class="envelope-flap" aria-hidden="true"></div>
+                            <div class="letter-paper">
+                                <div class="letter-header" aria-hidden="true">
+                                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                                    </svg>
+                                </div>
+                                <h3 class="letter-title">Ngày Trọng Đại</h3>
+                                <p class="letter-text">
+                                    Và giờ đây, chúng tôi sắp bước vào chương mới nhất của cuộc đời - hôn nhân. 
+                                    Chúng tôi rất vui mừng được chia sẻ niềm hạnh phúc này cùng gia đình và bạn bè. 
+                                    Cảm ơn tất cả những ai đã đồng hành và chúc phúc cho tình yêu của chúng tôi.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Timeline center line -->
+                <div class="timeline-line" aria-hidden="true"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details -->
+    <section class="event-section" aria-label="Wedding events">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-aos="fade-up">Sự Kiện Cưới</h2>
+                <div class="title-divider" aria-hidden="true"></div>
             </div>
 
             <div class="events-grid">
-                <div class="event-item">
-                    <div class="event-icon-wrapper">
+                <!-- Bride's House -->
+                <article class="event-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="event-icon-wrapper" aria-hidden="true">
                         <svg class="event-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                         </svg>
                     </div>
                     <h3 class="event-name">Nhà Gái</h3>
-                    <div class="event-time">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="event-time" aria-label="Thời gian sự kiện">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
                         <span>14:00 | 22/02/2026</span>
                     </div>
                     <p class="event-venue">Tư Gia Nhà Gái</p>
-                    <p class="event-address">Thôn Nhất Giáp, Xã Liên Minh<br>Phường Nam Định, Tỉnh Ninh Bình</p>
-                    <a href="https://maps.app.goo.gl/X8RnZQiLbgweBjTD8?g_st=com.google.maps.preview.copy" target="_blank" class="map-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <address class="event-address">Thôn Nhất Giáp, Xã Liên Minh<br>Phường Nam Định, Tỉnh Ninh Bình</address>
+                    <a href="https://maps.app.goo.gl/X8RnZQiLbgweBjTD8?g_st=com.google.maps.preview.copy" target="_blank" rel="noopener noreferrer" class="map-link" aria-label="Xem bản đồ vị trí nhà gái">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
                         Xem Bản Đồ
                     </a>
-                </div>
+                </article>
 
-                <div class="event-item">
-                    <div class="event-icon-wrapper">
+                <!-- Groom's House -->
+                <article class="event-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="event-icon-wrapper" aria-hidden="true">
                         <svg class="event-icon" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
                     </div>
                     <h3 class="event-name">Nhà Trai</h3>
-                    <div class="event-time">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="event-time" aria-label="Thời gian sự kiện">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="12 6 12 12 16 14"></polyline>
                         </svg>
                         <span>17:00 | 22/02/2026</span>
                     </div>
                     <p class="event-venue">Tư Gia Nhà Trai</p>
-                    <p class="event-address">Số nhà 17A, Đường La Văn Cầu, Xã Cổ Lễ<br>Phường Nam Định, Tỉnh Ninh Bình</p>
-                    <a href="https://maps.app.goo.gl/qVVWGe9cV36SAKp5A" target="_blank" class="map-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <address class="event-address">Số nhà 17A, Đường La Văn Cầu, Xã Cổ Lễ<br>Phường Nam Định, Tỉnh Ninh Bình</address>
+                    <a href="https://maps.app.goo.gl/qVVWGe9cV36SAKp5A" target="_blank" rel="noopener noreferrer" class="map-link" aria-label="Xem bản đồ vị trí nhà trai">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
                         Xem Bản Đồ
                     </a>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
     <!-- Photo Gallery -->
-    <section class="gallery-section">
+    <section class="gallery-section" aria-label="Wedding photo gallery">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Album Hình Cưới</h2>
-                <div class="title-divider"></div>
+                <h2 class="section-title" data-aos="fade-up">Album Hình Cưới</h2>
+                <div class="title-divider" aria-hidden="true"></div>
                 <p class="section-subtitle">Những khoảnh khắc đáng nhớ của chúng tôi</p>
             </div>
 
-            <div class="photo-grid" id="gallery"></div>
+            <div class="photo-grid" id="gallery" role="region" aria-label="Wedding photos"></div>
             <div class="empty-state" id="emptyState">
                 <p>Đang cập nhật album ảnh...</p>
             </div>
@@ -203,14 +379,14 @@
     </section>
 
     <!-- RSVP Section -->
-    <section class="rsvp-section">
+    <section class="rsvp-section" aria-label="RSVP invitation">
         <div class="container">
             <div class="rsvp-box">
                 <h2 class="rsvp-title">Xác Nhận Tham Dự</h2>
                 <p class="rsvp-message">Rất hân hạnh được đón tiếp Quý khách</p>
-                <a href="https://www.facebook.com/marvelous234" target="_blank" class="rsvp-button">
+                <a href="https://www.facebook.com/profile.php?id=61585602135049" target="_blank" rel="noopener noreferrer" class="rsvp-button" aria-label="Gửi lời chúc mừng qua Facebook">
                     <span>Gửi Lời Chúc Mừng</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                         <polyline points="12 5 19 12 12 19"></polyline>
                     </svg>
@@ -219,33 +395,38 @@
         </div>
     </section>
 
-    <!-- Lightbox -->
-    <div class="lightbox-modal" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Lightbox Modal -->
+    <dialog class="lightbox-modal" id="lightbox" aria-label="Photo viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close photo viewer">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
         </button>
-        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous photo">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
         </button>
-        <button class="lightbox-arrow lightbox-next" id="lightboxNext">
-            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next photo">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
         </button>
-        <img class="lightbox-image" id="lightboxImg" alt="Wedding photo">
+        <img class="lightbox-image" id="lightboxImg" alt="Wedding photo" loading="lazy">
         <div class="lightbox-info" id="lightboxCaption"></div>
-    </div>
+    </dialog>
 
-    <footer class="site-footer">
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
         <p>Thank You For Celebrating With Us ❤️</p>
         <p>&copy; 2025 Hoài & Toàn Wedding</p>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Main Script -->
+    <script src="script.js" defer></script>
+    
+    <!-- Async tracking if needed -->
+    <noscript>Please enable JavaScript for better experience</noscript>
 </body>
 </html>

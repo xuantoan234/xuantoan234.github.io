@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thiệp cưới • Thùy Linh & Quang Huy</title>
+  <meta name="description" content="Thiệp cưới online • Thùy Linh & Quang Huy • 20.05.2050" />
+
+  <!-- Fonts (optional). If you don’t want Google Fonts, remove these 3 lines -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/styles.css" />
+</head>
+
+<body>
+  <!-- Music -->
+  <button class="music-btn" id="musicBtn" type="button" aria-label="Bật/Tắt nhạc">
+    <span class="music-dot" aria-hidden="true"></span>
+    <span>Music</span>
+  </button>
+  <audio id="bgm" preload="none" loop>
+    <!-- TODO: add your own mp3 at Wedding_Page_2/assets/bgm.mp3 -->
+    <source src="./assets/bgm.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- HERO -->
+  <header class="hero" id="top" style="background-image:url('./assets/img/hero.jpg')">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <div class="kicker">WELCOME TO OUR WEDDING</div>
+
+      <h1 class="names" aria-label="Cô dâu và chú rể">
+        <span class="names__main">Thùy Linh</span>
+        <span class="names__amp">&amp;</span>
+        <span class="names__main">Quang Huy</span>
+      </h1>
+
+      <div class="date-pill" aria-label="Ngày cưới">
+        <div class="date-pill__big">20</div>
+        <div class="date-pill__meta">
+          <div>05 • 2050</div>
+          <div>12:00 PM</div>
+        </div>
+      </div>
+
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#rsvp">Xác nhận tham dự</a>
+        <a class="btn btn--ghost" href="#events">Địa điểm</a>
+      </div>
+
+      <div class="countdown" aria-label="Đếm ngược đến ngày cưới">
+        <div class="cd__item"><div class="cd__num" id="cdDays">--</div><div class="cd__lbl">Ngày</div></div>
+        <div class="cd__sep" aria-hidden="true"></div>
+        <div class="cd__item"><div class="cd__num" id="cdHours">--</div><div class="cd__lbl">Giờ</div></div>
+        <div class="cd__sep" aria-hidden="true"></div>
+        <div class="cd__item"><div class="cd__num" id="cdMins">--</div><div class="cd__lbl">Phút</div></div>
+        <div class="cd__sep" aria-hidden="true"></div>
+        <div class="cd__item"><div class="cd__num" id="cdSecs">--</div><div class="cd__lbl">Giây</div></div>
+      </div>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-hint__line"></span>
+        <span class="scroll-hint__text">Cuộn xuống</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- INTRO -->
+    <section class="section" id="intro">
+      <div class="wrap">
+        <div class="section__title section__title--center">
+          <div class="section__kicker">Lời mời</div>
+          <h2>Trân trọng kính mời</h2>
+          <p class="section__sub">
+            Trước đây cứ nghĩ đám cưới chỉ là một thông báo chính thức. Giờ mới hiểu đó là một dịp hiếm hoi để mọi người tụ họp.
+            Cảm ơn gia đình và bạn bè đã luôn đồng hành. Lâu rồi không gặp, thật sự rất nhớ mọi người!
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card profile">
+            <div class="profile__photo" style="background-image:url('./assets/img/bride.jpg')" aria-label="Ảnh cô dâu"></div>
+            <div class="profile__meta">
+              <div class="profile__role">Cô dâu</div>
+              <div class="profile__name">Thùy Linh</div>
+              <div class="profile__desc">Rất hân hạnh được đón tiếp bạn trong ngày vui của chúng mình.</div>
+            </div>
+          </article>
+
+          <article class="card profile">
+            <div class="profile__photo" style="background-image:url('./assets/img/groom.jpg')" aria-label="Ảnh chú rể"></div>
+            <div class="profile__meta">
+              <div class="profile__role">Chú rể</div>
+              <div class="profile__name">Quang Huy</div>
+              <div class="profile__desc">Hẹn gặp bạn tại bữa tiệc cưới nhé!</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="card quote">
+          <p class="quote__text">“Thương một người, dành trọn một đời.”</p>
+          <div class="quote__by">— With love</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section section--alt" id="story">
+      <div class="wrap">
+        <div class="section__title section__title--center">
+          <div class="section__kicker">Our love story</div>
+          <h2>Chuyện chúng mình</h2>
+          <p class="section__sub">Một vài khoảnh khắc đáng nhớ trên hành trình về chung một nhà.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="card tl__item">
+            <div class="tl__dot" aria-hidden="true"></div>
+            <div class="tl__content">
+              <div class="tl__date">05.20</div>
+              <div class="tl__title">Fall in love</div>
+              <p class="tl__text">Mong rằng khi ngoảnh lại, ta vẫn có nhau. Cùng nắm tay đi đến bạc đầu.</p>
+            </div>
+          </article>
+
+          <article class="card tl__item">
+            <div class="tl__dot" aria-hidden="true"></div>
+            <div class="tl__content">
+              <div class="tl__date">05.20</div>
+              <div class="tl__title">You are perfect</div>
+              <p class="tl__text">Em tựa núi sông, băng qua rừng biếc. Giữa nhân gian, riêng anh chỉ thấy em.</p>
+            </div>
+          </article>
+
+          <article class="card tl__item">
+            <div class="tl__dot" aria-hidden="true"></div>
+            <div class="tl__content">
+              <div class="tl__date">05.20</div>
+              <div class="tl__title">Forever and ever</div>
+              <p class="tl__text">Ánh trời bừng sáng rơi vào chốn nhân gian. Ta vượt ngàn sông núi chỉ để cùng nhau đi qua bốn mùa.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="section" id="gallery">
+      <div class="wrap">
+        <div class="section__title section__title--center">
+          <div class="section__kicker">Album</div>
+          <h2>Khoảnh khắc</h2>
+          <p class="section__sub">
+            Thêm ảnh vào <code>Wedding_Page_2/assets/img/</code> và đổi tên đúng như bên dưới để chạy ngay.
+          </p>
+        </div>
+
+        <div class="grid" aria-label="Thư viện ảnh">
+          <button class="gitem" type="button" data-full="./assets/img/1.jpg" aria-label="Ảnh 1"><img src="./assets/img/1.jpg" alt="Ảnh cưới 1"></button>
+          <button class="gitem" type="button" data-full="./assets/img/2.jpg" aria-label="Ảnh 2"><img src="./assets/img/2.jpg" alt="Ảnh cưới 2"></button>
+          <button class="gitem" type="button" data-full="./assets/img/3.jpg" aria-label="Ảnh 3"><img src="./assets/img/3.jpg" alt="Ảnh cưới 3"></button>
+          <button class="gitem" type="button" data-full="./assets/img/4.jpg" aria-label="Ảnh 4"><img src="./assets/img/4.jpg" alt="Ảnh cưới 4"></button>
+          <button class="gitem" type="button" data-full="./assets/img/5.jpg" aria-label="Ảnh 5"><img src="./assets/img/5.jpg" alt="Ảnh cưới 5"></button>
+          <button class="gitem" type="button" data-full="./assets/img/6.jpg" aria-label="Ảnh 6"><img src="./assets/img/6.jpg" alt="Ảnh cưới 6"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section section--alt" id="events">
+      <div class="wrap">
+        <div class="section__title section__title--center">
+          <div class="section__kicker">Wedding information</div>
+          <h2>Thông tin buổi lễ</h2>
+          <p class="section__sub">Bấm “Chỉ đường” để mở Google Maps hoặc “Copy địa chỉ”.</p>
+        </div>
+
+        <div class="event-cards">
+          <article class="card event">
+            <div class="event__top">
+              <div class="event__icon" aria-hidden="true">💒</div>
+              <div>
+                <div class="event__title">Lễ thành hôn</div>
+                <div class="event__time">12:00 • Thứ Bảy, 20.05.2050 (Âm lịch 22/4)</div>
+              </div>
+            </div>
+            <div class="event__place">
+              <div class="event__place-name">Trung tâm tiệc cưới Cinelove</div>
+              <div class="event__addr">52 Miếu Đầm, Mễ Trì, Nam Từ Liêm, Hà Nội</div>
+            </div>
+            <div class="event__actions">
+              <a class="btn btn--primary btn--sm" target="_blank" rel="noreferrer"
+                 href="https://www.google.com/maps?q=52%20Mi%E1%BA%BFu%20%C4%90%E1%BA%A7m%2C%20M%E1%BB%85%20Tr%C3%AC%2C%20Nam%20T%E1%BB%AB%20Li%C3%AAm%2C%20H%C3%A0%20N%E1%BB%99i">Chỉ đường</a>
+              <button class="btn btn--sm" type="button" data-copy="52 Miếu Đầm, Mễ Trì, Nam Từ Liêm, Hà Nội">Copy địa chỉ</button>
+            </div>
+          </article>
+
+          <article class="card event">
+            <div class="event__top">
+              <div class="event__icon" aria-hidden="true">🗺️</div>
+              <div>
+                <div class="event__title">Bản đồ</div>
+                <div class="event__time">Xem trực tiếp trên trang</div>
+              </div>
+            </div>
+
+            <div class="event__place">
+              <div class="event__place-name">Google Maps</div>
+              <div class="event__addr">Iframe nhúng (tĩnh) — bạn có thể đổi địa chỉ.</div>
+            </div>
+
+            <div style="margin-top:12px; border-radius:16px; overflow:hidden; border:1px solid rgba(29,26,23,.12);">
+              <iframe
+                title="Bản đồ"
+                width="100%"
+                height="260"
+                frameborder="0"
+                style="border:0; display:block"
+                src="https://maps.google.com/maps?q=52%20Mi%E1%BA%BFu%20%C4%90%E1%BA%A7m%2C%20M%E1%BB%85%20Tr%C3%AC%2C%20Nam%20T%E1%BB%AB%20Li%C3%AAm%2C%20H%C3%A0%20N%E1%BB%99i&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP -->
+    <section class="section" id="rsvp">
+      <div class="wrap">
+        <div class="section__title section__title--center">
+          <div class="section__kicker">RSVP</div>
+          <h2>Xác nhận tham dự</h2>
+          <p class="section__sub">Form demo (front-end). Nếu bạn muốn lưu vào Google Sheet, nói mình để mình nối thêm.</p>
+        </div>
+
+        <form class="card form" id="rsvpForm">
+          <div class="form__row">
+            <label class="field">
+              <span class="field__lbl">Họ và tên</span>
+              <input class="field__inp" name="name" required placeholder="Nhập tên của bạn" />
+            </label>
+
+            <label class="field">
+              <span class="field__lbl">Số điện thoại</span>
+              <input class="field__inp" name="phone" placeholder="09xxxxxxxx" />
+            </label>
+          </div>
+
+          <div class="form__row">
+            <label class="field">
+              <span class="field__lbl">Bạn sẽ tham dự?</span>
+              <select class="field__inp" name="attend" required>
+                <option value="">-- Chọn --</option>
+                <option value="yes">Có, tôi sẽ tham dự</option>
+                <option value="no">Tôi bận, rất tiếc không thể tham dự</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field__lbl">Số khách</span>
+              <input class="field__inp" name="guests" type="number" min="1" max="10" value="1" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span class="field__lbl">Lời nhắn</span>
+            <textarea class="field__inp field__inp--ta" name="message" rows="4" placeholder="Gửi lời chúc..."></textarea>
+          </label>
+
+          <div class="form__actions">
+            <button class="btn btn--primary" type="submit">Gửi xác nhận</button>
+            <a class="btn btn--ghost" href="#top">Về đầu trang</a>
+          </div>
+
+          <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lbClose" type="button" aria-label="Đóng">×</button>
+    <img class="lightbox__img" id="lbImg" alt="Xem ảnh" />
+  </div>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div>
+        <div class="footer__names">Thùy Linh &amp; Quang Huy</div>
+        <div class="footer__meta">20.05.2050</div>
+      </div>
+      <div class="footer__note">Cảm ơn bạn đã đến chung vui cùng chúng mình.</div>
+    </div>
+  </footer>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>

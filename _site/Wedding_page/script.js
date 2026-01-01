@@ -4,8 +4,99 @@ document.addEventListener('DOMContentLoaded', function() {
     loadGalleryFromFolder();
     setupLightbox();
     setupTouchSupport();
-    initCherryBlossoms(); // Add cherry blossom effect
+    initCherryBlossoms();
+    initMusicPlayer(); // Initialize music player
 });
+
+// Music Player Control
+function initMusicPlayer() {
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggle = document.getElementById('musicToggle');
+    const playIcon = musicToggle.querySelector('.play-icon');
+    const pauseIcon = musicToggle.querySelector('.pause-icon');
+    
+    if (!bgMusic || !musicToggle) {
+        console.error('Music elements not found');
+        return;
+    }
+    
+    let isPlaying = false;
+    
+    // Hide pause icon initially
+    pauseIcon.style.display = 'none';
+    playIcon.style.display = 'block';
+    
+    // Attempt to autoplay immediately
+    function attemptAutoplay() {
+        const playPromise = bgMusic.play();
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+                isPlaying = true;
+                console.log('Music auto-playing');
+            }).catch(error => {
+                console.log('Autoplay prevented by browser:', error.message);
+                console.log('User interaction required. Please click the play button.');
+            });
+        }
+    }
+    
+    // Try autoplay on page load
+    attemptAutoplay();
+    
+    // Try autoplay on first user interaction (fallback)
+    const tryPlayOnInteraction = () => {
+        if (!isPlaying) {
+            attemptAutoplay();
+        }
+    };
+    
+    // Listen for various user interactions
+    document.addEventListener('click', tryPlayOnInteraction, { once: true });
+    document.addEventListener('touchstart', tryPlayOnInteraction, { once: true });
+    document.addEventListener('scroll', tryPlayOnInteraction, { once: true });
+    document.addEventListener('mousemove', tryPlayOnInteraction, { once: true });
+    
+    // Music toggle click handler
+    musicToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (isPlaying) {
+            bgMusic.pause();
+            playIcon.style.display = 'block';
+            pauseIcon.style.display = 'none';
+            isPlaying = false;
+            console.log('Music paused');
+        } else {
+            const playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                    isPlaying = true;
+                    console.log('Music playing');
+                }).catch(error => {
+                    console.error('Playback failed:', error);
+                    alert('Không thể phát nhạc. Vui lòng kiểm tra file nhạc.');
+                });
+            }
+        }
+    });
+    
+    // Update button state when audio plays/pauses
+    bgMusic.addEventListener('play', () => {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        isPlaying = true;
+    });
+    
+    bgMusic.addEventListener('pause', () => {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        isPlaying = false;
+    });
+}
 
 // Countdown functionality
 function initCountdown() {
@@ -14,40 +105,24 @@ function initCountdown() {
     function updateCountdown() {
         const now = new Date().getTime();
         const distance = weddingDate - now;
-        
+
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        
-        document.getElementById('days').textContent = days;
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        
-        const messageEl = document.getElementById('countdownMessage');
-        
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
         if (distance < 0) {
-            messageEl.textContent = '🎉 The wedding day is here! 🎉';
-            messageEl.classList.add('show');
-            clearInterval(countdownInterval);
-        } else if (days === 0) {
-            messageEl.textContent = '✨ The big day is today! ✨';
-            messageEl.classList.add('show');
-        } else if (days === 1) {
-            messageEl.textContent = '💕 Just one more day! 💕';
-            messageEl.classList.add('show');
-        } else if (days <= 7) {
-            messageEl.textContent = '🥂 Less than a week to go! 🥂';
-            messageEl.classList.add('show');
-        } else if (days <= 30) {
-            messageEl.textContent = '💐 The countdown is on! 💐';
-            messageEl.classList.add('show');
+            document.getElementById('countdown').innerHTML = '<p class="countdown-message">Chúc mừng ngày vui! 🎉</p>';
         }
     }
     
     updateCountdown();
-    const countdownInterval = setInterval(updateCountdown, 1000);
+    setInterval(updateCountdown, 1000);
 }
 
 // Load gallery from Wedding_Photo folder
@@ -55,44 +130,40 @@ async function loadGalleryFromFolder() {
     const gallery = document.getElementById('gallery');
     const emptyState = document.getElementById('emptyState');
     
+    if (!gallery) return;
+    
     try {
-        // Try to load from photos.json first (static list)
-        let imageFiles = [];
-        
-        try {
-            const jsonResponse = await fetch('photos.json');
-            if (jsonResponse.ok) {
-                imageFiles = await jsonResponse.json();
-                console.log(`Loaded ${imageFiles.length} images from photos.json`);
-            }
-        } catch (jsonError) {
-            console.log('photos.json not found, trying PHP...');
+        // Try to load from photos.json
+        const response = await fetch('photos.json');
+        if (!response.ok) {
+            throw new Error('photos.json not found');
         }
         
+        const imageFiles = await response.json();
+        
+        if (imageFiles.length === 0) {
+            emptyState.style.display = 'block';
+            gallery.style.display = 'none';
+            return;
+        }
         
         emptyState.style.display = 'none';
         gallery.style.display = 'grid';
         gallery.innerHTML = '';
         
         imageFiles.forEach((filename, index) => {
-            const photoData = {
+            const item = createGalleryItem({
                 src: `Wedding_Photo/${filename}`,
                 caption: '',
                 index: index
-            };
-            const item = createGalleryItem(photoData, index);
+            }, index);
             gallery.appendChild(item);
         });
+        
     } catch (error) {
         console.error('Error loading photos:', error);
         emptyState.style.display = 'block';
         gallery.style.display = 'none';
-        emptyState.innerHTML = `
-            <p>Error loading photos.</p>
-            <p style="font-size: 0.9rem; color: #999;">
-                Make sure photos.json exists or you're running from a web server with PHP support.
-            </p>
-        `;
     }
 }
 
@@ -103,308 +174,123 @@ function createGalleryItem(photo, index) {
     div.dataset.index = index;
     
     const img = document.createElement('img');
-    img.alt = photo.caption || 'Wedding photo';
+    img.src = photo.src;
+    img.alt = `Wedding photo ${index + 1}`;
     img.loading = 'lazy';
     
-    // Check if file is HEIC
-    const fileExt = photo.src.split('.').pop().toLowerCase();
-    if (fileExt === 'heic' || fileExt === 'heif') {
-        // Convert HEIC to displayable format
-        convertHEIC(photo.src).then(convertedSrc => {
-            img.src = convertedSrc;
-        }).catch(error => {
-            console.error('Error converting HEIC:', error);
-            // Show placeholder if conversion fails
-            img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300"><rect fill="%23ddd" width="400" height="300"/><text x="50%" y="50%" text-anchor="middle" fill="%23999" font-size="20">HEIC not supported</text></svg>';
-        });
-    } else {
-        img.src = photo.src;
-    }
-    
-    // Detect image orientation for better layout
-    img.onload = function() {
-        const aspectRatio = this.naturalWidth / this.naturalHeight;
-        
-        if (aspectRatio > 1.3) {
-            div.classList.add('landscape');
-        } else if (aspectRatio < 0.8) {
-            div.classList.add('portrait');
-        } else {
-            div.classList.add('square');
-        }
-    };
-    
-    const overlay = document.createElement('div');
-    overlay.className = 'gallery-item-overlay';
-    
-    if (photo.caption) {
-        const caption = document.createElement('div');
-        caption.className = 'gallery-item-caption';
-        caption.textContent = photo.caption;
-        overlay.appendChild(caption);
-    }
+    img.onclick = () => openLightbox(index);
     
     div.appendChild(img);
-    div.appendChild(overlay);
-    
-    // Better touch support
-    div.addEventListener('click', () => openLightbox(index));
-    div.addEventListener('touchend', (e) => {
-        e.preventDefault();
-        openLightbox(index);
-    });
-    
     return div;
 }
 
 // Lightbox functionality
 let currentImageIndex = 0;
-let touchStartX = 0;
-let touchEndX = 0;
 let allPhotos = [];
 
 function setupLightbox() {
     const lightbox = document.getElementById('lightbox');
-    const close = document.getElementById('lightboxClose');
-    const prev = document.getElementById('lightboxPrev');
-    const next = document.getElementById('lightboxNext');
-
-    close.addEventListener('click', closeLightbox);
-    prev.addEventListener('click', () => navigateLightbox(-1));
-    next.addEventListener('click', () => navigateLightbox(1));
-
-    // Touch events for swiping
-    lightbox.addEventListener('touchstart', handleTouchStart, { passive: true });
-    lightbox.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (!lightbox.classList.contains('active')) return;
-        
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') navigateLightbox(-1);
-        if (e.key === 'ArrowRight') navigateLightbox(1);
-    });
-}
-
-function handleTouchStart(e) {
-    touchStartX = e.changedTouches[0].screenX;
-}
-
-function handleTouchEnd(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-}
-
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
     
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-            // Swiped left - next image
-            navigateLightbox(1);
-        } else {
-            // Swiped right - previous image
-            navigateLightbox(-1);
-        }
+    if (closeBtn) closeBtn.onclick = closeLightbox;
+    if (prevBtn) prevBtn.onclick = () => navigateLightbox(-1);
+    if (nextBtn) nextBtn.onclick = () => navigateLightbox(1);
+    
+    if (lightbox) {
+        lightbox.onclick = (e) => {
+            if (e.target === lightbox) closeLightbox();
+        };
     }
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightbox && lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') navigateLightbox(-1);
+            if (e.key === 'ArrowRight') navigateLightbox(1);
+        }
+    });
 }
 
 function openLightbox(index) {
-    // Get all gallery images
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
     const galleryItems = document.querySelectorAll('.gallery-item img');
-    allPhotos = Array.from(galleryItems).map(img => ({
-        src: img.src,
-        caption: img.alt
-    }));
+    
+    if (!lightbox || !lightboxImg || galleryItems.length === 0) return;
     
     currentImageIndex = index;
+    allPhotos = Array.from(galleryItems).map(img => img.src);
     
-    const lightbox = document.getElementById('lightbox');
-    const img = document.getElementById('lightboxImg');
-    const caption = document.getElementById('lightboxCaption');
-    
-    img.src = allPhotos[index].src;
-    caption.textContent = allPhotos[index].caption || '';
-    
-    // Reset image styles to default
-    img.style.maxWidth = '90%';
-    img.style.maxHeight = '85vh';
-    img.style.width = 'auto';
-    img.style.height = 'auto';
-    
+    lightboxImg.src = allPhotos[index];
+    lightboxCaption.textContent = `${index + 1} / ${allPhotos.length}`;
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
-    
-    // Prevent body scrolling on iOS
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
 }
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('active');
-    document.body.style.overflow = 'auto';
-    
-    // Restore body scrolling
-    document.body.style.position = '';
-    document.body.style.width = '';
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 }
 
 function navigateLightbox(direction) {
-    currentImageIndex = (currentImageIndex + direction + allPhotos.length) % allPhotos.length;
+    currentImageIndex += direction;
     
-    const img = document.getElementById('lightboxImg');
-    const caption = document.getElementById('lightboxCaption');
+    if (currentImageIndex < 0) {
+        currentImageIndex = allPhotos.length - 1;
+    } else if (currentImageIndex >= allPhotos.length) {
+        currentImageIndex = 0;
+    }
     
-    img.src = allPhotos[currentImageIndex].src;
-    caption.textContent = allPhotos[currentImageIndex].caption || '';
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
     
-    // Reset image styles to default
-    img.style.maxWidth = '90%';
-    img.style.maxHeight = '85vh';
-    img.style.width = 'auto';
-    img.style.height = 'auto';
-}
-
-// Get photos from localStorage
-function getPhotosFromStorage() {
-    const photosJson = localStorage.getItem('weddingPhotos');
-    return photosJson ? JSON.parse(photosJson) : [];
-}
-
-// Save photos to localStorage
-function savePhotosToStorage(photos) {
-    localStorage.setItem('weddingPhotos', JSON.stringify(photos));
+    if (lightboxImg && allPhotos[currentImageIndex]) {
+        lightboxImg.src = allPhotos[currentImageIndex];
+        lightboxCaption.textContent = `${currentImageIndex + 1} / ${allPhotos.length}`;
+    }
 }
 
 // Touch support for gallery items
 function setupTouchSupport() {
-    // Prevent double-tap zoom on buttons
-    const buttons = document.querySelectorAll('button, a, .gallery-item');
-    buttons.forEach(button => {
-        button.addEventListener('touchend', function(e) {
-            // Prevent click delay on iOS
-            e.preventDefault();
-            this.click();
-        }, { passive: false });
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+    
+    lightbox.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
     });
-}
-
-// Optimize image loading for mobile
-if ('IntersectionObserver' in window) {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src || img.src;
-                img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
-    }, {
-        rootMargin: '50px'
+    
+    lightbox.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
     });
-
-    // Observe images when they're added to the DOM
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-            mutation.addedNodes.forEach((node) => {
-                if (node.nodeType === 1 && node.tagName === 'IMG') {
-                    imageObserver.observe(node);
-                }
-            });
-        });
-    });
-
-    observer.observe(document.getElementById('gallery'));
-}
-
-// Convert HEIC to JPEG using heic2any library
-async function convertHEIC(heicUrl) {
-    try {
-        // Load heic2any library if not already loaded
-        if (!window.heic2any) {
-            await loadScript('https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js');
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+            navigateLightbox(1); // Swipe left
         }
-        
-        // Fetch the HEIC file
-        const response = await fetch(heicUrl);
-        const blob = await response.blob();
-        
-        // Convert to JPEG
-        const convertedBlob = await heic2any({
-            blob: blob,
-            toType: 'image/jpeg',
-            quality: 0.9
-        });
-        
-        // Create URL for the converted image
-        return URL.createObjectURL(convertedBlob);
-    } catch (error) {
-        throw new Error('Failed to convert HEIC: ' + error.message);
+        if (touchEndX > touchStartX + swipeThreshold) {
+            navigateLightbox(-1); // Swipe right
+        }
     }
 }
-
-// Load external script dynamically
-function loadScript(src) {
-    return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-    });
-}
-
-// Background Music Control
-document.addEventListener('DOMContentLoaded', function() {
-    const bgMusic = document.getElementById('bgMusic');
-    const musicToggle = document.getElementById('musicToggle');
-    const playIcon = musicToggle.querySelector('.play');
-    const pauseIcon = musicToggle.querySelector('.pause');
-    let isPlaying = false;
-
-    // Try to autoplay (may be blocked by browser)
-    const playPromise = bgMusic.play();
-    if (playPromise !== undefined) {
-        playPromise.then(() => {
-            isPlaying = true;
-            playIcon.style.display = 'none';
-            pauseIcon.style.display = 'block';
-        }).catch(() => {
-            // Autoplay was prevented
-            console.log('Autoplay prevented. Click to play music.');
-        });
-    }
-
-    // Toggle music on button click
-    musicToggle.addEventListener('click', function() {
-        if (isPlaying) {
-            bgMusic.pause();
-            playIcon.style.display = 'block';
-            pauseIcon.style.display = 'none';
-        } else {
-            bgMusic.play();
-            playIcon.style.display = 'none';
-            pauseIcon.style.display = 'block';
-        }
-        isPlaying = !isPlaying;
-    });
-});
 
 // Cherry Blossom Petals Animation
 function initCherryBlossoms() {
     const container = document.getElementById('petalsContainer');
     if (!container) return;
     
-    const petalCount = 30; // Số lượng cánh hoa
+    const petalCount = 30;
     
     for (let i = 0; i < petalCount; i++) {
         createPetal(container, i);
@@ -415,35 +301,104 @@ function createPetal(container, index) {
     const petal = document.createElement('div');
     petal.className = 'petal';
     
-    // Random position from left
     const leftPosition = Math.random() * 100;
     petal.style.left = leftPosition + '%';
     
-    // Random size (smaller petals)
-    const size = Math.random() * 6 + 8; // 8-14px
+    const size = Math.random() * 6 + 8;
     petal.style.width = size + 'px';
     petal.style.height = size + 'px';
     
-    // Random animation type
     const animations = ['fall', 'fall-left', 'fall-right'];
     const animationType = animations[Math.floor(Math.random() * animations.length)];
     petal.style.animationName = animationType;
     
-    // Random duration (slower = more graceful)
-    const duration = Math.random() * 8 + 12; // 12-20 seconds
+    const duration = Math.random() * 8 + 12;
     petal.style.animationDuration = duration + 's';
     
-    // Random delay for staggered effect
     const delay = Math.random() * 10;
     petal.style.animationDelay = delay + 's';
     
-    // Infinite loop
     petal.style.animationIterationCount = 'infinite';
     petal.style.animationTimingFunction = 'linear';
     
-    // Random opacity variation
-    const opacity = Math.random() * 0.3 + 0.5; // 0.5-0.8
-    petal.style.setProperty('--petal-opacity', opacity);
-    
     container.appendChild(petal);
 }
+
+// Toggle Envelope Animation
+function toggleEnvelope(envelope) {
+    const isOpened = envelope.classList.contains('opened');
+    
+    // Close all other envelopes
+    document.querySelectorAll('.letter-envelope.opened').forEach(env => {
+        if (env !== envelope) {
+            env.classList.remove('opened');
+        }
+    });
+    
+    // Toggle current envelope
+    if (isOpened) {
+        envelope.classList.remove('opened');
+    } else {
+        envelope.classList.add('opened');
+        
+        // Scroll into view smoothly
+        setTimeout(() => {
+            envelope.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'center' 
+            });
+        }, 100);
+    }
+    
+    // Prevent event bubbling
+    event.stopPropagation();
+}
+
+// Close envelope when clicking close button
+document.addEventListener('click', function(e) {
+    const letterContent = e.target.closest('.letter-content');
+    if (letterContent) {
+        const clickX = e.clientX - letterContent.getBoundingClientRect().left;
+        const clickY = e.clientY - letterContent.getBoundingClientRect().top;
+        
+        // Check if click is on close button area (top-right corner)
+        if (clickX > letterContent.offsetWidth - 50 && clickY < 50) {
+            const envelope = letterContent.closest('.letter-envelope');
+            if (envelope) {
+                envelope.classList.remove('opened');
+                e.stopPropagation();
+            }
+        }
+    }
+});
+
+// Close envelope when pressing Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.letter-envelope.opened').forEach(env => {
+            env.classList.remove('opened');
+        });
+    }
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Intersection Observer cho avatar animation
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const avatarObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, observerOptions);
+
+    // Observe tất cả avatar
+    document.querySelectorAll('.couple-avatar').forEach(avatar => {
+        avatarObserver.observe(avatar);
+    });
+});
