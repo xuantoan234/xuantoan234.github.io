@@ -145,21 +145,36 @@ storiesContainer.addEventListener('scroll', () => {
 // Touch gestures for navigation
 let touchStartY = 0;
 let touchEndY = 0;
+let touchStartTime = 0;
+let isScrolling = false;
 
 storiesContainer.addEventListener('touchstart', (e) => {
   touchStartY = e.touches[0].clientY;
+  touchStartTime = Date.now();
+  isScrolling = false;
+});
+
+storiesContainer.addEventListener('touchmove', (e) => {
+  isScrolling = true;
 });
 
 storiesContainer.addEventListener('touchend', (e) => {
   touchEndY = e.changedTouches[0].clientY;
-  handleSwipe();
+  
+  // Only handle swipe if it was a deliberate quick swipe, not a scroll
+  if (!isScrolling) {
+    handleSwipe();
+  }
 });
 
 function handleSwipe() {
   const swipeDistance = touchStartY - touchEndY;
-  const minSwipeDistance = 50;
+  const swipeTime = Date.now() - touchStartTime;
+  const minSwipeDistance = 80; // Increased threshold
+  const maxSwipeTime = 300; // Must be quick
   
-  if (Math.abs(swipeDistance) > minSwipeDistance) {
+  // Only navigate if it's a quick, deliberate swipe
+  if (Math.abs(swipeDistance) > minSwipeDistance && swipeTime < maxSwipeTime) {
     if (swipeDistance > 0) {
       // Swipe up - next story
       if (currentStoryIndex < stories.length - 1) {
