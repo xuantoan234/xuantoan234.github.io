@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Demo Comments Animation</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    .story {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      background-image: url('./assets/img/story1.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+    }
+    
+    .content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 30px;
+      color: white;
+      text-align: center;
+    }
+    
+    .poem {
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 10px 0;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    .title {
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      margin: 40px 0;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+    }
+    
+    .handwriting {
+      font-family: cursive;
+      font-size: 48px;
+      margin-top: 30px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Comments */
+    .comments-overlay {
+      position: absolute;
+      bottom: 110px;
+      left: 20px;
+      right: 20px;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .comment {
+      background: rgba(255, 182, 193, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .comment.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .comment__name {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    
+    .comment__emoji {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+    
+    .comment__text {
+      line-height: 1.5;
+      flex: 1;
+    }
+    
+    /* Bottom bar */
+    .bottom-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 6;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      padding: 20px 15px 30px;
+      display: flex;
+      gap: 12px;
+    }
+    
+    .action-btn {
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border: none;
+      border-radius: 20px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: white;
+      cursor: pointer;
+      flex: 1;
+      transition: all 0.2s;
+    }
+    
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.05);
+    }
+    
+    .gift-btn {
+      flex: 0 0 auto;
+      min-width: 60px;
+      justify-content: center;
+    }
+    
+    .gift-count {
+      background: #dc143c;
+      border-radius: 10px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    /* Info text */
+    .info {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+    
+    @media (min-width: 768px) {
+      .story {
+        max-width: 480px;
+        height: 90vh;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="info">✨ Comments sẽ xuất hiện lần lượt sau 1 giây</div>
+  
+  <div class="story">
+    <div class="overlay"></div>
+    
+    <div class="content">
+      <div>
+        <p class="poem">I love three things in this world.<br>Sun, moon and you.</p>
+        <p class="poem">Sun for morning moon for night,<br>and you forever.</p>
+      </div>
+      
+      <h1 class="title">Welcome to our wedding</h1>
+      
+      <div class="handwriting">We got married</div>
+    </div>
+    
+    <!-- Comments Overlay -->
+    <div class="comments-overlay">
+      <div class="comment" data-delay="0">
+        <span class="comment__name">Hồng Nhung:</span>
+        <span class="comment__emoji">💝</span>
+        <span class="comment__text">Mong rằng tình yêu của hai bạn mãi đẹp như ngày hôm nay!</span>
+      </div>
+      <div class="comment" data-delay="800">
+        <span class="comment__name">Nam:</span>
+        <span class="comment__emoji">💗</span>
+        <span class="comment__text">Mãi mãi hạnh phúc bên nhau!</span>
+      </div>
+      <div class="comment" data-delay="1600">
+        <span class="comment__name">Thùy:</span>
+        <span class="comment__emoji">💝</span>
+        <span class="comment__text">Mong tình yêu của hai bạn mãi vĩnh cửu!</span>
+      </div>
+      <div class="comment" data-delay="2400">
+        <span class="comment__name">Ngọc:</span>
+        <span class="comment__emoji">⭐</span>
+        <span class="comment__text">Chúc mừng hạnh phúc lứa đôi!</span>
+      </div>
+      <div class="comment" data-delay="3200">
+        <span class="comment__name">Mai Anh:</span>
+        <span class="comment__emoji">💝</span>
+        <span class="comment__text">Mong tình yêu của hai bạn mãi vĩnh cửu!</span>
+      </div>
+    </div>
+    
+    <!-- Bottom Actions -->
+    <div class="bottom-bar">
+      <button class="action-btn">
+        <span>Gửi lời chúc...</span>
+        <span>💬</span>
+      </button>
+      <button class="action-btn">
+        <span>🎊</span>
+        <span>Bắn tim</span>
+      </button>
+      <button class="action-btn gift-btn">
+        <span>🎁</span>
+        <span class="gift-count">69</span>
+      </button>
+      <button class="action-btn" style="flex: 0 0 auto; min-width: 50px; justify-content: center;">
+        <span>👍</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Animate comments on load
+    window.addEventListener('DOMContentLoaded', () => {
+      const comments = document.querySelectorAll('.comment');
+      
+      // Start animation after 1 second
+      setTimeout(() => {
+        comments.forEach((comment) => {
+          const delay = parseInt(comment.getAttribute('data-delay')) || 0;
+          
+          setTimeout(() => {
+            comment.classList.add('show');
+          }, delay);
+        });
+      }, 1000);
+      
+      // Hide info after 5 seconds
+      setTimeout(() => {
+        const info = document.querySelector('.info');
+        if (info) {
+          info.style.transition = 'opacity 0.5s';
+          info.style.opacity = '0';
+          setTimeout(() => info.remove(), 500);
+        }
+      }, 5000);
+    });
+    
+    // Click like button animation
+    document.querySelectorAll('.action-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const heart = document.createElement('div');
+        heart.textContent = '❤️';
+        heart.style.cssText = `
+          position: fixed;
+          left: ${e.clientX}px;
+          top: ${e.clientY}px;
+          font-size: 24px;
+          pointer-events: none;
+          z-index: 9999;
+          animation: heartFloat 1.5s ease-out forwards;
+        `;
+        
+        const style = document.createElement('style');
+        style.textContent = `
+          @keyframes heartFloat {
+            0% { opacity: 1; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-120px) scale(1.8); }
+          }
+        `;
+        
+        document.head.appendChild(style);
+        document.body.appendChild(heart);
+        
+        setTimeout(() => heart.remove(), 1500);
+      });
+    });
+  </script>
+</body>
+</html>

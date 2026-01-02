@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Test Comments Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #f0f0f0;
+      font-family: sans-serif;
+    }
+    
+    .test-container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    
+    h2 {
+      margin-top: 0;
+    }
+    
+    .comment {
+      background: rgba(255, 182, 193, 0.85);
+      border-radius: 20px;
+      padding: 12px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 8px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .comment.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .comment__name {
+      font-weight: 600;
+    }
+    
+    .comment__emoji {
+      font-size: 18px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    
+    button:hover {
+      background: #0056b3;
+    }
+    
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      background: #e3f2fd;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-container">
+    <h2>🧪 Test Comments Animation</h2>
+    <p>Comments nên ẩn (opacity: 0) ban đầu, sau đó xuất hiện từng cái một.</p>
+    
+    <button onclick="startAnimation()">▶️ Bắt đầu Animation</button>
+    <button onclick="resetAnimation()">🔄 Reset</button>
+    
+    <div class="status" id="status">Trạng thái: Sẵn sàng</div>
+    
+    <div style="margin-top: 20px;">
+      <h3>Comments:</h3>
+      <div id="comments">
+        <div class="comment">
+          <span class="comment__name">Hồng Nhung:</span>
+          <span class="comment__emoji">💝</span>
+          <span>Mong rằng tình yêu của hai bạn mãi đẹp!</span>
+        </div>
+        <div class="comment">
+          <span class="comment__name">Nam:</span>
+          <span class="comment__emoji">💗</span>
+          <span>Mãi mãi hạnh phúc bên nhau!</span>
+        </div>
+        <div class="comment">
+          <span class="comment__name">Thùy:</span>
+          <span class="comment__emoji">💝</span>
+          <span>Mong tình yêu mãi vĩnh cửu!</span>
+        </div>
+        <div class="comment">
+          <span class="comment__name">Ngọc:</span>
+          <span class="comment__emoji">⭐</span>
+          <span>Chúc mừng hạnh phúc lứa đôi!</span>
+        </div>
+        <div class="comment">
+          <span class="comment__name">Mai Anh:</span>
+          <span class="comment__emoji">💝</span>
+          <span>Mong tình yêu mãi vĩnh cửu!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const comments = document.querySelectorAll('.comment');
+    const status = document.getElementById('status');
+    let animating = false;
+    
+    function updateStatus(text) {
+      status.textContent = `Trạng thái: ${text}`;
+    }
+    
+    function startAnimation() {
+      if (animating) return;
+      animating = true;
+      
+      updateStatus('Đang chạy animation...');
+      
+      comments.forEach((comment, index) => {
+        setTimeout(() => {
+          comment.classList.add('show');
+          updateStatus(`Đã hiển thị comment ${index + 1}/${comments.length}`);
+          
+          if (index === comments.length - 1) {
+            setTimeout(() => {
+              updateStatus('Hoàn thành! ✅');
+              animating = false;
+            }, 500);
+          }
+        }, index * 800); // 800ms giữa mỗi comment
+      });
+    }
+    
+    function resetAnimation() {
+      animating = false;
+      comments.forEach(comment => {
+        comment.classList.remove('show');
+      });
+      updateStatus('Đã reset - Sẵn sàng');
+    }
+    
+    // Log initial state
+    console.log('Initial opacity of first comment:', window.getComputedStyle(comments[0]).opacity);
+    
+    // Check after 100ms
+    setTimeout(() => {
+      console.log('After 100ms, opacity:', window.getComputedStyle(comments[0]).opacity);
+      updateStatus(`Ban đầu: opacity = ${window.getComputedStyle(comments[0]).opacity}`);
+    }, 100);
+  </script>
+</body>
+</html>
