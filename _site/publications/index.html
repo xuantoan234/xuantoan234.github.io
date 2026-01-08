@@ -96,6 +96,9 @@
 <!-- Support for Academicons -->
 <link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
 
+<!-- Custom CSS for enhanced layout -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/custom.css"/>
+
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png"/>
 <link rel="icon" type="image/svg+xml" href="http://localhost:4000/images/favicon.svg"/>
@@ -142,9 +145,6 @@
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
-          
-            
-            <li class="masthead__menu-item"><a href="http://localhost:4000/teaching/">Teaching</a></li>
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
@@ -270,9 +270,23 @@
     
       <h1 class="page__title">Publications</h1>
     
-    
-  <div class="wordwrap">You can also find my articles on <a href="https://scholar.google.com/citations?user=AlEmGBYAAAAJ&hl=en">my Google Scholar profile</a>.</div>
+    <div class="publications-intro">
+  
+    <p class="google-scholar-link">
+      <i class="ai ai-google-scholar ai-fw"></i>
+      You can also find my articles on <a href="https://scholar.google.com/citations?user=AlEmGBYAAAAJ&hl=en" target="_blank">my Google Scholar profile</a>.
+    </p>
+  
+</div>
 
+<div class="publication-actions">
+  <button class="action-btn" onclick="window.print()">
+    <i class="fas fa-print"></i> Print Publication List
+  </button>
+  <a href="/files/bibtex1.bib" class="action-btn" download>
+    <i class="fas fa-download"></i> Download All BibTeX
+  </a>
+</div>
 
 
 
@@ -312,7 +326,9 @@
     
       
       
-        <h2>Journal Articles</h2><hr />
+        <div class="publication-category">
+          <h2>Journal Articles</h2>
+        </div>
         
       
       
@@ -335,7 +351,11 @@
     
 
         
-          <p>Published in <i>IEEE Transactions on Vehicular Technology</i>, 2025 </p>
+          <p>Published in <i>IEEE Transactions on Vehicular Technology</i>, 2025 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -373,7 +393,11 @@
     
 
         
-          <p>Published in <i>IEEE Transactions on Green Communications and Networking</i>, 2025 </p>
+          <p>Published in <i>IEEE Transactions on Green Communications and Networking</i>, 2025 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -411,7 +435,11 @@
     
 
         
-          <p>Published in <i>Drones</i>, 2025 </p>
+          <p>Published in <i>Drones</i>, 2025 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -449,7 +477,11 @@
     
 
         
-          <p>Published in <i>IEEE Transactions on Wireless Communications</i>, 2025 </p>
+          <p>Published in <i>IEEE Transactions on Wireless Communications</i>, 2025 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -487,7 +519,11 @@
     
 
         
-          <p>Published in <i>Electronics</i>, 2025 </p>
+          <p>Published in <i>Electronics</i>, 2025 
+          
+            <span class="q-index-badge">Q2</span>
+          
+          </p>
         
 
     
@@ -525,7 +561,11 @@
     
 
         
-          <p>Published in <i>Energies</i>, 2024 </p>
+          <p>Published in <i>Energies</i>, 2024 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -563,7 +603,11 @@
     
 
         
-          <p>Published in <i>IEEE Access</i>, 2024 </p>
+          <p>Published in <i>IEEE Access</i>, 2024 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -601,7 +645,11 @@
     
 
         
-          <p>Published in <i>Electronics</i>, 2024 </p>
+          <p>Published in <i>Electronics</i>, 2024 
+          
+            <span class="q-index-badge">Q2</span>
+          
+          </p>
         
 
     
@@ -639,7 +687,11 @@
     
 
         
-          <p>Published in <i>IEEE Access</i>, 2023 </p>
+          <p>Published in <i>IEEE Access</i>, 2023 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -679,7 +731,11 @@
     
 
         
-          <p>Published in <i>IEEE Transactions on Vehicular Technology</i>, 2022 </p>
+          <p>Published in <i>IEEE Transactions on Vehicular Technology</i>, 2022 
+          
+            <span class="q-index-badge">Q1</span>
+          
+          </p>
         
 
     
@@ -722,7 +778,9 @@
         
       
       
-        <h2>Conference Papers</h2><hr />
+        <div class="publication-category">
+          <h2>Conference Papers</h2>
+        </div>
         
       
       
@@ -745,7 +803,9 @@
     
 
         
-          <p>Published in <i>2023 VTS Asia Pacific Wireless Communications Symposium (APWCS), Tainan city…</i>, 2023 </p>
+          <p>Published in <i>2023 VTS Asia Pacific Wireless Communications Symposium (APWCS), Tainan city…</i>, 2023 
+          
+          </p>
         
 
     
@@ -785,7 +845,9 @@
     
 
         
-          <p>Published in <i>2022 IEEE Ninth International Conference on Communications and Electronics…</i>, 2022 </p>
+          <p>Published in <i>2022 IEEE Ninth International Conference on Communications and Electronics…</i>, 2022 
+          
+          </p>
         
 
     
@@ -823,7 +885,9 @@
     
 
         
-          <p>Published in <i>2020 IEEE Eighth International Conference on Communications and Electronics…</i>, 2021 </p>
+          <p>Published in <i>2020 IEEE Eighth International Conference on Communications and Electronics…</i>, 2021 
+          
+          </p>
         
 
     
@@ -889,14 +953,14 @@
 
 
 <div class="page__footer-copyright">
-  &copy; 2026 Xuan-Toan Dang, Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2026-01-06
+  &copy; 2026 Xuan-Toan Dang. All rights reserved.
 </div>
 
       </footer>
     </div>
 
     <script type="module" src="http://localhost:4000/assets/js/main.min.js"></script>
+<script src="http://localhost:4000/assets/js/custom-functions.js"></script>
 
 
 

@@ -1,0 +1,1479 @@
+/* Custom CSS - Modern Academic Minimalism */
+
+/* Publication Metrics Bar */
+.metrics-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5em;
+  margin: 2.5em 0;
+  padding: 1.5em;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+}
+
+.metric-item {
+  text-align: center;
+  padding: 1em;
+  border-right: 1px solid #e0e0e0;
+}
+
+.metric-item:last-child {
+  border-right: none;
+}
+
+.metric-number {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #333;
+  line-height: 1;
+  margin-bottom: 0.2em;
+}
+
+.metric-label {
+  font-size: 0.9em;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-link {
+  display: inline-block;
+  padding: 0.7em 1.5em;
+  background: #333;
+  color: white !important;
+  text-decoration: none !important;
+  border: none !important;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.metric-link:hover {
+  background: #000;
+}
+
+.metric-link i {
+  margin-right: 0.5em;
+}
+
+[data-theme="dark"] .metrics-bar {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .metric-item {
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .metric-number {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .metric-label {
+  color: #999;
+}
+
+[data-theme="dark"] .metric-link {
+  background: #e0e0e0;
+  color: #000 !important;
+}
+
+[data-theme="dark"] .metric-link:hover {
+  background: white;
+}
+
+/* Clean section styling - no gradients */
+.intro-section {
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-border-color);
+  padding: 2em 2.5em;
+  margin-bottom: 3em;
+}
+
+.intro-section h2 {
+  color: var(--text-color);
+  border-bottom: 1px solid var(--global-border-color);
+  padding-bottom: 0.5em;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.intro-section p {
+  font-size: 1.05em;
+  line-height: 1.8;
+  color: var(--text-color);
+}
+
+.highlight-box {
+  background: #fafafa;
+  border-left: 2px solid #333;
+  padding: 1.5em 2em;
+  margin: 2.5em 0;
+}
+
+.highlight-box h2 {
+  margin-top: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .highlight-box {
+  background: rgba(255, 255, 255, 0.02);
+  border-left-color: #ccc;
+}
+
+/* Research Grid Layout - Clean and minimal */
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2em;
+  margin: 2.5em 0;
+}
+
+.research-grid h3 {
+  color: #333;
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 0.7em;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3em;
+}
+
+.research-grid > div {
+  background: #fafafa;
+  padding: 1.5em;
+  border: 1px solid #e0e0e0;
+  transition: border-color 0.2s ease;
+}
+
+.research-grid > div:hover {
+  border-color: #333;
+}
+
+[data-theme="dark"] .research-grid h3 {
+  color: #e0e0e0;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .research-grid > div {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .research-grid > div:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Clean, professional links */
+.page__content a:not(.btn) {
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid #999;
+  transition: border-color 0.2s ease;
+}
+
+.page__content a:not(.btn):hover {
+  border-bottom-color: #000;
+}
+
+[data-theme="dark"] .page__content a:not(.btn) {
+  color: #e0e0e0;
+  border-bottom-color: #666;
+}
+
+[data-theme="dark"] .page__content a:not(.btn):hover {
+  border-bottom-color: #e0e0e0;
+}
+
+/* Code blocks - minimal styling */
+.page__content pre {
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
+}
+
+[data-theme="dark"] .page__content pre {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Simple bullet points */
+.page__content ul li {
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.page__content ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #666;
+  font-weight: normal;
+}
+
+/* Smooth transitions for interactive elements */
+button, .btn, a {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Publication card styling - minimal */
+.archive__item {
+  padding: 1em 0;
+  margin-bottom: 1.5em;
+  border-bottom: 1px solid #e0e0e0;
+  transition: none;
+}
+
+.archive__item:hover {
+  background: transparent;
+  transform: none;
+}
+
+/* Clean responsive images */
+.page__content img {
+  border: 1px solid #e0e0e0;
+  transition: none;
+}
+
+.page__content img:hover {
+  transform: none;
+}
+
+[data-theme="dark"] .archive__item {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .page__content img {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .intro-section {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Clean focus states for accessibility */
+a:focus, button:focus, input:focus, textarea:focus {
+  outline: 2px solid #333;
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] a:focus, 
+[data-theme="dark"] button:focus, 
+[data-theme="dark"] input:focus, 
+[data-theme="dark"] textarea:focus {
+  outline-color: #ccc;
+}
+
+/* Subtle fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page__content > * {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Publications Page Styling - Academic Minimalism */
+.publications-intro {
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-border-color);
+  padding: 1.5em 2em;
+  margin-bottom: 3em;
+}
+
+.publications-intro p {
+  margin: 0;
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+.publications-intro a {
+  color: #000;
+  font-weight: 500;
+  border-bottom: 1px solid #999;
+  transition: border-color 0.2s ease;
+}
+
+.publications-intro a:hover {
+  border-bottom-color: #000;
+}
+
+[data-theme="dark"] .publications-intro {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .publications-intro a {
+  color: #e0e0e0;
+  border-bottom-color: #666;
+}
+
+[data-theme="dark"] .publications-intro a:hover {
+  border-bottom-color: #e0e0e0;
+}
+
+.publication-category {
+  margin-top: 3em;
+  margin-bottom: 1.5em;
+}
+
+.publication-category h2 {
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.5em;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .publication-category h2 {
+  color: #e0e0e0;
+  border-bottom-color: #e0e0e0;
+}
+
+/* Archive items (publications) - compact and clean */
+.list__item {
+  margin-bottom: 0.5em;
+}
+
+.archive__item-title {
+  font-size: 0.95em;
+  margin-bottom: 0.3em;
+  font-weight: 600;
+}
+
+.archive__item-excerpt {
+  font-size: 0.85em;
+  line-height: 1.5;
+  color: var(--muted-text-color);
+}
+
+.archive__item p {
+  font-size: 0.85em;
+}
+
+.archive__item-teaser {
+  font-size: 0.85em;
+}
+
+/* Q Index Badge - Minimal academic style */
+.q-index-badge {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding: 0.15em 0.5em;
+  background: #333;
+  color: white;
+  font-size: 0.7em;
+  font-weight: 600;
+  border: 1px solid #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+[data-theme="dark"] .q-index-badge {
+  background: #e0e0e0;
+  color: #000;
+  border-color: #e0e0e0;
+}
+
+/* ============================================
+   POST AND PUBLICATION DETAILS PAGE LAYOUT
+   ============================================ */
+
+/* Post/Publication Header */
+.page__inner-wrap header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.post-meta-wrapper {
+  margin-top: 1rem;
+}
+
+.post-venue {
+  font-size: 1.05rem;
+  color: #555;
+  margin: 0.8rem 0;
+  font-weight: 500;
+}
+
+.post-venue i.fa {
+  margin-right: 0.5rem;
+  color: #666;
+}
+
+.post-venue .q-index-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: #333;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.page__title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Publication metadata styling */
+.page__meta,
+.page__date {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.page__meta i,
+.page__date i {
+  margin-right: 0.5rem;
+  color: #999;
+}
+
+/* Venue and Date Information */
+.page__inner-wrap header p {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.5rem 0;
+}
+
+.page__inner-wrap header p i {
+  font-style: italic;
+  color: #333;
+}
+
+/* Publication Details Box */
+.publication-details {
+  background: #fafafa;
+  border-left: 4px solid #333;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0;
+}
+
+.publication-details h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.publication-details p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.publication-details strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Citation Box */
+.citation-box {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  padding: 1.2rem;
+  margin: 2rem 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #333;
+  border-radius: 0;
+}
+
+/* Publication Downloads Box */
+.publication-downloads,
+.publication-citation {
+  background: #fafafa;
+  border-left: 4px solid #333;
+  padding: 1.5rem 2rem;
+  margin: 3rem 0 2rem 0;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.publication-downloads h3,
+.publication-citation h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.publication-downloads p,
+.publication-citation p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 1.2rem;
+}
+
+.download-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: #333;
+  color: white !important;
+  text-decoration: none;
+  border: 2px solid #333;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: white;
+  color: #333 !important;
+}
+
+.download-btn i {
+  font-size: 1rem;
+}
+
+/* Download Links */
+.page__content p[style*="font-size: smaller"] {
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  font-size: 0.95rem !important;
+  line-height: 1.8;
+}
+
+.page__content p[style*="font-size: smaller"] a {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: #333;
+  color: white;
+  text-decoration: none;
+  margin: 0.3rem 0.5rem 0.3rem 0;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+}
+
+.page__content p[style*="font-size: smaller"] a:hover {
+  background: white;
+  color: #333;
+}
+
+/* Blog Post Content */
+.page__content {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.page__content h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1.5rem 0;
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.5rem;
+}
+
+.page__content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2rem 0 1rem 0;
+  color: #333;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.page__content h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 1.5rem 0 1rem 0;
+  color: #333;
+}
+
+.page__content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1.2rem 0 0.8rem 0;
+  color: #333;
+}
+
+.page__content p {
+  margin-bottom: 1.2rem;
+  text-align: justify;
+}
+
+.page__content ul,
+.page__content ol {
+  margin: 1rem 0 1.5rem 2rem;
+}
+
+.page__content li {
+  margin-bottom: 0.8rem;
+  line-height: 1.7;
+}
+
+/* Code blocks */
+.page__content pre,
+.page__content code {
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.page__content pre {
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.page__content code {
+  padding: 0.2rem 0.4rem;
+}
+
+.page__content pre code {
+  padding: 0;
+  border: none;
+}
+
+/* Math equations */
+.page__content .MathJax,
+.page__content mjx-container {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+/* Blockquotes */
+.page__content blockquote {
+  border-left: 4px solid #333;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #555;
+  background: #fafafa;
+  padding: 1rem 1.5rem;
+}
+
+/* Images in posts */
+.page__content img {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem auto;
+  display: block;
+  border: 1px solid #e0e0e0;
+  padding: 0.5rem;
+  background: white;
+}
+
+/* Tables */
+.page__content table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.page__content table th,
+.page__content table td {
+  border: 1px solid #e0e0e0;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.page__content table th {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.page__content table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* Tags and Categories */
+.page__taxonomy {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.page__taxonomy-item {
+  display: inline-block;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  font-size: 0.85rem;
+  color: #555;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.page__taxonomy-item:hover {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+/* Post Navigation */
+.page__related,
+.pagination {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.page__related-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 2em;
+  right: 2em;
+  width: 45px;
+  height: 45px;
+  background: #333;
+  color: white;
+  border: 1px solid #333;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background: #000;
+}
+
+[data-theme="dark"] .back-to-top {
+  background: #e0e0e0;
+  color: #000;
+  border-color: #e0e0e0;
+}
+
+[data-theme="dark"] .back-to-top:hover {
+  background: white;
+}
+
+/* Publication Filter/Search */
+.publication-controls {
+  margin: 2em 0;
+  padding: 1.5em;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.7em 1em;
+  border: 1px solid #ccc;
+  font-size: 1em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.search-box:focus {
+  outline: 2px solid #333;
+  outline-offset: 0;
+  border-color: #333;
+}
+
+.filter-buttons {
+  margin-top: 1em;
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.5em 1em;
+  background: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+[data-theme="dark"] .publication-controls {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .search-box {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .filter-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .filter-btn:hover,
+[data-theme="dark"] .filter-btn.active {
+  background: #e0e0e0;
+  color: #000;
+  border-color: #e0e0e0;
+}
+
+/* Research Timeline */
+.timeline {
+  margin: 2em 0;
+  padding-left: 2em;
+  border-left: 2px solid #e0e0e0;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2em;
+  padding-left: 2em;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.4em;
+  top: 0.3em;
+  width: 12px;
+  height: 12px;
+  background: #333;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.timeline-year {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.3em;
+  font-size: 0.95em;
+}
+
+.timeline-content {
+  color: #666;
+  line-height: 1.6;
+}
+
+.timeline-content strong {
+  color: #333;
+  display: block;
+  margin-bottom: 0.2em;
+}
+
+[data-theme="dark"] .timeline {
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .timeline-item::before {
+  background: #e0e0e0;
+  border-color: #1a1a1a;
+}
+
+[data-theme="dark"] .timeline-year {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .timeline-content {
+  color: #999;
+}
+
+[data-theme="dark"] .timeline-content strong {
+  color: #e0e0e0;
+}
+
+/* Publication Action Buttons */
+.publication-actions {
+  margin: 2em 0;
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.7em 1.5em;
+  background: #333;
+  color: white !important;
+  border: 1px solid #333;
+  text-decoration: none !important;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.action-btn:hover {
+  background: #000;
+  border-color: #000;
+}
+
+.action-btn i {
+  font-size: 1em;
+}
+
+[data-theme="dark"] .action-btn {
+  background: #e0e0e0;
+  color: #000 !important;
+  border-color: #e0e0e0;
+}
+
+[data-theme="dark"] .action-btn:hover {
+  background: white;
+  border-color: white;
+}
+
+/* Print Styles */
+@media print {
+  .masthead,
+  .sidebar,
+  .back-to-top,
+  .publication-controls,
+  .publication-actions,
+  .page__footer {
+    display: none !important;
+  }
+  
+  #main {
+    margin-top: 0;
+    padding: 0;
+  }
+  
+  .page {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  
+  .archive__item {
+    page-break-inside: avoid;
+    border-bottom: 1px solid #ccc;
+    padding: 1em 0;
+  }
+}
+
+/* Professional CV Print Styles */
+@media print {
+  /* Hide non-essential elements */
+  .cv-actions,
+  .cv-nav,
+  .sidebar,
+  .masthead,
+  .page__footer,
+  .back-to-top,
+  nav,
+  button,
+  .breadcrumbs {
+    display: none !important;
+  }
+  
+  /* Show print-only elements */
+  .print-header,
+  .print-stats {
+    display: block !important;
+  }
+  
+  /* A4 Page Setup */
+  @page {
+    size: A4;
+    margin: 2cm 2cm 2.5cm 2cm;
+  }
+  
+  /* Reset everything for print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 11pt;
+    line-height: 1.4;
+    color: #000;
+    background: white;
+  }
+  
+  body {
+    margin: 0 auto;
+  }
+  
+  #main {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    float: none;
+  }
+  
+  .page {
+    width: 100% !important;
+    max-width: 100% !important;
+    float: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+  
+  .page__inner-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+  
+  .page__content {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Hide original page title */
+  .page__title {
+    display: none;
+  }
+  
+  /* ===============================================
+     HEADER SECTION - Top of CV
+     =============================================== */
+  .print-header {
+    margin-bottom: 1cm;
+    padding-bottom: 0.6cm;
+    border-bottom: 2.5pt solid #000;
+    page-break-after: avoid;
+  }
+  
+  .print-profile {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2cm;
+  }
+  
+  .print-avatar {
+    width: 3.5cm;
+    height: 3.5cm;
+    border-radius: 50%;
+    border: 2pt solid #000;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+  .print-info {
+    flex: 1;
+    padding-top: 0.2cm;
+  }
+  
+  .print-info h1 {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 24pt;
+    font-weight: 700;
+    margin: 0 0 0.3cm 0;
+    color: #000;
+    letter-spacing: 0.5pt;
+    text-transform: uppercase;
+  }
+  
+  .print-title {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 13pt;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 0.5cm 0;
+    font-style: italic;
+  }
+  
+  .print-contact {
+    font-size: 10pt;
+    line-height: 1.7;
+    margin: 0;
+    color: #000;
+  }
+  
+  .print-contact strong {
+    font-weight: 700;
+    min-width: 4cm;
+    display: inline-block;
+  }
+  
+  /* ===============================================
+     PUBLICATION STATISTICS BOX
+     =============================================== */
+  .print-stats {
+    margin: 0.7cm 0;
+    padding: 0.5cm 0.6cm;
+    background: #f8f8f8;
+    border: 1.5pt solid #000;
+    page-break-inside: avoid;
+  }
+  
+  .print-stats h3 {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 13pt;
+    font-weight: 700;
+    margin: 0 0 0.4cm 0;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+  }
+  
+  .stats-row {
+    display: flex;
+    gap: 0.4cm;
+    justify-content: space-between;
+  }
+  
+  .stat-box {
+    flex: 1;
+    text-align: center;
+    font-size: 9pt;
+    padding: 0.4cm 0.2cm;
+    background: white;
+    border: 1pt solid #666;
+  }
+  
+  .stat-box strong {
+    display: block;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 0.15cm;
+    line-height: 1;
+  }
+  
+  /* ===============================================
+     SECTION HEADINGS
+     =============================================== */
+  h2 {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 14pt;
+    font-weight: 700;
+    margin-top: 0.8cm;
+    margin-bottom: 0.4cm;
+    padding-bottom: 0.2cm;
+    border-bottom: 2pt solid #000;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.5pt;
+    page-break-after: avoid;
+    text-align: left;
+  }
+  
+  h2:first-of-type {
+    margin-top: 0.5cm;
+  }
+  
+  h3 {
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+    margin-top: 0.5cm;
+    margin-bottom: 0.25cm;
+    color: #000;
+    page-break-after: avoid;
+    text-align: left;
+  }
+  
+  h4 {
+    font-size: 11pt;
+    font-weight: 700;
+    margin-top: 0.3cm;
+    margin-bottom: 0.2cm;
+    color: #000;
+    page-break-after: avoid;
+    text-align: left;
+  }
+  
+  /* ===============================================
+     TEXT FORMATTING
+     =============================================== */
+  p {
+    font-size: 11pt;
+    line-height: 1.5;
+    margin: 0 0 0.3cm 0;
+    text-align: left;
+    orphans: 3;
+    widows: 3;
+  }
+  
+  strong {
+    font-weight: 700;
+    color: #000;
+  }
+  
+  em {
+    font-style: italic;
+  }
+  
+  /* ===============================================
+     LISTS
+     =============================================== */
+  ul, ol {
+    margin: 0 0 0.5cm 0;
+    padding-left: 1.2cm;
+    text-align: left;
+  }
+  
+  li {
+    font-size: 11pt;
+    line-height: 1.5;
+    margin-bottom: 0.2cm;
+    page-break-inside: avoid;
+    text-align: left;
+  }
+  
+  .page__content ul li::before {
+    content: none !important;
+  }
+  
+  ul {
+    list-style-type: disc;
+  }
+  
+  /* ===============================================
+     PUBLICATIONS LIST
+     =============================================== */
+  .archive__item {
+    page-break-inside: avoid;
+    margin-bottom: 0.5cm;
+    padding-bottom: 0.4cm;
+    border-bottom: 0.5pt solid #ccc;
+    text-align: left;
+  }
+  
+  .archive__item:last-child {
+    border-bottom: none;
+  }
+  
+  .archive__item-title {
+    font-size: 11pt;
+    font-weight: 700;
+    margin-bottom: 0.15cm;
+    line-height: 1.3;
+    color: #000;
+    text-align: left;
+  }
+  
+  .archive__item-title a {
+    color: #000 !important;
+    text-decoration: none !important;
+  }
+  
+  .archive__item-excerpt,
+  .archive__item p {
+    font-size: 10pt;
+    line-height: 1.4;
+    margin: 0.1cm 0;
+    color: #000;
+    text-align: left;
+  }
+  
+  .q-index-badge {
+    display: inline-block;
+    padding: 0.1cm 0.3cm;
+    background: #000;
+    color: white;
+    font-size: 8pt;
+    font-weight: 700;
+    border: none;
+    margin-left: 0.2cm;
+  }
+  
+  /* ===============================================
+     LINKS
+     =============================================== */
+  a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  a[href^="http"]:after {
+    content: "";
+  }
+  
+  /* ===============================================
+     PAGE BREAKS
+     =============================================== */
+  h2, h3, h4 {
+    page-break-after: avoid;
+  }
+  
+  ul, ol, .archive__item, .print-stats {
+    page-break-inside: avoid;
+  }
+  
+  /* Avoid breaking after labels */
+  dt {
+    page-break-after: avoid;
+  }
+  
+  /* ===============================================
+     SPACING AND MARGINS
+     =============================================== */
+  .page__content > *:first-child {
+    margin-top: 0;
+  }
+  
+  /* Compact spacing for publications section */
+  #publications + ul .archive__item {
+    padding: 0.3cm 0;
+    margin-bottom: 0.3cm;
+  }
+  
+  /* ===============================================
+     DATE AND VENUE FORMATTING
+     =============================================== */
+  .archive__item time,
+  .archive__item .venue {
+    font-style: italic;
+    color: #333;
+  }
+  
+  /* ===============================================
+     FOOTER (Optional)
+     =============================================== */
+  @page {
+    @bottom-center {
+      content: counter(page);
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 9pt;
+      color: #666;
+    }
+    
+    @bottom-right {
+      content: "CV - Xuan-Toan Dang";
+      font-family: 'Arial', 'Helvetica', sans-serif;
+      font-size: 8pt;
+      color: #999;
+    }
+  }
+  
+  /* First page doesn't need page number */
+  @page :first {
+    @bottom-center {
+      content: "";
+    }
+  }
+}
+
+/* CV Quick Navigation */
+.cv-nav {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin: 2em 0;
+  padding: 1em;
+  background: #fafafa;
+  border: 1px solid #e0e0e0;
+}
+
+/* CV Action Buttons */
+.cv-actions {
+  display: flex;
+  gap: 1em;
+  flex-wrap: wrap;
+  margin: 2em 0;
+}
+
+.cv-nav-link {
+  padding: 0.5em 1em;
+  background: white;
+  border: 1px solid #ccc;
+  text-decoration: none !important;
+  color: #333 !important;
+  font-weight: 500;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.cv-nav-link:hover {
+  background: #333;
+  color: white !important;
+  border-color: #333;
+}
+
+[data-theme="dark"] .cv-nav {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .cv-nav-link {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .cv-nav-link:hover {
+  background: #e0e0e0;
+  color: #000 !important;
+  border-color: #e0e0e0;
+}
+
+/* Print-only header and stats (hidden on screen) */
+.print-header,
+.print-stats {
+  display: none;
+}
+
+@media screen {
+  .print-header,
+  .print-stats {
+    display: none !important;
+  }
+}
+

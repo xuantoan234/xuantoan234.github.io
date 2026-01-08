@@ -5,9 +5,23 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
+<div class="publications-intro">
+  {% if site.author.googlescholar %}
+    <p class="google-scholar-link">
+      <i class="ai ai-google-scholar ai-fw"></i>
+      You can also find my articles on <a href="{{site.author.googlescholar}}" target="_blank">my Google Scholar profile</a>.
+    </p>
+  {% endif %}
+</div>
+
+<div class="publication-actions">
+  <button class="action-btn" onclick="window.print()">
+    <i class="fas fa-print"></i> Print Publication List
+  </button>
+  <a href="{{ base_path }}/files/bibtex1.bib" class="action-btn" download>
+    <i class="fas fa-download"></i> Download All BibTeX
+  </a>
+</div>
 
 {% include base_path %}
 
@@ -20,7 +34,9 @@ author_profile: true
         {% continue %}
       {% endif %}
       {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
+        <div class="publication-category">
+          <h2>{{ category[1].title }}</h2>
+        </div>
         {% assign title_shown = true %}
       {% endunless %}
       {% include archive-single.html %}

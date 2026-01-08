@@ -19,7 +19,7 @@
 
 
 
-<title>About me - Xuan-Toan Dang Profile</title>
+<title>About - Xuan-Toan Dang Profile</title>
 
 
 
@@ -66,7 +66,7 @@
 <!-- Open Graph protocol data (https://ogp.me/), used by social media -->
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Xuan-Toan Dang Profile"> 
-<meta property="og:title" content="About me">
+<meta property="og:title" content="About">
 
 
 
@@ -95,6 +95,9 @@
 
 <!-- Support for Academicons -->
 <link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<!-- Custom CSS for enhanced layout -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/custom.css"/>
 
 <!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
 <link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png"/>
@@ -142,9 +145,6 @@
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
-          
-            
-            <li class="masthead__menu-item"><a href="http://localhost:4000/teaching/">Teaching</a></li>
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
@@ -269,7 +269,7 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="About me">
+    <meta itemprop="headline" content="About">
     
     
     
@@ -277,33 +277,105 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">About me
+          <h1 class="page__title" itemprop="headline">About
 </h1>
           
-        
-        
+          <!-- Publication/Post metadata -->
+          <div class="post-meta-wrapper">
             
+            
+            
+            
+            
+          </div>
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <h1 id="welcome-to-my-academic-page">Welcome to My Academic Page</h1>
+        <div class="intro-section">
 
-<p>I am Xuan-Toan Dang, a Ph.D. candidate at Soongsil University specializing in wireless communications, machine learning, and signal processing.</p>
+  <h2 id="welcome">Welcome</h2>
+
+  <p>I am <strong>Xuan-Toan Dang</strong>, a Ph.D. candidate in Electronic Engineering at <strong>Soongsil University</strong>, Seoul, Korea. My research focuses on wireless communications, optimization techniques, machine learning, and signal processing for next-generation communication systems.</p>
+
+  <p style="margin-top: 1em;">
+  <a href="https://scholar.google.com/citations?user=AlEmGBYAAAAJ&amp;hl=en" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5em;">
+    <i class="ai ai-google-scholar"></i> View my publications on Google Scholar
+  </a>
+</p>
+
+</div>
+
+<div class="highlight-box">
+
+  <h2 id="education">Education</h2>
+
+  <ul>
+    <li><strong>Ph.D. in Electronic Engineering</strong> (In Progress) — Soongsil University, Seoul, Korea</li>
+    <li><strong>M.E. in Electronic Engineering</strong> (2023) — Soongsil University, Seoul, Korea</li>
+    <li><strong>B.E. in Wireless Communication Engineering</strong> (2020) — Hanoi University of Science and Technology, Vietnam</li>
+  </ul>
+
+</div>
 
 <h2 id="research-interests">Research Interests</h2>
 
-<ul>
-  <li>Wireless communications with optimization techniques</li>
-  <li>Machine learning and deep learning for wireless communications</li>
-  <li>Signal processing for communications</li>
-  <li>Federated learning in wireless networks</li>
-</ul>
+<div class="research-grid">
 
-<h2 id="current-work">Current Work</h2>
+  <h3 id="wireless-communications">Wireless Communications</h3>
+  <p>Optimization techniques for next-generation wireless systems, including massive MIMO, cell-free networks, and NOMA.</p>
+
+  <h3 id="machine-learning">Machine Learning</h3>
+  <p>Deep learning and reinforcement learning applications for intelligent wireless network optimization and resource allocation.</p>
+
+  <h3 id="signal-processing">Signal Processing</h3>
+  <p>Signal processing methods for communication systems, including channel estimation and interference management.</p>
+
+  <h3 id="federated-learning">Federated Learning</h3>
+  <p>Energy-efficient federated learning frameworks for distributed wireless networks and UAV communications.</p>
+
+</div>
+
+<h2 id="recent-highlights">Recent Highlights</h2>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="timeline-year">2025</div>
+    <div class="timeline-content">
+      <strong>IEEE Transactions on Vehicular Technology</strong> — Optimization of RIS-assisted Cell-free Massive MIMO with HetGNN
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-year">2025</div>
+    <div class="timeline-content">
+      <strong>IEEE Transactions on Wireless Communications</strong> — Energy Efficiency for Federated Learning over IRS-assisted Networks
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-year">2025</div>
+    <div class="timeline-content">
+      <strong>IEEE Transactions on Green Communications and Networking</strong> — Analysis on Federated Learning over UAV-Assisted IoT Networks
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-year">2024</div>
+    <div class="timeline-content">
+      <strong>Energies (Q1)</strong> — Survey on Energy-Efficient Design for Federated Learning over Wireless Networks
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-year">2024</div>
+    <div class="timeline-content">
+      <strong>IEEE Access (Q1)</strong> — Aggregation Design for Hierarchical Federated Learning in IoT Networks
+    </div>
+  </div>
+</div>
+
+<h2 id="current-research">Current Research</h2>
 
 
 
+        <!-- Download links in styled box -->
         
 
         
@@ -373,14 +445,14 @@
 
 
 <div class="page__footer-copyright">
-  &copy; 2026 Xuan-Toan Dang, Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://github.com/academicpages/academicpages.github.io">AcademicPages</a>, a fork of <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.<br />
-  Site last updated 2026-01-06
+  &copy; 2026 Xuan-Toan Dang. All rights reserved.
 </div>
 
       </footer>
     </div>
 
     <script type="module" src="http://localhost:4000/assets/js/main.min.js"></script>
+<script src="http://localhost:4000/assets/js/custom-functions.js"></script>
 
 
 

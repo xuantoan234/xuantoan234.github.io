@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-01-06T17:24:18+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Xuan-Toan Dang Profile</title><subtitle>Xuan-Toan Dang&apos;s academic project</subtitle><author><name>Xuan-Toan Dang</name><email>dangxuantoan@soongsil.ac.kr</email></author><entry><title type="html">NAS-RaspberryPi-1</title><link href="http://localhost:4000/posts/2025/20251206/NAS-RaspberryPi1/" rel="alternate" type="text/html" title="NAS-RaspberryPi-1" /><published>2026-01-05T00:00:00+00:00</published><updated>2026-01-05T00:00:00+00:00</updated><id>http://localhost:4000/posts/2025/20251206/NAS-RaspberryPi1-blog-2</id><content type="html" xml:base="http://localhost:4000/posts/2025/20251206/NAS-RaspberryPi1/"><![CDATA[<hr />
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2026-01-07T17:57:30+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Xuan-Toan Dang Profile</title><subtitle>Xuan-Toan Dang&apos;s academic project</subtitle><author><name>Xuan-Toan Dang</name><email>dangxuantoan@soongsil.ac.kr</email></author><entry><title type="html">NAS-RaspberryPi-1</title><link href="http://localhost:4000/posts/2025/20251206/NAS-RaspberryPi1/" rel="alternate" type="text/html" title="NAS-RaspberryPi-1" /><published>2026-01-05T00:00:00+00:00</published><updated>2026-01-05T00:00:00+00:00</updated><id>http://localhost:4000/posts/2025/20251206/NAS-RaspberryPi1-blog-2</id><content type="html" xml:base="http://localhost:4000/posts/2025/20251206/NAS-RaspberryPi1/"><![CDATA[<hr />
 <p>My friend gave me a device called a Raspberry Pi 1. At first, I didn’t know what to do with it because it is quite outdated for most modern use cases. However, I realized that I could still utilize this device by turning it into a Network Attached Storage (NAS). That is why I decided to explore a suitable way to configure it as a local NAS for my home. In this post, I will share what I did and what I learned from this experience.</p>
 
 <p>This post guide shows how to turn a Raspberry Pi into a lightweight Network Attached Storage (NAS) using Samba. It covers connecting external USB/HDD/SSD storage, configuring automatic mounting with UUIDs, setting correct permissions, and sharing files across Windows, macOS, and Linux systems. The tutorial is designed to be beginner-friendly, command-</p>
@@ -18,32 +18,31 @@
 
 <hr />
 
-<h2 id="0-switch-to-root-optional-but-convenient">0) Switch to root (optional but convenient)</h2>
+<h2 id="1-switch-to-root-optional-but-convenient">1) Switch to root (optional but convenient)</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> <span class="nt">-i</span>
 </code></pre></div></div>
 
-<p>👉 Enters root shell so you don’t need to type <code class="language-plaintext highlighter-rouge">sudo</code> for every command.<br />
+<p>Enters root shell so you don’t need to type <code class="language-plaintext highlighter-rouge">sudo</code> for every command.<br />
 (You can skip this and keep using <code class="language-plaintext highlighter-rouge">sudo</code> if you prefer.)</p>
 
 <hr />
 
-<h2 id="1-update-the-system">1) Update the system</h2>
+<h2 id="2-update-the-system">2) Update the system</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt update <span class="o">&amp;&amp;</span> apt upgrade <span class="nt">-y</span>
 </code></pre></div></div>
 
-<p>👉 Updates package lists and upgrades installed packages.<br />
+<p>Updates package lists and upgrades installed packages.<br />
 (Always do this before installing new software.)</p>
 
 <hr />
 
-<h2 id="2-install-samba-and-required-tools">2) Install Samba and required tools</h2>
+<h2 id="3-install-samba-and-required-tools">3) Install Samba and required tools</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apt <span class="nb">install </span>samba blkid <span class="nt">-y</span>
 </code></pre></div></div>
 
-<p>👉</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">samba</code> → file sharing service</li>
   <li><code class="language-plaintext highlighter-rouge">blkid</code> → used to get disk UUIDs (required for <code class="language-plaintext highlighter-rouge">/etc/fstab</code>)</li>
@@ -51,143 +50,133 @@
 
 <hr />
 
-<h2 id="3-plug-in-usb--hdd--ssd-and-detect-it">3) Plug in USB / HDD / SSD and detect it</h2>
+<h2 id="4-plug-in-usb--hdd--ssd-and-detect-it">4) Plug in USB / HDD / SSD and detect it</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lsblk <span class="nt">-o</span> NAME,FSTYPE,SIZE,MOUNTPOINT
 </code></pre></div></div>
 
-<p>👉 Lists all storage devices.<br />
+<p>Lists all storage devices.<br />
 Note the partition name (example: <code class="language-plaintext highlighter-rouge">/dev/sda1</code>).</p>
 
 <hr />
 
-<h2 id="4-view-partition-details-and-uuid">4) View partition details and UUID</h2>
+<h2 id="5-view-partition-details-and-uuid">5) View partition details and UUID</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blkid /dev/sda1
 </code></pre></div></div>
 
-<p>👉 Displays filesystem type and <strong>UUID</strong>.<br />
+<p>Displays filesystem type and <strong>UUID</strong>.<br />
 (UUID is safer than device names for auto-mount.)</p>
 
 <hr />
 
-<h2 id="5-optional-format-disk-to-ext4-️-erases-all-data">5) (Optional) Format disk to ext4 ⚠️ ERASES ALL DATA</h2>
+<h2 id="6-optional-format-disk-to-ext4-️-erases-all-data">6) (Optional) Format disk to ext4 ⚠️ ERASES ALL DATA</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mkfs.ext4 /dev/sda1
 </code></pre></div></div>
 
-<p>👉 Formats the partition as <strong>ext4</strong> (recommended for Linux).<br />
-⚠️ <strong>All existing data will be deleted</strong>.</p>
+<p>Formats the partition as <strong>ext4</strong> (recommended for Linux).<br />
+<strong>Note: All existing data will be deleted</strong>.</p>
 
 <hr />
 
-<h2 id="6-create-mount-points">6) Create mount points</h2>
+<h2 id="7-create-mount-points">7) Create mount points</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /mnt/usb
 <span class="nb">mkdir</span> <span class="nt">-p</span> /mnt/hdd
 </code></pre></div></div>
-
-<p>👉 Creates directories where external storage will be mounted.</p>
+<p>Creates directories where external storage will be mounted.</p>
 
 <hr />
 
-<h2 id="7-temporarily-mount-the-disk-test">7) Temporarily mount the disk (test)</h2>
+<h2 id="8-temporarily-mount-the-disk-test">8) Temporarily mount the disk (test)</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount /dev/sda1 /mnt/usb
 </code></pre></div></div>
-
-<p>👉 Tests whether the disk mounts correctly before enabling auto-mount.</p>
+<p>Tests whether the disk mounts correctly before enabling auto-mount.</p>
 
 <h3 id="verify">Verify</h3>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">df</span> <span class="nt">-h</span> | <span class="nb">grep</span> /mnt/usb
 <span class="nb">ls</span> <span class="nt">-l</span> /mnt/usb
 </code></pre></div></div>
-
-<p>👉 Confirms the disk is mounted and accessible.</p>
+<p>Confirms the disk is mounted and accessible.</p>
 
 <hr />
 
-<h2 id="8-copy-uuid-for-etcfstab">8) Copy UUID for <code class="language-plaintext highlighter-rouge">/etc/fstab</code></h2>
+<h2 id="9-copy-uuid-for-etcfstab">9) Copy UUID for <code class="language-plaintext highlighter-rouge">/etc/fstab</code></h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>blkid /dev/sda1
 </code></pre></div></div>
-
-<p>👉 Copy the value inside <code class="language-plaintext highlighter-rouge">UUID="..."</code>.</p>
+<p>Copy the value inside <code class="language-plaintext highlighter-rouge">UUID="..."</code>.</p>
 
 <hr />
 
-<h2 id="9-configure-auto-mount-using-etcfstab">9) Configure auto-mount using <code class="language-plaintext highlighter-rouge">/etc/fstab</code></h2>
+<h2 id="10-configure-auto-mount-using-etcfstab">10) Configure auto-mount using <code class="language-plaintext highlighter-rouge">/etc/fstab</code></h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nano /etc/fstab
 </code></pre></div></div>
 
 <h3 id="if-the-disk-is-fat32--vfat-cross-platform-usb">If the disk is <strong>FAT32 / vfat</strong> (cross-platform USB)</h3>
 
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UUID=ABCD-1234  /mnt/usb  vfat  defaults,uid=xt234,gid=xt234,umask=022,noatime  0  0
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UUID=ABCD-1234  /mnt/usb  vfat  defaults,uid=username,gid=username,umask=022,noatime  0  0
 </code></pre></div></div>
 
-<p>👉 <code class="language-plaintext highlighter-rouge">uid/gid</code> ensures user <code class="language-plaintext highlighter-rouge">xt234</code> can write to FAT32.</p>
+<p><code class="language-plaintext highlighter-rouge">uid/gid</code> ensures user <code class="language-plaintext highlighter-rouge">username</code> can write to FAT32.</p>
 
 <h3 id="if-the-disk-is-ext4">If the disk is <strong>ext4</strong></h3>
 
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UUID=EEEE-FFFF  /mnt/hdd  ext4  defaults,noatime  0  2
 </code></pre></div></div>
-
-<p>👉 ext4 keeps Linux permissions internally.</p>
+<p>ext4 keeps Linux permissions internally.</p>
 
 <p>Save and exit: <strong>Ctrl+O → Enter → Ctrl+X</strong></p>
 
 <hr />
 
-<h2 id="10-apply-and-test-fstab">10) Apply and test fstab</h2>
+<h2 id="11-apply-and-test-fstab">11) Apply and test fstab</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mount <span class="nt">-a</span>
 </code></pre></div></div>
-
-<p>👉 Mounts all filesystems in <code class="language-plaintext highlighter-rouge">/etc/fstab</code>.<br />
+<p>Mounts all filesystems in <code class="language-plaintext highlighter-rouge">/etc/fstab</code>.<br />
 (No output = no errors.)</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">df</span> <span class="nt">-h</span> | egrep <span class="s1">'/mnt/usb|/mnt/hdd'</span>
 </code></pre></div></div>
-
-<p>👉 Confirms auto-mount works.</p>
+<p>Confirms auto-mount works.</p>
 
 <hr />
 
-<h2 id="11-fix-permissions-important-for-samba">11) Fix permissions (important for Samba)</h2>
+<h2 id="12-fix-permissions-important-for-samba">12) Fix permissions (important for Samba)</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="nt">-R</span> xt234:xt234 /mnt/usb
-<span class="nb">chown</span> <span class="nt">-R</span> xt234:xt234 /mnt/hdd
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">chown</span> <span class="nt">-R</span> username:username /mnt/usb
+<span class="nb">chown</span> <span class="nt">-R</span> username:username /mnt/hdd
 <span class="nb">chmod </span>755 /mnt/usb
 <span class="nb">chmod </span>755 /mnt/hdd
 </code></pre></div></div>
-
-<p>👉 Ensures Samba user owns the storage and can access it safely.</p>
+<p>Ensures Samba user owns the storage and can access it safely.</p>
 
 <hr />
 
-<h2 id="12-create-shared-directories">12) Create shared directories</h2>
+<h2 id="13-create-shared-directories">13) Create shared directories</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> <span class="nt">-p</span> /mnt/hdd/shared
-<span class="nb">chown</span> <span class="nt">-R</span> xt234:xt234 /mnt/hdd/shared
+<span class="nb">chown</span> <span class="nt">-R</span> username:username /mnt/hdd/shared
 </code></pre></div></div>
-
-<p>👉 Organizes folders to be shared via Samba.</p>
+<p>Organizes folders to be shared via Samba.</p>
 
 <hr />
 
-<h2 id="13-create-samba-user-maps-to-linux-user">13) Create Samba user (maps to Linux user)</h2>
+<h2 id="14-create-samba-user-maps-to-linux-user">14) Create Samba user (maps to Linux user)</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>smbpasswd <span class="nt">-a</span> xt234
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>smbpasswd <span class="nt">-a</span> username
 </code></pre></div></div>
-
-<p>👉 Sets Samba password for user <code class="language-plaintext highlighter-rouge">xt234</code>.<br />
-(User must already exist: <code class="language-plaintext highlighter-rouge">adduser xt234</code> if needed.)</p>
+<p>Sets Samba password for user <code class="language-plaintext highlighter-rouge">username</code>.<br />
+(User must already exist: <code class="language-plaintext highlighter-rouge">adduser username</code> if needed.)</p>
 
 <hr />
 
-<h2 id="14-configure-samba-shares">14) Configure Samba shares</h2>
+<h2 id="15-configure-samba-shares">15) Configure Samba shares</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cp</span> /etc/samba/smb.conf /etc/samba/smb.conf.bak
 nano /etc/samba/smb.conf
@@ -199,7 +188,7 @@ nano /etc/samba/smb.conf
    <span class="py">path</span> <span class="p">=</span> <span class="s">/mnt/usb</span>
    <span class="py">browseable</span> <span class="p">=</span> <span class="s">yes</span>
    <span class="err">read</span> <span class="py">only</span> <span class="p">=</span> <span class="s">no</span>
-   <span class="err">valid</span> <span class="py">users</span> <span class="p">=</span> <span class="s">xt234</span>
+   <span class="err">valid</span> <span class="py">users</span> <span class="p">=</span> <span class="s">username</span>
    <span class="err">create</span> <span class="py">mask</span> <span class="p">=</span> <span class="s">0644</span>
    <span class="err">directory</span> <span class="py">mask</span> <span class="p">=</span> <span class="s">0755</span>
 
@@ -207,27 +196,25 @@ nano /etc/samba/smb.conf
    <span class="py">path</span> <span class="p">=</span> <span class="s">/mnt/hdd/shared</span>
    <span class="py">browseable</span> <span class="p">=</span> <span class="s">yes</span>
    <span class="err">read</span> <span class="py">only</span> <span class="p">=</span> <span class="s">no</span>
-   <span class="err">valid</span> <span class="py">users</span> <span class="p">=</span> <span class="s">xt234</span>
+   <span class="err">valid</span> <span class="py">users</span> <span class="p">=</span> <span class="s">username</span>
    <span class="err">create</span> <span class="py">mask</span> <span class="p">=</span> <span class="s">0644</span>
    <span class="err">directory</span> <span class="py">mask</span> <span class="p">=</span> <span class="s">0755</span>
 </code></pre></div></div>
-
-<p>👉 Defines two Samba shares: USB and HDD.</p>
+<p>Defines two Samba shares: USB and HDD.</p>
 
 <hr />
 
-<h2 id="15-restart-samba-and-enable-auto-start">15) Restart Samba and enable auto-start</h2>
+<h2 id="16-restart-samba-and-enable-auto-start">16) Restart Samba and enable auto-start</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl restart smbd nmbd
 systemctl <span class="nb">enable </span>smbd nmbd
 systemctl status smbd <span class="nt">--no-pager</span>
 </code></pre></div></div>
-
-<p>👉 Applies config, enables Samba at boot, and checks service status.</p>
+<p>Applies config, enables Samba at boot, and checks service status.</p>
 
 <hr />
 
-<h2 id="-result">✅ Result</h2>
+<h2 id="result">Result</h2>
 
 <ul>
   <li>Raspberry Pi works as a <strong>NAS</strong></li>
@@ -238,18 +225,6 @@ systemctl status smbd <span class="nt">--no-pager</span>
       <li><strong>macOS/Linux</strong> → <code class="language-plaintext highlighter-rouge">smb://raspi-ip/HDD</code></li>
     </ul>
   </li>
-</ul>
-
-<hr />
-
-<h2 id="-optional-next-steps">🔧 Optional next steps</h2>
-
-<ul>
-  <li>Static IP</li>
-  <li>Webmin management</li>
-  <li>Samba recycle bin</li>
-  <li>User quotas</li>
-  <li>RAID (mdadm)</li>
 </ul>
 
 <hr />]]></content><author><name>Xuan-Toan Dang</name><email>dangxuantoan@soongsil.ac.kr</email></author><category term="cool posts" /><summary type="html"><![CDATA[My friend gave me a device called a Raspberry Pi 1. At first, I didn’t know what to do with it because it is quite outdated for most modern use cases. However, I realized that I could still utilize this device by turning it into a Network Attached Storage (NAS). That is why I decided to explore a suitable way to configure it as a local NAS for my home. In this post, I will share what I did and what I learned from this experience.]]></summary></entry><entry><title type="html">SAC Algorithm</title><link href="http://localhost:4000/posts/2025/20251206/SAC-algorithm/" rel="alternate" type="text/html" title="SAC Algorithm" /><published>2025-12-06T00:00:00+00:00</published><updated>2025-12-06T00:00:00+00:00</updated><id>http://localhost:4000/posts/2025/20251206/SAC-Algorithm-blog-1</id><content type="html" xml:base="http://localhost:4000/posts/2025/20251206/SAC-algorithm/"><![CDATA[<p>The <strong>Soft Actor–Critic (SAC)</strong> algorithm is one of the most influential advancements in modern reinforcement learning (RL), especially in continuous control tasks. Although its origins lie in machine learning, the algorithm is deeply rooted in <em>mathematics</em>—from stochastic calculus to optimization theory and information entropy. This blog will walk you through the mathematical foundations and inner mechanics of SAC in a structured, intuitive way.</p>

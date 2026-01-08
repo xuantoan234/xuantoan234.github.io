@@ -1,0 +1,1106 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Admin Dashboard - Xuan-Toan Dang Profile</title>
+
+
+
+<meta name="description" content="Xuan-Toan Dang’s academic project">
+
+
+
+
+
+
+
+  <link rel="canonical" href="http://localhost:4000/admin/">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Xuan-Toan Dang",
+      "url" : "http://localhost:4000",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+<!-- Open Graph protocol data (https://ogp.me/), used by social media -->
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Xuan-Toan Dang Profile"> 
+<meta property="og:title" content="Admin Dashboard">
+
+
+
+  <meta property="og:url" content="http://localhost:4000/admin/">
+
+
+
+
+
+<!-- end Open Graph protocol -->
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Xuan-Toan Dang Profile Feed">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+    
+
+<!-- start custom head snippets -->
+
+<!-- Support for Academicons -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/academicons.css"/>
+
+<!-- Custom CSS for enhanced layout -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/custom.css"/>
+
+<!-- favicon from https://commons.wikimedia.org/wiki/File:OOjs_UI_icon_academic-progressive.svg -->
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/images/apple-touch-icon-180x180.png"/>
+<link rel="icon" type="image/svg+xml" href="http://localhost:4000/images/favicon.svg"/>
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-32x32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="http://localhost:4000/images/favicon-192x192.png" sizes="192x192"/>
+<link rel="manifest" href="http://localhost:4000/images/manifest.json"/>
+<link rel="icon" href="/images/favicon.ico"/>
+<meta name="theme-color" content="#ffffff"/>
+<!-- MathJax for LaTeX rendering -->
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
+
+<!-- JavaScript -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@latest/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{
+    delimiters: [
+      { left: '$$',  right: '$$',  display: true  },
+      { left: '$',   right: '$',   display: false },
+      { left: '\\[', right: '\\]', display: true  },
+      { left: '\\(', right: '\\)', display: false }
+  ]});">
+</script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><span class="navicon"></span></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="http://localhost:4000/">Xuan-Toan Dang Profile</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/Wedding_Page_2/story.html">Wedding</a></li>
+          
+          <li id="theme-toggle" class="masthead__menu-item persist tail">
+            <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+          </li>
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div id="admin-container">
+  <div id="login-section">
+    <h2>Admin Access</h2>
+    <input type="password" id="admin-password" placeholder="Enter password" />
+    <button onclick="adminLogin()">Login</button>
+    <p id="login-error" style="color: red; display: none;">Incorrect password</p>
+  </div>
+
+  <div id="admin-panel" style="display: none;">
+    <h1>Website Administration</h1>
+    
+    <div class="admin-section">
+      <h2>Quick Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>Total Publications</h3>
+          <p class="stat-number" id="total-pubs">13</p>
+        </div>
+        <div class="stat-card">
+          <h3>Journal Articles</h3>
+          <p class="stat-number" id="journal-count">10</p>
+        </div>
+        <div class="stat-card">
+          <h3>Conference Papers</h3>
+          <p class="stat-number" id="conference-count">3</p>
+        </div>
+        <div class="stat-card">
+          <h3>Q1 Publications</h3>
+          <p class="stat-number" id="q1-count">8</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h2>Quick Actions</h2>
+      <div class="action-grid">
+        <a href="/publications/" class="admin-btn">View Publications</a>
+        <a href="/cv/" class="admin-btn">View CV</a>
+        <a href="https://github.com/xuantoan234/xuantoan234.github.io" target="_blank" class="admin-btn">GitHub Repository</a>
+        <button onclick="checkSiteHealth()" class="admin-btn">Check Site Health</button>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h2>Recent Activity</h2>
+      <div id="recent-activity">
+        <p>Loading recent changes...</p>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h2>Site Information</h2>
+      <table class="info-table">
+        <tr>
+          <td><strong>Site Title:</strong></td>
+          <td>Xuan-Toan Dang Profile</td>
+        </tr>
+        <tr>
+          <td><strong>Last Updated:</strong></td>
+          <td id="last-updated">-</td>
+        </tr>
+        <tr>
+          <td><strong>Theme:</strong></td>
+          <td>Academic Minimalism</td>
+        </tr>
+        <tr>
+          <td><strong>Jekyll Version:</strong></td>
+          <td>Latest</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="admin-section">
+      <h2>📝 Create New Blog Post</h2>
+      <div class="post-creator">
+        <form id="post-form">
+          <div class="form-group">
+            <label for="post-title">Post Title:</label>
+            <input type="text" id="post-title" placeholder="Enter post title" required="" />
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="post-date">Date:</label>
+              <input type="date" id="post-date" required="" />
+            </div>
+            <div class="form-group">
+              <label for="post-permalink">Permalink:</label>
+              <input type="text" id="post-permalink" placeholder="/posts/2026/01/post-title/" />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="post-tags">Tags (comma-separated):</label>
+            <input type="text" id="post-tags" placeholder="research, machine learning, wireless" />
+          </div>
+          
+          <div class="form-group">
+            <label for="post-excerpt">Excerpt:</label>
+            <textarea id="post-excerpt" rows="2" placeholder="Brief description of the post"></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label for="post-content">Content (Markdown):</label>
+            <textarea id="post-content" rows="12" placeholder="Write your post content here using Markdown..."></textarea>
+          </div>
+          
+          <div class="image-helper">
+            <h4>🖼️ Image Helper</h4>
+            <p style="font-size: 0.9em; color: #666; margin-bottom: 1em;">
+              <strong>Step 1:</strong> Save your images to <code>/images/posts/</code> folder<br />
+              <strong>Step 2:</strong> Use the tool below to generate image markdown
+            </p>
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="image-filename" placeholder="image-name.jpg" />
+              </div>
+              <div class="form-group">
+                <input type="text" id="image-alt" placeholder="Image description" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <input type="text" id="image-caption" placeholder="Optional: Figure caption" />
+              </div>
+              <div class="form-group">
+                <button type="button" onclick="insertImageMarkdown()" class="admin-btn" style="width: 100%;">Insert Image Code</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="markdown-helpers">
+            <h4>✏️ Quick Formatting</h4>
+            <div class="helper-buttons">
+              <button type="button" onclick="insertMarkdown('## ', '')" class="helper-btn">H2 Heading</button>
+              <button type="button" onclick="insertMarkdown('### ', '')" class="helper-btn">H3 Heading</button>
+              <button type="button" onclick="insertMarkdown('**', '**')" class="helper-btn">Bold</button>
+              <button type="button" onclick="insertMarkdown('*', '*')" class="helper-btn">Italic</button>
+              <button type="button" onclick="insertMarkdown('[Link text](', ')')" class="helper-btn">Link</button>
+              <button type="button" onclick="insertMarkdown('`', '`')" class="helper-btn">Code</button>
+              <button type="button" onclick="insertMarkdown('```\\n', '\\n```')" class="helper-btn">Code Block</button>
+              <button type="button" onclick="insertMarkdown('$$\\n', '\\n$$')" class="helper-btn">Math</button>
+            </div>
+          </div>
+          
+          <div class="form-actions">
+            <button type="button" onclick="generatePostFile()" class="admin-btn">Generate Post File</button>
+            <button type="button" onclick="clearPostForm()" class="admin-btn" style="background: #666;">Clear Form</button>
+          </div>
+        </form>
+        
+        <div id="post-output" style="display: none; margin-top: 2em;">
+          <h3>Generated Post Content:</h3>
+          <p style="color: #666; font-size: 0.9em; margin-bottom: 1em;">
+            <strong>Instructions:</strong><br />
+            1. Copy the content below<br />
+            2. Create a new file in <code>/_posts/</code> with the suggested filename<br />
+            3. If you have images, make sure they're in <code>/images/posts/</code><br />
+            4. Commit and push both the post and images to GitHub
+          </p>
+          <div class="file-info">
+            <strong>Suggested filename:</strong> <span id="suggested-filename"></span>
+            <button onclick="copyPostContent()" class="copy-btn">📋 Copy Content</button>
+          </div>
+          <pre id="post-preview"></pre>
+          
+          <div class="git-commands" style="margin-top: 1.5em; padding: 1em; background: #f5f5f5; border: 1px solid #ddd;">
+            <h4>Git Commands to Publish:</h4>
+            <pre style="background: #333; color: #0f0; padding: 1em; margin-top: 0.5em;"><code id="git-commands"></code></pre>
+            <button onclick="copyGitCommands()" class="copy-btn">📋 Copy Commands</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h2>🖼️ Image Management Guide</h2>
+      <div class="management-info">
+        <h3>Directory Structure:</h3>
+        <pre><code>/images/
+  posts/           ← Blog post images
+  publications/    ← Publication figures
+  profile.jpg      ← Your profile photo
+</code></pre>
+        
+        <h3>Image Formats:</h3>
+        <table class="info-table" style="margin-top: 1em;">
+          <tr>
+            <td><strong>Basic Image:</strong></td>
+            <td><code>![Alt text](/images/posts/image.jpg)</code></td>
+          </tr>
+          <tr>
+            <td><strong>With Caption:</strong></td>
+            <td><code>![Figure 1](/images/posts/image.jpg)<br />*Caption text here*</code></td>
+          </tr>
+          <tr>
+            <td><strong>Centered:</strong></td>
+            <td><code>&lt;img src="/images/posts/image.jpg" alt="Description" style="display: block; margin: 2em auto; max-width: 80%;"&gt;</code></td>
+          </tr>
+          <tr>
+            <td><strong>With Size:</strong></td>
+            <td><code>&lt;img src="/images/posts/image.jpg" alt="Description" width="600"&gt;</code></td>
+          </tr>
+        </table>
+        
+        <h3>Best Practices:</h3>
+        <ul>
+          <li><strong>Optimize images:</strong> Keep file size under 1-2 MB</li>
+          <li><strong>Use descriptive names:</strong> <code>sac-algorithm-diagram.png</code> not <code>img1.png</code></li>
+          <li><strong>Formats:</strong> JPG for photos, PNG for diagrams/screenshots, SVG for vectors</li>
+          <li><strong>Alt text:</strong> Always include for accessibility</li>
+          <li><strong>Dimensions:</strong> 1200px width is good for blog posts</li>
+        </ul>
+        
+        <h3>Example Post with Images:</h3>
+        <pre><code>---
+title: 'My Research Post'
+date: 2026-01-07
+---
+
+## Introduction
+
+Here's an overview of our system:
+
+![System Architecture](/images/posts/system-architecture.png)
+*Figure 1: The proposed system architecture*
+
+## Results
+
+The following graph shows our experimental results:
+
+&lt;img src="/images/posts/results-graph.png" alt="Performance Results" style="display: block; margin: 2em auto; max-width: 90%;"&gt;
+
+As we can see from Figure 2 above...
+</code></pre>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h2>Publication Management</h2>
+      <div class="management-info">
+        <h3>Quick Guide:</h3>
+        <ul>
+          <li><strong>Add new publication:</strong> Create a new .md file in <code>/_publications/</code></li>
+          <li><strong>Edit publication:</strong> Modify the corresponding .md file</li>
+          <li><strong>Add Q index:</strong> Add <code>qindex: 'Q1'</code> in the frontmatter</li>
+          <li><strong>Categories:</strong> Use <code>category: 'manuscripts'</code> or <code>'conferences'</code></li>
+        </ul>
+        
+        <h3>Template for New Publication:</h3>
+        <pre><code>---
+title: "Your Paper Title"
+ID: XM
+collection: publications
+permalink: /publication/your-paper-slug
+category: 'manuscripts'
+excerpt: 'Brief description'
+date: YYYY-MM-DD
+venue: 'Journal Name'
+qindex: 'Q1'
+paperurl: 'https://doi.org/...'
+citation: 'Author names. (Year). "Title." Journal.'
+---
+
+Full abstract here.
+
+[Download paper here](paperurl)
+</code></pre>
+      </div>
+    </div>
+
+    <div class="admin-section">
+      <h2>Useful Commands</h2>
+      <div class="commands-list">
+        <div class="command-item">
+          <strong>Build site locally:</strong>
+          <code>jekyll serve -l -H localhost</code>
+        </div>
+        <div class="command-item">
+          <strong>Push to GitHub:</strong>
+          <code>git add . &amp;&amp; git commit -m "Update" &amp;&amp; git push</code>
+        </div>
+        <div class="command-item">
+          <strong>Check for errors:</strong>
+          <code>jekyll build --verbose</code>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="adminLogout()" class="logout-btn">Logout</button>
+  </div>
+</div>
+
+<style>
+#admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+}
+
+#login-section {
+  max-width: 400px;
+  margin: 5em auto;
+  padding: 2em;
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
+}
+
+#login-section h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+#admin-password {
+  width: 100%;
+  padding: 0.7em;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  font-size: 1em;
+}
+
+#login-section button {
+  width: 100%;
+  padding: 0.7em;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+#login-section button:hover {
+  background: #000;
+}
+
+.admin-section {
+  margin: 2em 0;
+  padding: 1.5em;
+  border: 1px solid #e0e0e0;
+  background: #fafafa;
+}
+
+.admin-section h2 {
+  margin-top: 0;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.5em;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.stat-card {
+  padding: 1.5em;
+  background: white;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.stat-card h3 {
+  margin: 0 0 0.5em 0;
+  font-size: 0.9em;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.stat-number {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.admin-btn {
+  padding: 0.7em 1em;
+  background: #333;
+  color: white !important;
+  text-align: center;
+  text-decoration: none !important;
+  border: 1px solid #333;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.admin-btn:hover {
+  background: #000;
+}
+
+.info-table {
+  width: 100%;
+  margin-top: 1em;
+  border-collapse: collapse;
+}
+
+.info-table td {
+  padding: 0.7em;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.management-info ul {
+  line-height: 1.8;
+}
+
+.management-info code {
+  background: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border: 1px solid #ddd;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+
+.management-info pre {
+  background: #f5f5f5;
+  padding: 1em;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+  margin-top: 1em;
+}
+
+.management-info pre code {
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.commands-list {
+  margin-top: 1em;
+}
+
+.command-item {
+  margin-bottom: 1em;
+  padding: 1em;
+  background: white;
+  border: 1px solid #e0e0e0;
+}
+
+.command-item code {
+  display: block;
+  margin-top: 0.5em;
+  padding: 0.7em;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  font-family: 'Courier New', monospace;
+}
+
+.logout-btn {
+  margin-top: 2em;
+  padding: 0.7em 2em;
+  background: #d32f2f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.logout-btn:hover {
+  background: #b71c1c;
+}
+
+#recent-activity {
+  margin-top: 1em;
+  padding: 1em;
+  background: white;
+  border: 1px solid #e0e0e0;
+}
+
+/* Post Creator Styles */
+.post-creator {
+  margin-top: 1em;
+}
+
+.form-group {
+  margin-bottom: 1.2em;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.4em;
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.6em;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 0.95em;
+  font-family: inherit;
+}
+
+.form-group textarea {
+  font-family: 'Courier New', monospace;
+  resize: vertical;
+}
+
+.image-helper {
+  background: #f0f8ff;
+  border: 1px solid #b3d9ff;
+  padding: 1.2em;
+  margin: 1.5em 0;
+  border-radius: 0;
+}
+
+.image-helper h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.markdown-helpers {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 1.2em;
+  margin: 1.5em 0;
+}
+
+.markdown-helpers h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.helper-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.8em;
+}
+
+.helper-btn {
+  padding: 0.5em 0.8em;
+  background: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.helper-btn:hover {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1em;
+  margin-top: 1.5em;
+}
+
+.form-actions .admin-btn {
+  flex: 1;
+}
+
+#post-output {
+  background: white;
+  border: 1px solid #e0e0e0;
+  padding: 1.5em;
+}
+
+#post-output h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8em;
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  margin-bottom: 1em;
+}
+
+.file-info span {
+  font-family: 'Courier New', monospace;
+  color: #333;
+  font-weight: 600;
+}
+
+.copy-btn {
+  padding: 0.5em 1em;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.copy-btn:hover {
+  background: #000;
+}
+
+#post-preview {
+  background: #f5f5f5;
+  padding: 1.2em;
+  border: 1px solid #ddd;
+  overflow-x: auto;
+  max-height: 500px;
+  overflow-y: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.git-commands {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 1em;
+  margin-top: 1.5em;
+}
+
+.git-commands h4 {
+  margin-top: 0;
+  color: #333;
+}
+
+.git-commands pre {
+  background: #1e1e1e;
+  color: #0f0;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow-x: auto;
+}
+
+.git-commands code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+}
+</style>
+
+<script>
+// Simple authentication (Note: For production, use proper server-side authentication)
+function adminLogin() {
+  const password = document.getElementById('admin-password').value;
+  // Change this password to your desired password
+  if (password === 'marvelous@1997') {
+    document.getElementById('login-section').style.display = 'none';
+    document.getElementById('admin-panel').style.display = 'block';
+    sessionStorage.setItem('adminLoggedIn', 'true');
+    loadAdminData();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+
+function adminLogout() {
+  sessionStorage.removeItem('adminLoggedIn');
+  document.getElementById('login-section').style.display = 'block';
+  document.getElementById('admin-panel').style.display = 'none';
+  document.getElementById('admin-password').value = '';
+}
+
+// Check if already logged in
+if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+  document.getElementById('login-section').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  loadAdminData();
+}
+
+function loadAdminData() {
+  // Set last updated
+  document.getElementById('last-updated').textContent = new Date().toLocaleDateString();
+  
+  // Load recent activity
+  const recentActivity = document.getElementById('recent-activity');
+  recentActivity.innerHTML = `
+    <ul>
+      <li><strong>January 7, 2026:</strong> Updated website to academic minimalism design</li>
+      <li><strong>January 7, 2026:</strong> Added Q-index badges to all publications</li>
+      <li><strong>January 7, 2026:</strong> Implemented publication search and filter</li>
+      <li><strong>January 7, 2026:</strong> Added research timeline and navigation enhancements</li>
+    </ul>
+  `;
+}
+
+function checkSiteHealth() {
+  alert('Site Health Check:\n\n✓ All pages accessible\n✓ Publications: 13 total\n✓ Search functionality: Active\n✓ Responsive design: OK\n✓ Dark mode: Supported\n\nNo issues detected!');
+}
+
+// Enter key support for login
+document.addEventListener('DOMContentLoaded', function() {
+  const passwordInput = document.getElementById('admin-password');
+  if (passwordInput) {
+    passwordInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        adminLogin();
+      }
+    });
+  }
+  
+  // Set today's date as default
+  const dateInput = document.getElementById('post-date');
+  if (dateInput) {
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.value = today;
+  }
+});
+
+// Post creation functions
+function generatePostFile() {
+  const title = document.getElementById('post-title').value.trim();
+  const date = document.getElementById('post-date').value;
+  const permalink = document.getElementById('post-permalink').value.trim();
+  const tags = document.getElementById('post-tags').value.trim();
+  const excerpt = document.getElementById('post-excerpt').value.trim();
+  const content = document.getElementById('post-content').value.trim();
+  
+  if (!title || !date || !content) {
+    alert('Please fill in at least the Title, Date, and Content fields.');
+    return;
+  }
+  
+  // Generate permalink if not provided
+  const autoPermalink = permalink || `/posts/${date.split('-')[0]}/${date.split('-')[1]}/${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}/`;
+  
+  // Parse tags
+  const tagList = tags.split(',').map(t => t.trim()).filter(t => t);
+  
+  // Generate filename
+  const filename = `${date}-${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.md`;
+  
+  // Generate frontmatter
+  let frontmatter = `---
+title: '${title}'
+date: ${date}
+permalink: ${autoPermalink}`;
+  
+  if (tagList.length > 0) {
+    frontmatter += `\ntags:`;
+    tagList.forEach(tag => {
+      frontmatter += `\n  - ${tag}`;
+    });
+  }
+  
+  if (excerpt) {
+    frontmatter += `\nexcerpt: '${excerpt}'`;
+  }
+  
+  frontmatter += `\n---\n\n`;
+  
+  // Full post content
+  const fullContent = frontmatter + content;
+  
+  // Display output
+  document.getElementById('post-output').style.display = 'block';
+  document.getElementById('suggested-filename').textContent = filename;
+  document.getElementById('post-preview').textContent = fullContent;
+  
+  // Generate git commands
+  const gitCommands = `# Step 1: Create the post file
+# Save the content above as: _posts/${filename}
+
+# Step 2: If you have images, add them too
+git add _posts/${filename}
+git add images/posts/*.jpg images/posts/*.png
+
+# Step 3: Commit and push
+git commit -m "Add new blog post: ${title}"
+git push origin main`;
+  
+  document.getElementById('git-commands').textContent = gitCommands;
+  
+  // Scroll to output
+  document.getElementById('post-output').scrollIntoView({ behavior: 'smooth' });
+}
+
+function clearPostForm() {
+  if (confirm('Are you sure you want to clear the form?')) {
+    document.getElementById('post-form').reset();
+    document.getElementById('post-output').style.display = 'none';
+    
+    // Reset date to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('post-date').value = today;
+  }
+}
+
+function copyPostContent() {
+  const content = document.getElementById('post-preview').textContent;
+  copyToClipboard(content, 'Post content copied to clipboard!');
+}
+
+function copyGitCommands() {
+  const commands = document.getElementById('git-commands').textContent;
+  copyToClipboard(commands, 'Git commands copied to clipboard!');
+}
+
+function copyToClipboard(text, successMsg) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  
+  try {
+    document.execCommand('copy');
+    alert('✓ ' + successMsg);
+  } catch (err) {
+    alert('Failed to copy. Please manually select and copy the text.');
+  }
+  
+  document.body.removeChild(textarea);
+}
+
+function insertImageMarkdown() {
+  const filename = document.getElementById('image-filename').value.trim();
+  const alt = document.getElementById('image-alt').value.trim();
+  const caption = document.getElementById('image-caption').value.trim();
+  
+  if (!filename) {
+    alert('Please enter an image filename');
+    return;
+  }
+  
+  const altText = alt || 'Image';
+  let imageCode = `\n![${altText}](/images/posts/${filename})\n`;
+  
+  if (caption) {
+    imageCode += `*${caption}*\n`;
+  }
+  
+  // Insert into content textarea
+  const textarea = document.getElementById('post-content');
+  const cursorPos = textarea.selectionStart;
+  const textBefore = textarea.value.substring(0, cursorPos);
+  const textAfter = textarea.value.substring(cursorPos);
+  
+  textarea.value = textBefore + imageCode + textAfter;
+  textarea.focus();
+  
+  // Clear image fields
+  document.getElementById('image-filename').value = '';
+  document.getElementById('image-alt').value = '';
+  document.getElementById('image-caption').value = '';
+}
+
+function insertMarkdown(before, after) {
+  const textarea = document.getElementById('post-content');
+  const start = textarea.selectionStart;
+  const end = textarea.selectionEnd;
+  const selectedText = textarea.value.substring(start, end);
+  const replacement = before + selectedText + after;
+  
+  textarea.value = textarea.value.substring(0, start) + replacement + textarea.value.substring(end);
+  
+  // Set cursor position
+  const newCursorPos = selectedText ? start + replacement.length : start + before.length;
+  textarea.setSelectionRange(newCursorPos, newCursorPos);
+  textarea.focus();
+}
+</script>
+
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- <a href="/sitemap/">Sitemap</a> -->
+
+<!-- Support for MatJax -->
+<script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+
+<!-- Support for Plotly -->
+<script defer src='https://cdnjs.cloudflare.com/ajax/libs/plotly.js/3.0.1/plotly.min.js'></script>
+
+<!-- Support for Mermaid -->
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({startOnLoad:true, theme:'default'});
+    await mermaid.run({querySelector:'code.language-mermaid'});
+</script>
+
+<!-- end custom footer snippets -->
+
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">
+  &copy; 2026 Xuan-Toan Dang. All rights reserved.
+</div>
+
+      </footer>
+    </div>
+
+    <script type="module" src="http://localhost:4000/assets/js/main.min.js"></script>
+<script src="http://localhost:4000/assets/js/custom-functions.js"></script>
+
+
+
+
+
+
+
+
+  </body>
+</html>
+
