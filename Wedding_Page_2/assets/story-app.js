@@ -3,6 +3,40 @@
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
+// ========== Get Guest Name from URL ==========
+function getGuestNameFromURL() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const guestName = urlParams.get('guest');
+  return guestName ? decodeURIComponent(guestName) : 'Quý Khách';
+}
+
+// Set guest name on page load
+const guestNameElement = $('.guest-name');
+if (guestNameElement) {
+  guestNameElement.textContent = getGuestNameFromURL();
+}
+
+// ========== Wedding Doors ==========
+const weddingDoors = $('#weddingDoors');
+let doorsOpened = false;
+
+function openWeddingDoors() {
+  if (doorsOpened) return;
+  
+  doorsOpened = true;
+  weddingDoors.classList.add('opened');
+  
+  // Start animations after doors open (2.5s for door animation)
+  setTimeout(() => {
+    animateComments(0);
+  }, 2500);
+}
+
+// Add click listener to doors
+if (weddingDoors) {
+  weddingDoors.addEventListener('click', openWeddingDoors);
+}
+
 // ========== Story Navigation ==========
 let currentStoryIndex = 0;
 const stories = $$('.story');

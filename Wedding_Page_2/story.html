@@ -27,7 +27,7 @@
     </svg>
   </button>
   <audio id="bgm" preload="none" loop>
-    <source src="./assets/bgm.mp3" type="audio/mpeg" />
+    <source src="./assets/img/Wedding_music.mp3" type="audio/mpeg" />
   </audio>
 
   <!-- Stories Container -->
@@ -35,8 +35,40 @@
     
     <!-- Story 1: Welcome -->
     <section class="story story--1 active" data-story="1">
-      <div class="story__bg" style="background-image:url('./assets/img/story1.jpg')"></div>
+      <div class="story__bg" style="background-image:url('./assets/img/JUL04710.jpg')"></div>
       <div class="story__overlay"></div>
+      
+      <!-- Wedding Invitation Doors -->
+      <div class="wedding-doors" id="weddingDoors">
+        <div class="door door--left">
+          <div class="door-content">
+            <div class="door-ornament">✿</div>
+            <div class="door-text">
+              <p class="door-greeting">Trân trọng kính mời</p>
+              <p class="guest-name">Quý Khách</p>
+            </div>
+            <div class="door-ornament">✿</div>
+          </div>
+        </div>
+        
+        <div class="door door--right">
+          <div class="door-content">
+            <div class="door-ornament">✿</div>
+            <div class="door-text">
+              <p class="door-date">22.02.2026</p>
+              <p class="door-subtitle">Đám cưới</p>
+            </div>
+            <div class="door-ornament">✿</div>
+          </div>
+        </div>
+        
+        <div class="door-handle door-handle--left"></div>
+        <div class="door-handle door-handle--right"></div>
+        
+        <div class="door-instruction">
+          <p>👆 Nhấn để mở thư mời</p>
+        </div>
+      </div>
       
       <!-- Cherry Blossom Petals -->
       <div class="sakura-container">
@@ -62,17 +94,13 @@
         <div class="sakura-petal"></div>
       </div>
       
-      <div class="story__content">
-        <div class="story__text story__text--top">
-          <p class="poem">I love three things in this world.<br>Sun, moon and you.</p>
-          <p class="poem">Sun for morning moon for night,<br>and you forever.</p>
-        </div>
+      <div class="story__content" id="storyContent1">
         
         <h1 class="story__title">Welcome to our wedding</h1>
         
-        <div class="story__names">
-          <div class="handwriting">Thu Hoài ❤️ Xuân Toàn</div>
-          <div class="handwriting" style="font-size: 32px; margin-top: 10px;">22.02.2026</div>
+        <div class="story__names" style="margin-top: 0;">
+          <div class="handwriting">Xuân Toàn ❤️ Thu Hoài</div>
+          <div class="handwriting" style="font-size: 32px; margin-top: -10px;">22.02.2026</div>
         </div>
       </div>
       
@@ -129,17 +157,11 @@
 
     <!-- Story 2: Our Love Story -->
     <section class="story story--2" data-story="2">
-      <div class="story__bg" style="background-image:url('./assets/img/story2.jpg')"></div>
+      <div class="story__bg" style="background-image:url('./assets/img/JUL04714.jpg')"></div>
       <div class="story__overlay story__overlay--light"></div>
       <div class="story__content">
-        <div class="story__header">
-          <h2 class="story__heading">OUR LOVE STORY</h2>
-          <p class="story__subheading">Fall in love</p>
-        </div>
-        
         <div class="story__photo">
-          <img src="./assets/img/couple1.jpg" alt="Couple photo" />
-          <div class="handwriting handwriting--red">Sweet</div>
+          <img src="./assets/img/JUL04888.jpg" alt="Couple photo" />
         </div>
         
         <div class="wedding-invitation">
@@ -155,18 +177,11 @@
         </div>
         
         <div class="story__poem">
-          <p><strong>Cô Dâu:</strong> Nguyễn Thị Thu Hoài</p>
-          <p style="font-size: 14px; margin-left: 15px;">Con gái ông bà Nguyễn Văn Hải & Bùi Thị Huế</p>
-          <p style="margin-top: 15px;"><strong>Chú Rể:</strong> Đặng Xuân Toàn</p>
-          <p style="font-size: 14px; margin-left: 15px;">Con trai ông bà Đặng Văn Tuấn & Trần Thị Hồng</p>
-          <p style="margin-top: 20px;">Trước đây cứ nghĩ đám cưới chỉ là một thông báo chính thức.</p>
-          <p>Giờ mới hiểu đó là một dịp hiếm hoi để mọi người tụ họp.</p>
-          <p>Là những chuyến đi xa chỉ để có mặt bên nhau.</p>
-          <p>Là những bờ vai để điểm tựa nhau như người thương yêu.</p>
-          <p>Cảm ơn gia đình, bạn bè đã luôn đồng hành.</p>
-          <p>Lâu rồi không gặp, thật sự rất nhớ mọi người!</p>
-          <p class="story__date">22.02.2026</p>
-          <p class="story__final">Chúng mình hẹn gặp nhau trong ngày cưới nhé!</p>
+          
+          <p style="margin-top: 20px; font-size: 20px;"><strong>Chú Rể:</strong> Đặng Xuân Toàn</p>
+          <p style="font-size: 18px; margin-left: 15px;">Con trai ông bà Đặng Văn Tuấn & Trần Thị Hồng</p>
+          <p style="margin-top: 20px; font-size: 20px;"><strong>Cô Dâu:</strong> Nguyễn Thị Thu Hoài</p>
+          <p style="font-size: 18px; margin-left: 15px;">Con gái ông bà Nguyễn Văn Hải & Bùi Thị Huế</p>
         </div>
       </div>
       
@@ -193,25 +208,15 @@
 
     <!-- Story 3: More Photos -->
     <section class="story story--3" data-story="3">
-      <div class="story__bg" style="background-image:url('./assets/img/story3.jpg')"></div>
+      <div class="story__bg" style="background-image:url('./assets/img/JUL05039.jpg')"></div>
       <div class="story__overlay story__overlay--light"></div>
       <div class="story__content">
-        <div class="story__header-side">
-          <h2 class="story__heading-vertical">OUR<br>LOVE STORY</h2>
-          <p class="story__date-side">05.20</p>
-        </div>
-        
         <div class="story__photo-main">
-          <img src="./assets/img/couple2.jpg" alt="Walking together" />
+          <img src="./assets/img/JUL05215.jpg" alt="Walking together" />
         </div>
         
         <div class="story__photo-small">
-          <img src="./assets/img/couple3.jpg" alt="Close up" />
-        </div>
-        
-        <div class="story__text-overlay">
-          <p class="handwriting handwriting--large handwriting--red">FALL<br>IN LOVE</p>
-          <div class="double-happiness">囍</div>
+          <img src="./assets/img/JUL05439.jpg" alt="Close up" />
         </div>
       </div>
       
@@ -238,22 +243,109 @@
 
     <!-- Story 4: Intimate Photo -->
     <section class="story story--4" data-story="4">
-      <div class="story__bg" style="background-image:url('./assets/img/story4.jpg')"></div>
-      <div class="story__overlay"></div>
+      <div class="story__bg" style="background-image:url('./assets/img/JUL05519.jpg')"></div>
+      <div class="story__overlay" style="background: rgba(255, 255, 255, 0.92);"></div>
       <div class="story__content">
-        <div class="story__header-simple">
-          <h2>YOU ARE MY DEAREST LOVE</h2>
+        
+        <div class="love-letter" style="max-width: 85%; margin: 0 auto; padding: 40px 30px; background: rgba(255, 255, 255, 0.95); border-radius: 2px; box-shadow: 0 2px 20px rgba(0,0,0,0.1);">
+          
+          <div style="text-align: center; margin-bottom: 35px; padding-bottom: 20px; border-bottom: 1px solid #ddd;">
+            <h2 style="font-family: 'Cormorant', serif; font-size: 24px; font-weight: 400; letter-spacing: 1px; color: #333; margin: 0;">
+              Câu Chuyện Của Chúng Mình
+            </h2>
+          </div>
+          
+          <div style="font-family: 'Montserrat', sans-serif; font-size: 15px; line-height: 2; color: #555; text-align: left;">
+            <p style="margin-bottom: 20px; text-indent: 30px;">
+              Chúng mình đã gặp nhau tại Hàn Quốc, nơi mà cả hai đều không ngờ rằng số phận sẽ sắp đặt một cuộc gặp gỡ như vậy.
+            </p>
+            
+            <p style="margin-bottom: 20px; text-indent: 30px;">
+              Hai người, hai mảnh ghép còn thiếu của cuộc đời nhau, đã tìm thấy nhau giữa một thành phố xa lạ.
+            </p>
+            
+            <p style="margin-bottom: 20px; text-indent: 30px;">
+              Đó không chỉ là sự trùng hợp ngẫu nhiên, mà là một phép màu mà cuộc sống dành cho chúng mình.
+            </p>
+            
+            <p style="margin-bottom: 30px; text-indent: 30px;">
+              Và từ đó, câu chuyện tình yêu của chúng mình bắt đầu...
+            </p>
+            
+            <div style="text-align: right; margin-top: 35px; padding-top: 20px; border-top: 1px solid #eee;">
+              <p style="font-family: 'Cormorant', serif; font-size: 16px; color: #666; margin: 0;">
+                Toàn & Hoài
+              </p>
+              <p style="font-size: 13px; color: #999; margin-top: 5px;">
+                22.02.2026
+              </p>
+            </div>
+          </div>
+          
         </div>
         
-        <div class="story__photo-full">
-          <img src="./assets/img/hug.jpg" alt="Embrace" />
-          <div class="handwriting handwriting--red handwriting--bottom">
-            Love and freedom<br>
-            <span class="handwriting--medium">you And gentleness</span>
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <a href="https://www.facebook.com/profile.php?id=61585602135049" target="_blank" rel="noopener" class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </a>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story 4.5: Wedding Album -->
+    <section class="story story--4-5" data-story="4.5">
+      <div class="story__bg" style="background-image:url('./assets/img/JUL07159.jpg')"></div>
+      <div class="story__overlay story__overlay--light"></div>
+      <div class="story__content">
+        
+        <div style="text-align: center; margin-bottom: 25px;">
+          <h2 style="font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; letter-spacing: 2px; color: #333; text-shadow: 0 2px 8px rgba(255,255,255,0.8);">
+            Wedding Album
+          </h2>
+          <p style="font-family: 'Montserrat', sans-serif; font-size: 14px; color: #666; margin-top: 10px;">
+            Những khoảnh khắc đáng nhớ
+          </p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; max-width: 90%; margin: 0 auto;">
+          <div style="grid-column: 1 / -1; height: 280px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            <img src="./assets/img/JUL07251.jpg" alt="Wedding photo 1" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+          
+          <div style="height: 200px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            <img src="./assets/img/JUL07268.jpg" alt="Wedding photo 2" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+          
+          <div style="height: 200px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            <img src="./assets/img/JUL07285.jpg" alt="Wedding photo 3" style="width: 100%; height: 100%; object-fit: cover;" />
+          </div>
+          
+          <div style="grid-column: 1 / -1; height: 280px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+            <img src="./assets/img/JUL07945.jpg" alt="Wedding photo 4" style="width: 100%; height: 100%; object-fit: cover;" />
           </div>
         </div>
         
-        <div class="made-with-love">Made with Toan&Hoai</div>
+        <div style="text-align: center; margin-top: 25px;">
+          <p style="font-family: 'Great Vibes', cursive; font-size: 24px; color: #c9a96e;">
+            Forever & Always
+          </p>
+        </div>
+        
       </div>
       
       <div class="story__bottom">
@@ -279,7 +371,7 @@
 
     <!-- Story 5: Calendar & Countdown -->
     <section class="story story--5" data-story="5">
-      <div class="story__bg" style="background-image:url('./assets/img/story5.jpg')"></div>
+      <div class="story__bg" style="background-image:url('./assets/img/JUL06197.jpg')"></div>
       <div class="story__overlay"></div>
       <div class="story__content">
           <div class="calendar-container">
@@ -323,7 +415,7 @@
         
         <div class="event-info">
           <p class="event-date">Thứ Bảy, 22.02.2026</p>
-          <p class="event-time">14:00 PM - Nhà Gái | 17:00 PM - Nhà Trai</p>
+          <p class="event-time">13:00 PM - Nhà Gái | 15:00 PM - Nhà Trai</p>
         </div>
         
         <div class="countdown">
@@ -354,7 +446,7 @@
               <span class="location-icon">💝</span>
               <h4 class="location-name">Nhà Gái</h4>
             </div>
-            <p class="location-time">⏰ 14:00 - 22/02/2026</p>
+            <p class="location-time">⏰ 13:00 - 22/02/2026</p>
             <p class="location-address">
               Thôn Nhất Giáp, Xã Liên Minh<br>
               Phường Nam Định, Tỉnh Ninh Bình
@@ -382,7 +474,7 @@
               <span class="location-icon">💙</span>
               <h4 class="location-name">Nhà Trai</h4>
             </div>
-            <p class="location-time">⏰ 17:00 - 22/02/2026</p>
+            <p class="location-time">⏰ 15:00 - 22/02/2026</p>
             <p class="location-address">
               Số nhà 17A, Đường La Văn Cầu, Xã Cổ Lễ<br>
               Phường Nam Định, Tỉnh Ninh Bình
@@ -429,12 +521,12 @@
 
     <!-- Story 6: More Photos -->
     <section class="story story--6" data-story="6">
-      <div class="story__bg" style="background-image:url('./assets/img/story6.jpg')"></div>
+      <div class="story__bg" style="background-image:url('./assets/img/JUL06273.jpg')"></div>
       <div class="story__overlay story__overlay--light"></div>
       <div class="story__content">
         <div class="photo-layout">
-          <img src="./assets/img/couple4.jpg" alt="Couple photo" class="photo-layout__main" />
-          <img src="./assets/img/couple5.jpg" alt="Couple photo" class="photo-layout__secondary" />
+          <img src="./assets/img/JUL06358.jpg" alt="Couple photo" class="photo-layout__main" />
+          <img src="./assets/img/JUL06428.jpg" alt="Couple photo" class="photo-layout__secondary" />
         </div>
         
         <div class="text-overlay">
@@ -470,7 +562,7 @@
 
     <!-- Story 7: RSVP -->
     <section class="story story--7" data-story="7">
-      <div class="story__bg" style="background-image:url('./assets/img/story7.jpg')"></div>
+      <div class="story__bg" style="background-image:url('./assets/img/JUL07130.jpg')"></div>
       <div class="story__overlay story__overlay--strong"></div>
       <div class="story__content">
         <div class="rsvp-container">
@@ -545,6 +637,7 @@
     <div class="progress-bar" data-index="4"><div class="progress-bar__fill"></div></div>
     <div class="progress-bar" data-index="5"><div class="progress-bar__fill"></div></div>
     <div class="progress-bar" data-index="6"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="7"><div class="progress-bar__fill"></div></div>
   </div>
 
   <!-- Close Button -->

@@ -119,6 +119,174 @@ body {
 }
 
 /* ========== Story 1: Welcome ========== */
+
+/* Wedding Doors */
+.wedding-doors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1500px;
+  transition: opacity 1s ease 2s;
+}
+
+.wedding-doors.opened {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.door {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  transition: transform 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  border: 2px solid #c9a96e;
+}
+
+.door--left {
+  left: 0;
+  transform-origin: left center;
+  border-right: 1px solid #c9a96e;
+}
+
+.door--right {
+  right: 0;
+  transform-origin: right center;
+  border-left: 1px solid #c9a96e;
+}
+
+.wedding-doors.opened .door--left {
+  transform: rotateY(-120deg);
+}
+
+.wedding-doors.opened .door--right {
+  transform: rotateY(120deg);
+}
+
+.door-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(201, 169, 110, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(201, 169, 110, 0.08) 0%, transparent 50%);
+}
+
+.door-ornament {
+  font-size: 40px;
+  color: #c9a96e;
+  margin: 20px 0;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.door-text {
+  text-align: center;
+  color: #333;
+}
+
+.door-greeting {
+  font-family: 'Cormorant', serif;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.guest-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #c9a96e;
+  margin: 10px 0;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.door-date {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #c9a96e;
+  margin-bottom: 10px;
+}
+
+.door-subtitle {
+  font-family: 'Cormorant', serif;
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: #666;
+}
+
+.door-handle {
+  position: absolute;
+  width: 12px;
+  height: 60px;
+  background: linear-gradient(to bottom, #d4af37, #c9a96e);
+  border-radius: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 11;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: all 2.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.door-handle--left {
+  left: calc(50% - 40px);
+}
+
+.door-handle--right {
+  right: calc(50% - 40px);
+}
+
+.wedding-doors.opened .door-handle {
+  opacity: 0;
+}
+
+.door-instruction {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 12;
+  text-align: center;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.door-instruction p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #c9a96e;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  font-weight: 500;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: translateX(-50%) translateY(0); }
+  50% { opacity: 1; transform: translateX(-50%) translateY(-5px); }
+}
+
+.wedding-doors.opened .door-instruction {
+  opacity: 0;
+}
+
 .story--1 .story__text--top {
   position: absolute;
   top: 80px;
@@ -140,10 +308,10 @@ body {
 
 .story__title {
   font-family: 'Playfair Display', serif;
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 400;
   letter-spacing: 2px;
-  margin: 50px 0 30px;
+  margin: -80px 0 0;
   text-transform: capitalize;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
   position: relative;
@@ -227,7 +395,7 @@ body {
 
 .handwriting {
   font-family: 'Great Vibes', cursive;
-  font-size: 48px;
+  font-size: 40px;
   color: var(--white);
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.5),
                0 0 30px rgba(212, 175, 55, 0.3);
@@ -1094,6 +1262,7 @@ body {
   width: 90%;
   max-width: 450px;
   margin: 0 auto;
+  background: transparent;
 }
 
 .rsvp__title {
@@ -1106,10 +1275,10 @@ body {
 }
 
 .rsvp-form {
-  background: rgba(255, 255, 255, 0.95);
+  background: transparent;
   border-radius: 16px;
   padding: 35px 30px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
 }
 
 .form-group {
@@ -1120,28 +1289,30 @@ body {
   display: block;
   font-size: 15px;
   font-weight: 500;
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .form-group input[type="text"] {
   width: 100%;
   padding: 12px 15px;
-  border: 1px solid #ddd;
+  border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   font-size: 15px;
-  background: #fff;
-  color: var(--black);
-  transition: border-color 0.3s;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+  transition: border-color 0.3s, background 0.3s;
 }
 
 .form-group input[type="text"]:focus {
   outline: none;
-  border-color: var(--gold);
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .form-group input[type="text"]::placeholder {
-  color: #999;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .radio-group {
@@ -1157,10 +1328,11 @@ body {
   padding: 10px;
   border-radius: 8px;
   transition: background 0.2s;
+  color: var(--white);
 }
 
 .radio-label:hover {
-  background: rgba(0, 0, 0, 0.03);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .radio-label input[type="radio"] {
@@ -1172,34 +1344,34 @@ body {
 .radio-custom {
   width: 20px;
   height: 20px;
-  border: 2px solid #ddd;
+  border: 2px solid rgba(255, 255, 255, 0.6);
   border-radius: 50%;
   margin-right: 12px;
   position: relative;
   flex-shrink: 0;
   transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .radio-label input[type="radio"]:checked ~ .radio-custom {
-  border-color: #2196F3;
-  background: #2196F3;
+  border-color: var(--gold);
+  background: var(--gold);
 }
 
 .radio-label input[type="radio"]:checked ~ .radio-custom::after {
-  content: '';
+  content: '✓';
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 8px;
-  height: 8px;
-  background: white;
-  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .radio-text {
   font-size: 15px;
-  color: var(--black);
+  color: var(--white);
   line-height: 1.4;
 }
 
@@ -1556,6 +1728,49 @@ body {
   
   .handwriting--large {
     font-size: 52px;
+  }
+  
+  /* Wedding Doors Responsive */
+  .door-content {
+    padding: 30px 20px;
+  }
+  
+  .door-ornament {
+    font-size: 32px;
+    margin: 15px 0;
+  }
+  
+  .door-greeting {
+    font-size: 20px;
+  }
+  
+  .guest-name {
+    font-size: 28px;
+  }
+  
+  .door-date {
+    font-size: 26px;
+  }
+  
+  .door-subtitle {
+    font-size: 20px;
+  }
+  
+  .door-handle {
+    width: 10px;
+    height: 50px;
+  }
+  
+  .door-handle--left {
+    left: calc(50% - 30px);
+  }
+  
+  .door-handle--right {
+    right: calc(50% - 30px);
+  }
+  
+  .door-instruction p {
+    font-size: 14px;
   }
   
   .countdown__item {
