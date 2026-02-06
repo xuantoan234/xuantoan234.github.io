@@ -736,6 +736,23 @@ body {
               0 0 30px rgba(255, 215, 0, 0.1);
 }
 
+.calendar__header {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(201, 169, 110, 0.4);
+}
+
+.calendar__month {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #c9a96e;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
 .calendar__grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -759,10 +776,27 @@ body {
   transform: scale(1.05);
 }
 
+.calendar__cell--day-name {
+  font-weight: 600;
+  font-size: 16px;
+  color: #c9a96e;
+  background: rgba(201, 169, 110, 0.2);
+  border-bottom: 2px solid rgba(201, 169, 110, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 .calendar__cell--header {
   font-weight: 500;
   font-size: 18px;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.calendar__cell--today {
+  background: rgba(100, 181, 246, 0.4);
+  border: 2px solid #64b5f6;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(100, 181, 246, 0.6);
 }
 
 .calendar__cell--wedding {
@@ -1800,6 +1834,15 @@ body {
   
   .calendar {
     padding: 18px;
+  }
+  
+  .calendar__month {
+    font-size: 22px;
+  }
+  
+  .calendar__header {
+    margin-bottom: 15px;
+    padding-bottom: 12px;
   }
   
   .calendar__cell {

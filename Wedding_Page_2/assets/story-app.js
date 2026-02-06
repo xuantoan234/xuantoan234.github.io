@@ -255,6 +255,28 @@ goToStory(0);
 // ========== Countdown Timer ==========
 const WEDDING_DATE = new Date('2026-02-22T14:00:00').getTime();
 
+// ========== Highlight Today's Date on Calendar ==========
+function highlightTodayOnCalendar() {
+  const today = new Date();
+  const currentDay = today.getDate();
+  const currentMonth = today.getMonth(); // 0-11 (0 = January, 1 = February)
+  const currentYear = today.getFullYear();
+  
+  // Check if we're in February 2026
+  if (currentMonth === 1 && currentYear === 2026) {
+    const calendarCells = $$('.calendar__cell--header');
+    calendarCells.forEach(cell => {
+      const cellDay = parseInt(cell.textContent);
+      if (cellDay === currentDay) {
+        cell.classList.add('calendar__cell--today');
+      }
+    });
+  }
+}
+
+// Call after DOM loads
+highlightTodayOnCalendar();
+
 function updateCountdown() {
   const now = new Date().getTime();
   const distance = WEDDING_DATE - now;
