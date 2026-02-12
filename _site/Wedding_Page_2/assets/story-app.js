@@ -561,4 +561,165 @@ window.addEventListener('DOMContentLoaded', () => {
 
 console.log('Wedding Story initialized! 💕')
 
+// ========== Gift Popup ==========
+const giftPopup = $('#giftPopup');
+const openGiftBoxBtn = $('#openGiftBox');
+const closeGiftPopupBtn = $('#closeGiftPopup');
+const giftPopupOverlay = $('#giftPopupOverlay');
+
+// Open gift popup
+if (openGiftBoxBtn) {
+  openGiftBoxBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (giftPopup) {
+      giftPopup.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+}
+
+// Close gift popup
+function closeGiftPopup() {
+  if (giftPopup) {
+    giftPopup.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
+if (closeGiftPopupBtn) {
+  closeGiftPopupBtn.addEventListener('click', closeGiftPopup);
+}
+
+if (giftPopupOverlay) {
+  giftPopupOverlay.addEventListener('click', closeGiftPopup);
+}
+
+// Close popup on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && giftPopup && giftPopup.classList.contains('active')) {
+    closeGiftPopup();
+  }
+});
+
+// Download QR code function
+window.downloadQR = function(type) {
+  const imgSrc = type === 'bride' ? './assets/img/qr-bride.png' : './assets/img/qr-groom.png';
+  const fileName = type === 'bride' ? 'QR_Code_Co_Dau.png' : 'QR_Code_Chu_Re.png';
+  
+  // Create a temporary link element
+  const link = document.createElement('a');
+  link.href = imgSrc;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  
+  // Show feedback
+  showToast(`Đang tải ${type === 'bride' ? 'QR Cô Dâu' : 'QR Chú Rể'}...`);
+};
+
+// Copy account number function
+window.copyAccountNumber = function(type) {
+  const accountNumber = type === 'bride' ? '0123456789' : '9876543210';
+  
+  // Try to use the Clipboard API
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(accountNumber)
+      .then(() => {
+        showToast('✓ Đã copy số tài khoản!');
+      })
+      .catch(() => {
+        fallbackCopy(accountNumber);
+      });
+  } else {
+    fallbackCopy(accountNumber);
+  }
+};
+
+// Fallback copy method for older browsers
+function fallbackCopy(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-9999px';
+  document.body.appendChild(textArea);
+  textArea.select();
+  
+  try {
+    document.execCommand('copy');
+    showToast('✓ Đã copy số tài khoản!');
+  } catch (err) {
+    showToast('❌ Không thể copy. Vui lòng copy thủ công.');
+  }
+  
+  document.body.removeChild(textArea);
+}
+
+// Toast notification
+function showToast(message) {
+  // Remove existing toast if any
+  const existingToast = $('.custom-toast');
+  if (existingToast) {
+    existingToast.remove();
+  }
+  
+  const toast = document.createElement('div');
+  toast.className = 'custom-toast';
+  toast.textContent = message;
+  toast.style.cssText = `
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 10000;
+    animation: toastSlideUp 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  `;
+  
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.style.animation = 'toastSlideDown 0.3s ease';
+    setTimeout(() => toast.remove(), 300);
+  }, 2000);
+}
+
+// Add toast animations to CSS dynamically
+if (!$('#toast-animations')) {
+  const style = document.createElement('style');
+  style.id = 'toast-animations';
+  style.textContent = `
+    @keyframes toastSlideUp {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    
+    @keyframes toastSlideDown {
+      from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+      }
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+console.log('Gift popup initialized! 🎁');
 

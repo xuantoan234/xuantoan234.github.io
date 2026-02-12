@@ -601,6 +601,52 @@
         </div>
       </div>
     </section>
+    <!-- Story 8: Gift -->
+    <section class="story story--8" data-story="8">
+      <div class="story__bg" style="background-image:url('./assets/img/19.jpg')"></div>
+      <div class="story__overlay story__overlay--medium"></div>
+      <div class="story__content">
+        <div class="gift-container">
+          <h2 class="gift__title">Gửi quà đến cô dâu và chú rể</h2>
+          <p class="gift__message">
+            Thật vui vì được gặp và đón tiếp các bạn trong dịp đặc biệt như đám cưới của chúng mình
+          </p>
+          
+          <button class="gift-box-btn" id="openGiftBox" aria-label="Mở hộp mừng cưới">
+            <svg class="gift-icon-svg" width="80" height="80" viewBox="0 0 100 100" fill="none">
+              <!-- Elegant envelope -->
+              <rect x="20" y="35" width="60" height="40" rx="3" stroke="white" stroke-width="2.5" fill="none"/>
+              <!-- Envelope flap -->
+              <path d="M20 35 L50 55 L80 35" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Heart decoration -->
+              <path d="M50 48 C48 46, 45 46, 43 48 C41 50, 41 52, 43 54 L50 60 L57 54 C59 52, 59 50, 57 48 C55 46, 52 46, 50 48 Z" fill="white" opacity="0.9"/>
+            </svg>
+            <span class="gift-click-text">Nhấn để mở</span>
+          </button>
+        </div>
+      </div>
+      
+      <div class="story__bottom">
+        <div class="story__actions">
+          <a href="https://www.facebook.com/profile.php?id=61585602135049" target="_blank" rel="noopener" class="action-btn">
+            <span class="action-text">Gửi lời chúc...</span>
+            <span class="action-icon">💬</span>
+          </a>
+          <button class="action-btn">
+            <span class="action-emoji">🎊</span>
+            <span class="action-text">Bắn tim</span>
+          </button>
+          <button class="action-btn gift-btn">
+            <span class="gift-icon">🎁</span>
+            <span class="gift-count">69</span>
+          </button>
+          <button class="action-btn like-btn">
+            <span class="like-icon">👍</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- Story 7: RSVP -->
     <section class="story story--7" data-story="7">
       <div class="story__bg" style="background-image:url('./assets/img/13.jpg')"></div>
@@ -679,6 +725,92 @@
     <div class="progress-bar" data-index="5"><div class="progress-bar__fill"></div></div>
     <div class="progress-bar" data-index="6"><div class="progress-bar__fill"></div></div>
     <div class="progress-bar" data-index="7"><div class="progress-bar__fill"></div></div>
+    <div class="progress-bar" data-index="8"><div class="progress-bar__fill"></div></div>
+  </div>
+
+  <!-- Gift Box Popup -->
+  <div class="gift-popup" id="giftPopup">
+    <div class="gift-popup__overlay" id="giftPopupOverlay"></div>
+    <div class="gift-popup__content">
+      <button class="gift-popup__close" id="closeGiftPopup" aria-label="Đóng">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <h3 class="gift-popup__title">🎁 Hộp mừng cưới 🎁</h3>
+      
+      <div class="gift-popup__cards">
+        <!-- Bride Card -->
+        <div class="qr-card">
+          <div class="qr-card__header">
+            <span class="qr-card__icon">💖</span>
+            <h4 class="qr-card__title">Cô Dâu</h4>
+          </div>
+          <div class="qr-card__qr">
+            <img src="./assets/img/qr-bride.png" alt="QR Code Cô Dâu" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3EQR Code Cô Dâu%3C/text%3E%3C/svg%3E'" />
+          </div>
+          <div class="qr-card__info">
+            <p class="qr-card__name">NGUYEN THI THU HOAI</p>
+            <p class="qr-card__bank">MSB Bank</p>
+            <p class="qr-card__number" id="bridgeAccountNumber">13001015814226</p>
+          </div>
+          <div class="qr-card__actions">
+            <button class="qr-btn qr-btn--download" onclick="downloadQR('bride')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Tải ảnh
+            </button>
+            <button class="qr-btn qr-btn--copy" onclick="copyAccountNumber('bride')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy STK
+            </button>
+          </div>
+        </div>
+        
+        <!-- Groom Card -->
+        <div class="qr-card">
+          <div class="qr-card__header">
+            <span class="qr-card__icon">💙</span>
+            <h4 class="qr-card__title">Chú Rể</h4>
+          </div>
+          <div class="qr-card__qr">
+            <img src="./assets/img/qr-groom.png" alt="QR Code Chú Rể" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%23f0f0f0%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3EQR Code Chú Rể%3C/text%3E%3C/svg%3E'" />
+          </div>
+          <div class="qr-card__info">
+            <p class="qr-card__name">DANG XUAN TOAN</p>
+            <p class="qr-card__bank">VietinBank</p>
+            <p class="qr-card__number" id="groomAccountNumber">102002541258</p>
+          </div>
+          <div class="qr-card__actions">
+            <button class="qr-btn qr-btn--download" onclick="downloadQR('groom')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Tải ảnh
+            </button>
+            <button class="qr-btn qr-btn--copy" onclick="copyAccountNumber('groom')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              Copy STK
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <p class="gift-popup__footer">Cảm ơn sự hiện diện và tấm lòng của bạn! ❤️</p>
+    </div>
   </div>
 
   <!-- Close Button -->
