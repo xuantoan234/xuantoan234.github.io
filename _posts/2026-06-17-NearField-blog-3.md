@@ -1,5 +1,5 @@
 ---
-title: 'SAC Algorithm'
+title: 'Near Field vs Far Field in 6G'
 date: 2026-06-17
 permalink: /posts/2026/20260617/Near-Field-in-6G/
 tags:
