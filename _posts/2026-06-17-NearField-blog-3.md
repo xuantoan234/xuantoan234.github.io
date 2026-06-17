@@ -1,6 +1,6 @@
 ---
 title: 'SAC Algorithm'
-date: 2025-12-06
+date: 2026-06-17
 permalink: /posts/2026/20260617/Near-Field-in-6G/
 tags:
   - cool posts
